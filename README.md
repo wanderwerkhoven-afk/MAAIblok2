@@ -2,6 +2,7 @@
 
 ## General Information
 
+* Template version: 1.0
 * Starting year: 2022-2023-1
 * Team number: [team_number]
 * Team Composition
