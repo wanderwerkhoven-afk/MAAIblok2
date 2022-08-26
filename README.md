@@ -13,10 +13,11 @@
 ## Resources
 
 * [Project documentation](project/doc/README.md)
+* [Project source](project/src)
 * [Coaching sessions](team/coach/README.md)
 * [Expert review sessions](team/expert/README.md)
 * Invidual documentation
-    * [Member 1 [member1_name]](team/member1/README.md)
-    * [Member 2 [member2_name]](team/member2/README.md)
-    * [Member 3 [member3_name]](team/member3/README.md)
-    * [Member 4 [member4_name]](team/member4/README.md)
+    * [Member 1 [member1_name]](team/individual/member1/README.md)
+    * [Member 2 [member2_name]](team/individual/member2/README.md)
+    * [Member 3 [member3_name]](team/individual/member3/README.md)
+    * [Member 4 [member4_name]](team/individual/member4/README.md)
