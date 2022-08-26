@@ -15,7 +15,7 @@
 ## Resources
 
 * [Project documentation](project/doc/README.md)
-* [Project source](project/src)
+* [Project source-code](project/src)
 * [Coaching sessions](team/coach/README.md)
 * [Expert review sessions](team/expert/README.md)
 * Invidual documentation
