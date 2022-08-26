@@ -1,12 +1,24 @@
-# maai-logbook-template
+# Master of Applied AI Logbook
 
+## General Information
 
+* Starting year: 2022-2023-1
+* Team number: [team_number]
+* Team Composition
+    * Member 1: [member1_name]
+    * Member 2: [member2_name]
+    * Member 3: [member3_name]
+    * Member 4: [member4_name]
 
-## Getting started
+## Resources
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+* [Coaching sessions](team/coach/README.md)
+* [Project documentation](project/doc/README.md)
+* Invidual documentation
+    * [Member 1 [member1_name]](team/member1/README.md)
+    * [Member 2 [member2_name]](team/member2/README.md)
+    * [Member 3 [member3_name]](team/member3/README.md)
+    * [Member 4 [member4_name]](team/member4/README.md)
 
 ## Add your files
 
