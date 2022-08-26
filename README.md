@@ -10,10 +10,7 @@
     * Member 3: [member3_name]
     * Member 4: [member4_name]
 
-> Fill-in instructions:
-> 1. Use this section to describe the project assignment.
-> 2. Give contextual information, introducing the problem, the project objectives and desired outcomes.
-> 3. Feel free to use external references and images to improve the readability.
+> Fill-in instructions: replace the placeholders with correct values
 
 ## Resources
 
@@ -27,4 +24,4 @@
     * [Member 3 [member3_name]](team/individual/member1/README.md)
     * [Member 4 [member4_name]](team/individual/member1/README.md)
 
-> Fill-in instructions: Keep the original resources structure and feel free to provide additional ones.
+> Fill-in instructions: Keep the original resources and feel free to add additional ones.

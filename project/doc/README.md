@@ -2,7 +2,10 @@
 
 ## Project Summary
 
-> Fill-in instructions: Use this section to describe the project assignment. Give contextual information, introducing the problem, the project objectives and desired outcomes. Feel free to use external references, images to improve the readability.
+> Fill-in instructions:
+> 1. Use this section to describe the project assignment.
+> 2. Give contextual information, introducing the problem, the project objectives and desired outcomes.
+> 3. Feel free to use external references and images to improve the readability.
 
 ## Project Rationale
 
