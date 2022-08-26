@@ -23,3 +23,5 @@
     * [Member 2 [member2_name]](team/individual/member2/README.md)
     * [Member 3 [member3_name]](team/individual/member3/README.md)
     * [Member 4 [member4_name]](team/individual/member4/README.md)
+
+> Fill-in instructions: Keep the original resources and feel free to provide additional ones.
