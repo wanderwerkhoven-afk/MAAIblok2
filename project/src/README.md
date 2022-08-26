@@ -13,3 +13,7 @@
 # Usage instructions
 
 > Add here information on how to execute the experiments or use the application
+
+## Navigation
+
+[Home](../../README.md)
