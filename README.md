@@ -10,6 +10,8 @@
     * Member 3: [member3_name]
     * Member 4: [member4_name]
 
+> Fill-in instructions: Change the placeholders, like team number and member composition. 
+
 ## Resources
 
 * [Project documentation](project/doc/README.md)
