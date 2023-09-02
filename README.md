@@ -1,4 +1,4 @@
-![alt text](../fig/logo.png "logo")
+![alt text](./project/fig/logo.png "logo")
 
 # Master of Applied AI Logbook
 
