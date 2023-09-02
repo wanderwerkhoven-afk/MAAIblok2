@@ -7,5 +7,6 @@
 
 ## Resources
 
-* [Logbook](project/doc/README.md)
+* [Logbook](project/logbook/README.md)
+* [Report](project/report/README.md)
 * [Source-code](project/src)
