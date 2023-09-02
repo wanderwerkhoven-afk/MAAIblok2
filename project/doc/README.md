@@ -1,15 +1,22 @@
 # Master of Applied AI 
 
-## Project Summary
+[[_TOC_]]
 
-> Fill-in instructions:
-> 1. Use this section to describe the project assignment.
-> 2. Give contextual information, introducing the problem, the project objectives and desired outcomes.
-> 3. Feel free to use external references and images to improve the readability.
+## Online Logbook
 
-## Project Rationale
-
-> Fill-in instructions: In this section, you should describe the most important choices made during the project. You should describe potential alternatives and the final choice substantiated by your research results and project constraints. Feel free to include sub-sections, images, external references and code snippets.
+> Fill-in instructions: To be removed as soon as you start working on the document
+> This is the entry point to your logbook. A logbook allows students to record the project's progress. 
+> Here you should register:
+> 1. Schedules and progress summaries.
+> 2. Designs and diagrams
+> 3. Research documentation
+> 4. Feedback you have received from coaches, lecturers, fellow students, etc.
+>
+> Feel free to organise this section according to your preference, for example, adding links to other documents. 
+> 
+> Your coach visits the logbook to get updates on the project's progress. Thus, ensure your logbook is well-organised and readable, containing a table of contents, and each component in the log has which team members worked on it. Eventually, you can copy parts of the logbook into your report.
+> 
+> This file follows the markdown language standard to render text. You can also use an extended markdown compatible with gitlab to add table of contents, draw diagrams, colored code-blocks an so on. Take a look at the [documentation](https://docs.gitlab.com/ee/user/markdown.html) to find out more.
 
 ## Navigation
 
