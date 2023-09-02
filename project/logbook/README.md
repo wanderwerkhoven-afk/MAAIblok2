@@ -1,3 +1,5 @@
+![alt text](../fig/logo.png "logo")
+
 # Master of Applied AI 
 
 [[_TOC_]]
