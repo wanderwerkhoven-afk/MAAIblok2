@@ -20,7 +20,7 @@
 > Here is an example:
 > | Date | Summary of addressed topics | Feedback | Plan | How the feedback was addressed (revisiting) |
 >|---|---|---|---|---|
-> |Week 2 - dd/mm/yyyy|Activities related to [Paper protoyping (A2)]() as well as [Model metrics (C1)]()| There was only 1 paper prototype. You should expand ideas and validate them with the target group | Brainstorming session | We experimented with other target groups, and the results (can be seen here) | 
+> |Week 2 - dd/mm/yyyy|Activities related to [Paper protoyping (A2)]() as well as [Model metrics (C1)]()| There was only 1 paper prototype. You should expand ideas and validate them with the target group | Brainstorming session | We experimented with other target groups, and the results [can be seen here]() | 
 
 >Feel free to use links pointing to specific document parts, as evidence. It could take some time, maybe more than one week, to address the given feedback. It might be the case that you cannot fill the last column when adding the line. For example, a series of tasks should be performed to address the topic. In such cases, you should revisit all given feedback after these tasks are finished, informing how the feedback was addressed. 
 
