@@ -19,9 +19,7 @@
 > Here an example of table 
 > | Date | Summary of addressed topics | Feedback | Plan | How the feedback was adressed (revisiting) |
 >|---|---|---|---|---|
-> |Week 1|[Paper protoyping (A2), metrics (C1)]()| There was only 1 paper prototype. You should expand ideas and validate it with the target group | Brainstorming session | We experimented with other target groups, and results can be seen here (link) | 
-
-
+> |Week 1|[Paper protoyping (A2), metrics (C1)]()| There was only 1 paper prototype. You should expand ideas and validate it with the target group | Brainstorming session | We experimented with other target groups, and results (can be seen here) | 
 
 > You have freedom to choose your preferred editor (e.g. LaTeX, Google Docs, Markdown, Notion, etc) as long as you add here a link to the PDF, also versioned in this repository.
 
