@@ -19,7 +19,7 @@
 > Here an example of table 
 > | Date | Summary of addressed topics | Feedback | Plan | How the feedback was adressed (revisiting) |
 >|---|---|---|---|---|
-> |Week 1|Paper protoyping (A2), metrics (C1)| There was only 1 paper prototype. You should expand ideas and validate it with the target group | Brainstorming session | We experimented with other target groups, and results can be seen here (link) | 
+> |Week 1|[Paper protoyping (A2), metrics (C1)]()| There was only 1 paper prototype. You should expand ideas and validate it with the target group | Brainstorming session | We experimented with other target groups, and results can be seen here (link) | 
 
 
 
