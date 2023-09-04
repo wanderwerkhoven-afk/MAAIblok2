@@ -15,10 +15,11 @@
 >
 > Your coach visits the logbook to get updates on the project's progress. Thus, ensure your logbook is well-organised and readable, that cointans a table of contents, and each component in the log has which team members worked on it. We advise that you divide your logbook per topic, and within each topic, the development per week (if relevant).
 
-> 
-> | Date | Summary of activities | Feedback | Plan | How the feedback was adressed (revisiting) |
+> To keep track of your progress, we recommend you adding a section at the end of your logbook called "Coaching sessions", containing a summary of the addressed topics in the meeting, the feedback given from the coach, and an action plan. You should also revisit the added line, informing how the feedback was addressed. 
+> Here an example of table 
+> | Date | Summary of addressed topics | Feedback | Plan | How the feedback was adressed (revisiting) |
 >|---|---|---|---|---|
-> |08-09-2022|[All]| Scenario voorgelegd bij de coach. | Data zoeken en begrijpen. Feedback verwerken van coach. | Literatuur zoeken dat gezichtsherkenning betere accuracy heeft dan leeftijd schatten en literatuur zoeken dat de Albert Heijn problemen heeft met alcoholcontrole. Uitzoeken of beeldmateriaal mag opslaan volgens de privacywet. Type fouten realiseren. | 
+> |Week 1|Paper protoyping (A2), metrics (C1)| There was only 1 paper prototype. You should expand ideas and validate it with the target group | Brainstorming session | We experimented with other target groups, and results can be seen here (link) | 
 
 
 
