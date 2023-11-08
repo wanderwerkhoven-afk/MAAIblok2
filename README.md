@@ -6,11 +6,11 @@
 * Year: 2023-2024
 * Team: [TEAM_NAME]
 * Participants:
-    * [NAME 1]
-    * [NAME 2]
-    * [NAME 3]
-    * [NAME 4]
-* Coach: [TEAM_NAME]
+    * [NAME_1]
+    * [NAME_2]
+    * [NAME_3]
+    * [NAME_4]
+* Coach: [COACH_NAME]
 
 ## Resources
 
