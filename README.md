@@ -2,8 +2,9 @@
 
 ## General Information
 
-* Template version: 1.1
-* Year: 2023-2024
+* Template version: 1.2
+* Year: 2024-2025
+* Class: [CLASS_NUMBER]
 * Team: [TEAM_NAME]
 * Participants:
     * [NAME_1]
