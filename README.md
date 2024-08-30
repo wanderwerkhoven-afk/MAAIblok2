@@ -11,6 +11,7 @@
     * [NAME_2]
     * [NAME_3]
     * [NAME_4]
+    * [NAME_5]
 * Coach: [COACH_NAME]
 
 ## Resources
