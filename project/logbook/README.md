@@ -6,7 +6,7 @@
 
 > **Fill-in instructions**:
 >
-> This is the entry point to your logbook. A logbook allows students to record the project's progress.
+> This is the entry point to your logbook. A logbook allows students to record their individual project's progress.
 > Here you should register:
 > 1. Schedules and progress summaries.
 > 2. Designs and diagrams
