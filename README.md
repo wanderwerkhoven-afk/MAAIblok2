@@ -3,7 +3,7 @@
 ## General Information
 
 * Template version: 1.3
-* Year: 2025-2026
+* Year: 2025-26
 * Class: [CLASS_NUMBER]
 * Team: [TEAM_NAME]
 * Participants:
@@ -17,6 +17,6 @@
 ## Resources
 
 * [Collaboration Agreement](project/collab/README.md)
-* [Individual Logbooks](project/logbook/README.md)
+* [Individual Logbook](project/logbook/README.md)
 * [Report](project/report/README.md)
 * [Source-code](project/src)
