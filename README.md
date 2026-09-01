@@ -19,11 +19,9 @@
 * [Collaboration Agreement](project/collab/README.md)
 * [Report](project/report/README.md)
 * [Source-code](project/src)
-
-Inclusief: data processing, model(len), evaluatie, documentatie
+    - Inclusief: data processing, model(len), evaluatie, documentatie
 
 * Documentatie / Wiki - Uitgebreide procesvastlegging
-
-Planning, onderzoek, ontwerp, ontwikkeling, evaluatie
-GenAI gebruik documentatie
-Toegankelijk via GitLab Wiki
+    - Planning, onderzoek, ontwerp, ontwikkeling, evaluatie
+    - GenAI gebruik documentatie
+    - Toegankelijk via GitLab Wiki
