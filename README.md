@@ -4,15 +4,15 @@
 
 * Template version: 1.5
 * Year: 2026-27
-* Class: [CLASS_NUMBER]
-* Team: [TEAM_NUMBER]
+* Class: Klas 2
+* Team: 4
 * Team Members:
-    * [NAME_1]
-    * [NAME_2]
-    * [NAME_3]
-    * [NAME_4]
-    * [NAME_5]
-* Coach: [COACH_NAME]
+    * Wander
+    * Shereen
+    * Sebas
+    * Sebastiaan
+    * Lei
+* Coach: Renata
 
 ## Resources
 
