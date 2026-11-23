@@ -3,7 +3,8 @@
 > **Project:** Evaluation of AI-generated summaries — *Trust, Check or Reject*  
 > **Programme:** Master Applied Artificial Intelligence (MAAI), Block 2 · Academic year 2026–2027  
 > **Institution:** Amsterdam University of Applied Sciences (Hogeschool van Amsterdam)  
-> **Repository:** [wanderwerkhoven-afk/MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2)  
+> **Development repository (GitHub):** [wanderwerkhoven-afk/MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2)  
+> **Official project repository (HvA GitLab):** [maai/2026-2027-b1/klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9)  
 > **Version:** 1.0 · **Last updated:** 23 November 2026  
 > **Status:** Draft for collective review and sign-off
 
@@ -145,13 +146,16 @@ Fair contribution does not imply identical tasks or identical hours. We consider
 
 ### Repository and branches
 
-- **GitHub repository:** [MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2).
+- **GitHub development repository:** [MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2). The working version of project documents, code and prototypes is developed and committed here.
+- **Official HvA GitLab repository:** [klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9). This is the official team and coach review, delivery and assessment platform.
+- **Synchronisation responsibility:** Wander pulls the latest GitHub changes into the local workspace and pushes approved updates to GitLab. ChatGPT edits GitHub only and does not directly publish to GitLab.
+- **Git remote convention:** where configured, `github` refers to the GitHub development repository and `origin` refers to the official HvA GitLab repository. Verify remotes before pushing.
 - **Integration branch:** `main`; it should remain demonstrable and as stable as possible.
 - **Task branches:** `feature/<issue-number>-short-description`, `fix/<issue-number>-short-description` or `docs/<issue-number>-short-description`.
 - **Review:** changes normally enter `main` through a pull request (PR) linked to their issue.
 - **Urgent changes:** any exceptional direct commit to `main` must be communicated and documented.
 - **Production/deployment branch:** only introduced if the team decides that a separate release branch is useful.
-- **GitLab mirror:** if used, the team documents the source of truth and the sync procedure to avoid diverging histories.
+- **Publication to GitLab:** GitHub is the working source for edits made together with ChatGPT. After review, Wander synchronises changes to GitLab, which serves as the official shared record for team members and coaches. GitLab changes made by teammates must be reconciled before publishing to prevent conflicts or overwriting work.
 
 ### Development workflow
 
@@ -244,7 +248,8 @@ Use publicly available, synthetic or explicitly authorised source documents. Do 
 |---|---|
 | Quick coordination and short questions | WhatsApp |
 | Formal discussions, meetings and shared institutional communication | Microsoft Teams |
-| Issues, PR discussions and technical decisions | GitHub |
+| Draft development, GitHub issues and development PRs | GitHub |
+| Official project delivery and team/coach review | [HvA GitLab — klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9) |
 | Long-lived research, design and project documentation | [Project wiki](../../wiki/README.md) |
 
 ### Response expectations
@@ -382,7 +387,9 @@ By signing or explicitly confirming this agreement, each member acknowledges the
 |---|---|
 | Quick communication | WhatsApp |
 | Formal communication | Microsoft Teams |
-| Source repository | [GitHub — MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2) |
+| Development repository | [GitHub — MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2) |
+| Official repository (team and coaches) | [HvA GitLab — klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9) |
+| GitHub → GitLab publication | Wander synchronises approved changes locally and pushes to GitLab |
 | Shared documentation | [Project wiki](../../wiki/README.md) |
 | Task tracking | GitHub Issues |
 | Working branch | `main` + task-specific branches |
