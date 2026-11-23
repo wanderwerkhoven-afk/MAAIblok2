@@ -3,7 +3,6 @@
 > **Project:** Evaluation of AI-generated summaries — *Trust, Check or Reject*  
 > **Programme:** Master Applied Artificial Intelligence (MAAI), Block 2 · Academic year 2026–2027  
 > **Institution:** Amsterdam University of Applied Sciences (Hogeschool van Amsterdam)  
-> **Development repository (GitHub):** [wanderwerkhoven-afk/MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2)  
 > **Official project repository (HvA GitLab):** [maai/2026-2027-b1/klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9)  
 > **Version:** 1.0 · **Last updated:** 23 November 2026  
 > **Status:** Draft for collective review and sign-off
@@ -125,7 +124,7 @@ These are **suggested workstreams**. The team confirms actual owners and reviewe
 
 ### Task management
 
-Each substantial task is recorded as a GitHub Issue (or a linked team-tracker item) with:
+Each substantial task is recorded as a project issue or in the shared team tracker with:
 
 - **Task and intended outcome:** what will be delivered?
 - **Owner and reviewer:** who implements and who checks?
@@ -146,16 +145,12 @@ Fair contribution does not imply identical tasks or identical hours. We consider
 
 ### Repository and branches
 
-- **GitHub development repository:** [MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2). The working version of project documents, code and prototypes is developed and committed here.
-- **Official HvA GitLab repository:** [klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9). This is the official team and coach review, delivery and assessment platform.
-- **Synchronisation responsibility:** Wander pulls the latest GitHub changes into the local workspace and pushes approved updates to GitLab. ChatGPT edits GitHub only and does not directly publish to GitLab.
-- **Git remote convention:** where configured, `github` refers to the GitHub development repository and `origin` refers to the official HvA GitLab repository. Verify remotes before pushing.
+- **Official project repository:** [HvA GitLab — klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9). This is the shared location for project documentation, deliverables, code and evidence reviewed by the team and coaches.
 - **Integration branch:** `main`; it should remain demonstrable and as stable as possible.
 - **Task branches:** `feature/<issue-number>-short-description`, `fix/<issue-number>-short-description` or `docs/<issue-number>-short-description`.
-- **Review:** changes normally enter `main` through a pull request (PR) linked to their issue.
-- **Urgent changes:** any exceptional direct commit to `main` must be communicated and documented.
-- **Production/deployment branch:** only introduced if the team decides that a separate release branch is useful.
-- **Publication to GitLab:** GitHub is the working source for edits made together with ChatGPT. After review, Wander synchronises changes to GitLab, which serves as the official shared record for team members and coaches. GitLab changes made by teammates must be reconciled before publishing to prevent conflicts or overwriting work.
+- **Review:** meaningful changes are reviewed by at least one other team member, normally through a merge request.
+- **Urgent changes:** exceptional direct commits to `main` are communicated and documented.
+- **Production/deployment branch:** introduced only if the team decides it is useful.
 
 ### Development workflow
 
@@ -169,7 +164,7 @@ Branch from main
 Implementation + tests + documentation
           |
           v
-Pull Request -> peer review
+Merge Request -> peer review
           |
           +-- Changes requested --> revise
           |
@@ -183,9 +178,9 @@ Merge to main
 Update issue, wiki and demo if relevant
 ```
 
-### Pull-request expectations
+### Merge-request expectations
 
-A PR should describe the change, linked issue, test evidence, assumptions and remaining limitations. At least one other team member reviews meaningful changes where practical. Authors do not self-approve substantial methodological changes.
+An MR should describe the change, linked issue, test evidence, assumptions and remaining limitations. At least one other team member reviews meaningful changes where practical. Authors do not self-approve substantial methodological changes.
 
 We avoid committing credentials, API tokens, private documents, identifiable user research or unnecessarily large datasets. Environment secrets are stored outside version control; use example configuration files where needed.
 
@@ -248,8 +243,7 @@ Use publicly available, synthetic or explicitly authorised source documents. Do 
 |---|---|
 | Quick coordination and short questions | WhatsApp |
 | Formal discussions, meetings and shared institutional communication | Microsoft Teams |
-| Draft development, GitHub issues and development PRs | GitHub |
-| Official project delivery and team/coach review | [HvA GitLab — klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9) |
+| Project issues, technical decisions, code review and deliverables | [HvA GitLab — klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9) |
 | Long-lived research, design and project documentation | [Project wiki](../../wiki/README.md) |
 
 ### Response expectations
@@ -370,7 +364,7 @@ By signing or explicitly confirming this agreement, each member acknowledges the
 
 - [ ] We agree on workstream ownership, reviewers and workload.
 - [ ] We keep tasks and deadlines visible.
-- [ ] We use issues, branches and PRs for meaningful development work.
+- [ ] We use issues, branches and merge requests for meaningful development work.
 - [ ] We review each other's code, research and design decisions.
 - [ ] We report blockers and absences early.
 - [ ] We document assumptions, results, tests and changes.
@@ -387,11 +381,9 @@ By signing or explicitly confirming this agreement, each member acknowledges the
 |---|---|
 | Quick communication | WhatsApp |
 | Formal communication | Microsoft Teams |
-| Development repository | [GitHub — MAAIblok2](https://github.com/wanderwerkhoven-afk/MAAIblok2) |
-| Official repository (team and coaches) | [HvA GitLab — klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9) |
-| GitHub → GitLab publication | Wander synchronises approved changes locally and pushes to GitLab |
+| Project repository | [HvA GitLab — klas-2-team-9](https://gitlab.fdmci.hva.nl/maai/2026-2027-b1/klas-2-team-9) |
 | Shared documentation | [Project wiki](../../wiki/README.md) |
-| Task tracking | GitHub Issues |
+| Task tracking | Project issues / shared team tracker |
 | Working branch | `main` + task-specific branches |
 | Team coach | Renata |
 | Regular meeting | Friday (proposed; confirm with team) |
