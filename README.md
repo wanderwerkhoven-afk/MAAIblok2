@@ -19,6 +19,7 @@
 * [Collaboration Agreement](project/collab/README.md)
 * [Report](project/report/README.md)
 * [Ontwerpdossier — SummaryCheck](project/ontwerp/README.md)
+* [Data — originele documenten, samenvattingen en evaluaties](data/README.md)
 * [Source-code](project/src)
     - Inclusief: data processing, model(len), evaluatie, documentatie
 * [Projectwiki — planning, onderzoek, ontwerp, ontwikkeling, evaluatie en GenAI-gebruik](wiki/README.md)
