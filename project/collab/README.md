@@ -139,6 +139,8 @@ The detailed backlog and deadlines belong in the [planning page](../../wiki/Plan
 
 Fair contribution does not imply identical tasks or identical hours. We consider effort, difficulty, reliability, initiative, review work and project-wide support. Distribution of work is reviewed regularly and adjusted if one member becomes overloaded or cannot access a meaningful learning opportunity.
 
+Task allocation also takes individual learning objectives into account. Where possible, we pair a team member who wants to develop a specific skill with a teammate who already has stronger experience in that area. This allows team members to learn from each other through collaboration, guidance and constructive feedback. The less experienced member should have opportunities to actively practise and take responsibility, rather than only observe, while knowledge and expertise are shared across the team.
+
 ---
 
 ## 5. Work Method and Version Control
