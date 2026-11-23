@@ -8,10 +8,10 @@ Deze map documenteert de instructies die bij het samenstellen van samenvattingen
 
 ## Herkomst en versiebeheer
 
-De oorspronkelijke v1-PDF's van ABN AMRO, ING en Rabobank zijn eerder met ChatGPT gemaakt. Uit de eerdere opdracht zijn onder meer de 10%-doelstelling, de gevraagde hierarchical chunk-merging-aanpak en de consistente opmaak bekend. De volledige exacte uitvoeringsprompt, interne stappen en modelinstellingen zijn echter niet beschikbaar als verifieerbare generatielog.
+De oorspronkelijke v0-PDF's van ABN AMRO, ING en Rabobank zijn eerder met ChatGPT gemaakt. Uit de eerdere opdracht zijn onder meer de 10%-doelstelling, de gevraagde hierarchical chunk-merging-aanpak en de consistente opmaak bekend. De volledige exacte uitvoeringsprompt, interne stappen en modelinstellingen zijn echter niet beschikbaar als verifieerbare generatielog.
 
-**Belangrijk:** de titel `v1.0` van het promptdocument is een **documentversie**, geen bewijs dat die prompt letterlijk bij de bestaande `Summary_v1.pdf`-bestanden is gebruikt.
+**Belangrijk:** de titel `v1.0` van het promptdocument is een **documentversie**, geen bewijs dat die prompt letterlijk bij de bestaande `Summary_v0.pdf`-bestanden is gebruikt.
 
-Het [manifest](../manifest.csv) verwijst bij de bestaande samenvattingen naar deze prompt als *reconstructed reference* en legt deze onzekerheid expliciet vast. Bij volgende generaties moet vóór uitvoering een stabiele promptversie worden opgeslagen, samen met exacte model- en procesmetadata.
+Het [manifest](../manifest.csv) verwijst bij de bestaande samenvattingen naar deze prompt als *reconstructed reference* en legt deze onzekerheid expliciet vast. De gestandaardiseerde prompt is bedoeld voor de nieuwe **v1-samenvattingen**, terwijl de bestaande **v0-samenvattingen** de nulmeting vormen. Bij volgende generaties moet vóór uitvoering een stabiele promptversie worden opgeslagen, samen met exacte model- en procesmetadata.
 
 [Terug naar data-overzicht](../README.md)
