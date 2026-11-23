@@ -20,8 +20,5 @@
 * [Report](project/report/README.md)
 * [Source-code](project/src)
     - Inclusief: data processing, model(len), evaluatie, documentatie
-
-* Documentatie / Wiki - Uitgebreide procesvastlegging
-    - Planning, onderzoek, ontwerp, ontwikkeling, evaluatie
-    - GenAI gebruik documentatie
-    - Toegankelijk via GitLab Wiki
+* [Projectwiki — planning, onderzoek, ontwerp, ontwikkeling, evaluatie en GenAI-gebruik](wiki/README.md)
+* [Algemene projectinformatie](Algemene%20informatie%20project%202/)
