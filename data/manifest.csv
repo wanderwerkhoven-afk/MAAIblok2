@@ -1,1 +1,7 @@
-document_id,organization,year,version,type,relative_path
+document_id,organization,year,version,type,relative_path,prompt_reference,prompt_provenance
+ABN_Annual_Report_2025,ABN AMRO,2025,original,raw,raw/ABN_Annual_Report_2025.pdf,,
+ABN_Annual_Report_2025,ABN AMRO,2025,v1,summary,summaries/ABN_Annual_Report_2025_Summary_v1.pdf,prompts/Summarization_Prompt_v1.md,reconstructed_reference_not_verified_as_executed_prompt
+ING_Annual_Report_2025,ING,2025,original,raw,raw/ING_Annual_Report_2025.pdf,,
+ING_Annual_Report_2025,ING,2025,v1,summary,summaries/ING_Annual_Report_2025_Summary_v1.pdf,prompts/Summarization_Prompt_v1.md,reconstructed_reference_not_verified_as_executed_prompt
+RABO_Annual_Report_2025,Rabobank,2025,original,raw,raw/RABO_Annual_Report_2025.pdf,,
+RABO_Annual_Report_2025,Rabobank,2025,v1,summary,summaries/RABO_Annual_Report_2025_Summary_v1.pdf,prompts/Summarization_Prompt_v1.md,reconstructed_reference_not_verified_as_executed_prompt
