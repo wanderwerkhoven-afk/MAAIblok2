@@ -186,3 +186,16 @@ Het nieuwe prototype behoudt de bestaande PDF.js-techniek en tekstoverlap-heuris
 
 Er is geen stakeholdertest of betrouwbaarheidsevaluatie uitgevoerd. De volgende iteratie kan de bronkoppeling vervangen door een gevalideerde retrieval- en claimverificatiepipeline.
 
+
+## 13. PDF-getrouwe samenvattingsweergave en gele hoverarcering
+
+**Aanleiding:** de oorspronkelijke vormgeving van de AI-samenvatting moet herkenbaar blijven; een opnieuw opgemaakte lijst met samenvattingszinnen voldoet niet aan dit ontwerpdoel.
+
+| Ontwerpkeuze | Implementatie | Risico / validatie |
+|---|---|---|
+| PDF visueel behouden | PDF.js rendert de samenvatting op canvas zonder de tekstinhoud in nieuwe HTML-paragrafen te herschrijven | Nauwkeurige rendering en prestaties op verschillende schermen testen |
+| Gele hoverarcering | Transparante, gepositioneerde tekstregelgebieden met achtergrondkleur bij hover | Tekstregels zijn niet altijd gelijk aan volledige zinnen; toetsen op complexe layouts |
+| Klikbare bronverwijzing | Klik selecteert de gekoppelde samenvattingszin en actualiseert de broncontrole rechts | Heuristische zin-naar-regelkoppeling kan foutpositieven of ontbrekende koppelingen opleveren |
+| Paginanavigatie en zoom | Compacte bediening boven originele PDF | Gebruikers moeten hun positie in lange samenvattingen kunnen behouden |
+
+**Patronen:** *explanation for understanding*, *source transparency*, *user control*. Bronverwijzing blijft een zoekvoorstel, geen geverifieerd feitelijk oordeel.
