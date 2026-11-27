@@ -1,93 +1,57 @@
-# Ontwerpiteratie 01 — Dashboard, scores en broncontrole
+# Ontwerpiteratie 01 — SummaryCheck
 
-**Datum:** 27 november 2026  
-**Project:** SummaryCheck  
-**Status:** interactief prototype met werkende PDF-upload, weergave en heuristische bronkoppeling; nog niet gevalideerd met gebruikers
+**Datum oorspronkelijke schets:** 27 november 2026  
+**Status:** werkend HTML-concept met echte PDF-weergave en heuristische bronvoorstellen; nog niet gevalideerd via een gebruikerstest.
 
-## 1. Aanleiding en schets
+## Aanleiding
 
-De eerste handgetekende UI-schets toont links een **Rabobank-dashboard** met een documentupload en een voortgangsbalk (93% in de schets). Het volgende scherm bevat links een **samenvatting**, rechts **cirkelindicatoren** voor verschillende evaluatiedimensies en onderaan of naast de samenvatting **gemarkeerde passages**. Een aanvullende notitie verwijst naar gebruik van een LLM voor beoordeling van claims en naar het vertalen van technische scores naar begrijpelijke signalen voor eindgebruikers.
+De eerste handgetekende schets voorzag in een Rabobank-dashboard, uploadmogelijkheid, een samenvattingsvenster, cirkelvormige kwaliteitsindicatoren en markeringen van claims en brontekst. Daarnaast werden een LLM-judge en spaCy als mogelijke technische componenten genoemd.
 
-De getekende voorbeeldwaarden, waaronder de scorecirkels, dienen als visuele inspiratie; zij zijn **geen daadwerkelijk berekende evaluatie-uitkomsten**. Deze iteratie vertaalt het idee naar een eerste klikbaar, single-file HTML-prototype.
+In eerste instantie zijn scorecirkels en fictieve claims als demonstratie uitgewerkt. In de latere revisie van iteratie 01 zijn deze **uit het actuele HTML-prototype verwijderd** en vervangen door daadwerkelijk ingelezen PDF-documenten en automatisch gevonden mogelijke bronverwijzingen.
 
-## Belangrijke revisie — 27 november 2026: echte documenten in plaats van demodata
+## Bestanden
 
-De eerdere losse demo-claims, fictieve cirkelpercentages, fictieve bronteksten en voorbeeldgrafieken zijn **verwijderd uit het werkende dashboard**. De interface biedt nu:
-
-1. Selectie van de drie echte documentparen uit `data/raw/` en `data/summaries/` (Rabobank, ING en ABN AMRO, v0) via de publieke repositorybestanden.
-2. Eigen uploads van een origineel rapport en een PDF-samenvatting; beide worden lokaal geopend.
-3. Een echte zij-aan-zij PDF-viewer met paginanavigatie en zoom via PDF.js.
-4. Meting van het aantal bronpagina's, samenvattingspagina's, geëxtraheerde woorden en indicatieve tekstreductie.
-5. Extractie van zinnen uit de ingelezen samenvatting, met maximaal drie mogelijke bronpagina's per geselecteerde zin op basis van woordoverlap tussen samenvatting en PDF-bron.
-6. Een actie **Open bron op pagina** die naar de gevonden pagina springt en overlappende woorden op de gerenderde PDF-pagina markeert.
-7. Tekstzoekfuncties per document en een lokaal (niet-opgeslagen) menselijk beslislabel.
-
-### Validiteit van de koppelingen
-
-De bronverwijzing is een **heuristisch zoekresultaat**, geen aangetoonde claimonderbouwing. De huidige implementatie gebruikt eenvoudige tokenisatie, stopwoordfiltering, pagina-overlap en tekstvensters. Dit kan verkeerde passages aanwijzen, semantisch equivalente formuleringen missen en geen numerieke of feitelijke consistentie garanderen. Ook 'overeenkomst van geselecteerde termen' is geen probabilistische betrouwbaarheidsscore. De interface moet de analist expliciet laten controleren of een voorgestelde passage de claim daadwerkelijk ondersteunt.
-
-**Technisch:** grote PDF's kosten tijd bij tekstextractie; gescande PDF's zonder tekstlaag vereisen OCR. De repository-PDF's en PDF.js vereisen een werkende internetverbinding bij laden; eigen bestanden worden door de applicatie niet geüpload. De inhoud wordt bij het verlaten/verversen van de pagina niet bewaard.
-
-**Status toetsing:** code is in de repository verwerkt, maar er zijn nog geen volledige browsertest, gedocumenteerde gebruikersobservaties of gevalideerde matchprestaties geregistreerd.
-
-## 2. Ontwerpdoel
-
-Een analist moet vanuit een rapportoverzicht kunnen navigeren naar een samenvatting, relevante controle-uitkomsten kunnen interpreteren en een verdachte claim kunnen onderzoeken via een bronpaneel, voordat een menselijke beslissing wordt vastgelegd.
-
-**Voorlopige hypothese:** brongebonden deelchecks met een duidelijke route voor handmatige controle zijn begrijpelijker en beter controleerbaar dan één algemene score zonder verdere toelichting.
-
-## 3. Bestanden
-
-| Bestand | Beschrijving |
+| Bestand | Inhoud |
 |---|---|
-| [prototype.html](prototype.html) | Zelfstandige, responsieve HTML/CSS/JavaScript-demo met echte lokale PDF-upload, PDF.js-bronviewer, tekstzoekfunctie, paginabesturing en daarnaast nog fictieve evaluatiescores |
-| [Design-patterns-en-keuzes.md](Design-patterns-en-keuzes.md) | Patroonselectie, concrete implementatie, trade-offs, open vragen en toetsvoorstellen |
+| [prototype.html](prototype.html) | Interactieve single-file HTML-interface voor echte PDF-upload, documentvergelijking, tekstextractie en bronvoorstellen |
+| [Design-patterns-en-keuzes.md](Design-patterns-en-keuzes.md) | Historie en verantwoording van ontwerpkeuzes, inclusief verwijdering van fictieve scores en vervanging door echte documenten |
 
-## 4. Inhoud van het prototype
+## Werkende functionaliteit
 
-- **Dashboard:** werkende lokale PDF-selectie en weergave van ingelezen status, naast een demonstratiekaart met drie **fictieve** cirkelindicatoren.
-- **Samenvatting:** voorbeeldtekst met een gemarkeerde claim en broncontrole.
-- **Scores:** aparte demo-indicatoren voor claimcontrole, dekking en compressie; niet één algemeen betrouwbaarheidspercentage.
-- **PDF-viewer:** daadwerkelijke bron-PDF en samenvattings-PDF naast elkaar, lokaal ingelezen via PDF.js. Pagina's bladeren, paginanummer invoeren, zoomen, zoeken in extraheerbare PDF-tekst en originele PDF openen.
-- **Broncontrole-demo:** het oorspronkelijke scherm met een fictieve claim, fictieve bronpassage en uitleg over onvoldoende bewijs blijft bewaard als conceptvoorbeeld. Dit is **niet** automatisch gekoppeld aan de geüploade PDFs.
-- **Menselijke beslissing:** knoppen Vertrouwen, Controleren en Afwijzen; lokaal demonstratiebericht na klikken.
-- **Engineer view:** zeer eenvoudige schets voor modelversievergelijking.
-- **Foutfeedback:** zichtbare meldknop; formulier en backend volgen in latere iteraties.
+1. **Datasetkeuze:** ABN AMRO, ING of Rabobank, elk met een origineel v0-jaarverslag en een bijbehorende v0-samenvatting uit de repository.
+2. **Lokale upload:** origineel en samenvatting afzonderlijk als PDF selecteren.
+3. **Documentviewer:** werkelijk gerenderde PDF-pagina's in twee kolommen, onafhankelijk bladeren en zoomen.
+4. **Inhoudelijke documentgegevens:** werkelijk aantal PDF-pagina's, geschatte woordenaantallen op basis van PDF-tekstextractie en indicatieve tekstreductie.
+5. **Bronverwijzingen:** een reeks zinnen wordt uit de echte samenvatting geëxtraheerd. De tool zoekt maximaal drie mogelijk relevante bronpagina's op basis van overeenkomst van betekenisvolle woorden en toont een tekstfragment.
+6. **Navigatie naar bron:** een bronvoorstel opent de geselecteerde PDF-pagina; overlappende woorden worden met een gele markering aangeduid.
+7. **Menselijke beslisopties:** lokaal demonstratielabel voor controle of afwijzing; nog geen opslag, workflow of beoordelingsbackend.
 
-## 5. Visuele stijl (revisie 27 november 2026)
+## Geen bewezen AI-evaluatie
 
-Het HTML-prototype is visueel afgestemd op zes aangeleverde referentiepagina's uit het Rabobank Annual Report 2025: een witte en open lay-out, helderblauwe cursieve koppen, oranje cijfers en accenten, dunne scheidingslijnen en sobere grafieken. Deze stijl is toegepast op het dashboard en de overige prototypeschermen; de bestaande demo-interacties blijven gelijk.
+De bronverwijzingen zijn **heuristische tekstmatches**. Ze kunnen een relevante bron aanwijzen, maar bewijzen **niet** dat de samenvattingsclaim feitelijk correct is. Er kan bijvoorbeeld een getal verkeerd zijn weergegeven, een ontkenning zijn weggelaten of een andere passage dezelfde termen bevatten. Ook is een ontbrekende match geen bewijs voor een onjuiste claim.
 
-De esthetische keuzes, mogelijke risico's en toetsvragen staan in [Design-patterns-en-keuzes.md](Design-patterns-en-keuzes.md#7-visuele-stijlherziening-binnen-iteratie-01--27-november-2026). Er zijn geen originele rapportafbeeldingen gebruikt als UI-assets.
+Er zijn geen fictieve betrouwbaarheidsscores meer in het actuele prototype. De procentuele tekstreductie is alleen een beschrijvende maat op basis van geëxtraheerde PDF-tekst. Een getoond percentage woordoverlap betreft geen gekalibreerde kans op juistheid.
 
-## 6. Afbakening en beperkingen
+Er is nog geen LLM-judge, spaCy-verwerking, semantische verificatie, OCR of formele evaluatiemethode geïntegreerd.
 
-Het prototype is een **front-end demonstratie met werkende lokale PDF-weergave**: PDF.js leest de geselecteerde bestanden daadwerkelijk in en toont de originele PDF-pagina's. De viewer bevat paginanavigatie, zoom en tekstzoekresultaten per pagina. PDF's worden niet naar de applicatieserver geüpload. Er draait **geen** LLM of documentevaluerende pipeline; claims, scores en de voorbeeldbronpassage in de analyse-demo zijn fictief. Het ontbreken van gekoppeld bewijs is niet automatisch bewijs dat een claim onwaar is. Tekstzoeken werkt alleen wanneer een PDF tekst bevat (gescande pagina's vereisen OCR). De PDF.js-bibliotheek en worker worden via een externe CDN geladen en vereisen een netwerkverbinding.
+## Stijl en interactie
 
-De in de whiteboardschets genoemde LLM-judge en spaCy zijn **technische oplossingsrichtingen**, geen geïmplementeerde of gevalideerde componenten van dit prototype. Het precieze gebruik van spaCy voor taalkundige voorbewerking en van een LLM-judge voor claimverificatie vereist apart technisch onderzoek. F1, accuracy of een ander getal kan niet zonder operationele definitie naar een betrouwbaarheidspercentage worden vertaald.
+De visuele vormgeving volgt de aangeleverde referentiepagina's uit het Rabobank Annual Report 2025: een witte achtergrond, helderblauwe (soms cursieve) koppen, oranje kerncijfers en accenten, dunne scheidingslijnen en sobere rechthoekige panelen. Originele illustraties en foto's uit het rapport zijn niet overgenomen.
 
-## 7. Open vragen voor de eerste test
+## Technische aanpak
 
-1. Begrijpt een analist het verschil tussen scores voor claimcontrole, dekking en compressie?
-2. Wordt het percentage in een cirkel ten onrechte gezien als kans op een juiste samenvatting?
-3. Is de visuele route van highlight naar bron duidelijk?
-4. Is het verschil tussen onvoldoende bewijs en feitelijk onjuist helder?
-5. Welke beslissing wordt genomen bij een onvoldoende onderbouwde claim?
-6. Hoe reageert de gebruiker als de evaluatie mislukt of geen uitslag heeft?
+De toepassing gebruikt Mozilla PDF.js via een vastgepinde externe CDN-versie (`3.11.174`). PDF-pagina's worden op canvas gerenderd; `getTextContent()` levert de te doorzoeken tekst. Lokale PDF's worden met `File.arrayBuffer()` geopend en niet naar een applicatieserver gestuurd. De publieke repository-PDF's worden op verzoek gedownload vanuit de repository. Selecties en beslissingen worden bij opnieuw laden niet bewaard.
 
-Een testopzet en meetvoorstellen staan in het [validatieplan](../../05-Validatieplan.md). Er zijn nog geen empirische resultaten.
+De bronindex wordt in de browser opgebouwd; het uitlezen van omvangrijke rapporten kan merkbaar tijd kosten. Gescande documenten zonder tekstlaag zijn niet goed doorzoekbaar zonder OCR. Netwerktoegang is nodig om PDF.js en bestaande repositorydocumenten op te halen.
 
-## 8. Technische uitvoering van de PDF-viewer
+## Testplan en open vragen
 
-De viewer en tekstextractie gebruiken [Mozilla PDF.js](https://mozilla.github.io/pdf.js/) via een vastgepinde CDN-versie (`3.11.174`). Een gebruiker kiest een bron-PDF en een samenvattings-PDF; de browser leest de bestanden met `File.arrayBuffer()` in, en PDF.js rendert pagina's in `canvas`. Met `getTextContent()` worden per pagina tekstzoekresultaten gevonden. Er wordt geen document naar een backend verstuurd. De gekozen bestanden verdwijnen bij herladen van de pagina.
+- **Juistheid bronvoorstellen:** bepaal met menselijke referentieannotaties hoe vaak de relevante bronpagina in de top drie wordt gevonden.
+- **False matches:** test expliciet gewijzigde bedragen, jaartallen, ontkenningen en numerieke tegenstrijdigheden.
+- **Begrip:** controleer of analisten een woordoverlap-score onderscheiden van feitelijke juistheid.
+- **UX:** test of analisten via een voorgestelde bronpagina sneller tot een onderbouwde beslissing komen dan zonder verwijzing.
+- **Techniek:** test prestaties bij grote documenten, verschillende PDF-indelingen, mobiele schermen en ontbrekende netwerktoegang.
 
-**Validatiepunten:** test met de aanwezige jaarverslagen (waaronder PDF's met veel pagina's en grafieken), documentgrootte, mobiele schermen, browsercompatibiliteit, gescande pagina's, beveiligde PDF's en gebruik zonder netwerk. Er is nog geen volledige end-to-end browsertest gerapporteerd.
+**Validatiestatus:** de code is opgeslagen in de repository, maar een volledige browsertest met de echte rapporten en een stakeholdervalidatie zijn nog niet gerapporteerd.
 
-## 9. Iteratiestatus
-
-**Gemaakt:** een HTML-interface met echte PDF-upload van bron en samenvatting, datasetselectie (ABN AMRO, ING, Rabobank), PDF.js-rendering, paginanavigatie, zoom, tekstzoekfunctie, paginagerichte bronvoorstellen op basis van tekstoverlap en indicatieve tekstreductie.  
-**Nog niet gedaan:** stakeholdervalidatie, gevalideerde semantische claim-naar-bronverificatie, precisie van teksthighlights, LLM-judge-integratie, usabilitymeting en modelprestatie-evaluatie. Bronmatches zijn voorstellen, geen factchecks.
-
-[Terug naar overzicht ontwerpiteraties](../README.md) · [Terug naar ontwerp](../../README.md)
-
-**Actuele interface:** [prototype.html](prototype.html) · [ontwerpbeslissingen](Design-patterns-en-keuzes.md)
+[Prototype openen](prototype.html) · [Design patterns en keuzes](Design-patterns-en-keuzes.md) · [Alle ontwerpiteraties](../README.md) · [Ontwerpdossier](../../README.md)
