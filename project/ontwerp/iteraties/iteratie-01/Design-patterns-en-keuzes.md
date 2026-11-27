@@ -199,3 +199,15 @@ Er is geen stakeholdertest of betrouwbaarheidsevaluatie uitgevoerd. De volgende 
 | Paginanavigatie en zoom | Compacte bediening boven originele PDF | Gebruikers moeten hun positie in lange samenvattingen kunnen behouden |
 
 **Patronen:** *explanation for understanding*, *source transparency*, *user control*. Bronverwijzing blijft een zoekvoorstel, geen geverifieerd feitelijk oordeel.
+
+
+## 14. Correctie: geen heropmaak en geen afhankelijkheid van lange zinmatches bij hover
+
+Bij het controleren van de PDF-weergave en interactielaag bleek een ontwerprisico in de vorige implementatie: tekstregels werden pas interactief wanneer ze sterk genoeg op een vooraf geëxtraheerde lange zin leken. Bij PDF's met veel tekstobjecten kan die mapping te veel regels uitsluiten.
+
+**Gekozen aanpassing:** de PDF-pagina blijft een originele PDF.js-canvasrender. Alle voldoende leesbare tekstregels krijgen een transparant, op PDF-coördinaten geplaatst interactiegebied. Bij hover volgt een gele arceerbalk over de betreffende regel of doorlopende regels; bij klikken wordt deze lokale passage als input voor de bestaande heuristische bronzoekfunctie gebruikt.
+
+**Design pattern:** *direct manipulation / details on demand*. De gebruiker selecteert de informatie in haar oorspronkelijke visuele context; de broncontrole wordt pas op verzoek getoond.
+
+**Te toetsen:** uitlijning van tekstgeometrie, omgang met kolommen/tabellen en de mate waarin gebruikers gele arcering als puur interactiesignaal begrijpen.
+
