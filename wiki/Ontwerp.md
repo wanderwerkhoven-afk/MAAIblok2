@@ -17,6 +17,8 @@ Deze pagina verwijst naar het gestructureerde ontwerpdossier voor **SummaryCheck
 | [04 — UI-concept](../project/ontwerp/04-UI-concept.md) | Scoreweergave, bronverwijzingen, highlights, schermen, knoppen en berichten |
 | [05 — Validatieplan](../project/ontwerp/05-Validatieplan.md) | Onderzoeksvragen, scenario's, vragenlijstonderdelen en observatiematen |
 | [UI-varianten (SVG)](../project/ontwerp/assets/ui-varianten.svg) | Schematische vergelijking van score, bronlink en highlights |
+| [Ontwerpiteraties](../project/ontwerp/iteraties/README.md) | Iteratiegeschiedenis met eigen prototypes en ontwerpverantwoording |
+| [Iteratie 01 — prototype](../project/ontwerp/iteraties/iteratie-01/README.md) | Dashboard, upload, evaluatie-indicatoren en broncontrole; inclusief klikbaar HTML-voorbeeld |
 
 ## Gebruikers en context
 
