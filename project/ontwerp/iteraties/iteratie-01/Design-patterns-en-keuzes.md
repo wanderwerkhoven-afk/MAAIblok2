@@ -147,7 +147,23 @@ Na de eerste interactieve demo is gekozen om de impressie te baseren op de werke
 
 Voor een volgende iteratie zijn validatie tegen menselijke annotaties, expliciete 'geen bewijs'/'tegenstrijdig'/'technische fout'-toestanden en een echte claim-verificatiemodule nodig.
 
-## 10. Voorstel voor iteratie 02
+
+## 10. Ontwerpvertaling van de gedetailleerde whiteboardschets (27 november 2026)
+
+Op basis van de gedetailleerde vervolgschets is een afzonderlijke **Analyseoverzicht**-pagina aan het HTML-prototype toegevoegd. De oorspronkelijke ruimtelijke compositie blijft herkenbaar: links de samenvatting, rechtsboven drie cirkelvormige indicatoren en rechtsonder broncontrole met geselecteerde passages. De witte, blauw-oranje Rabobank-geïnspireerde vormgeving blijft behouden.
+
+| Keuze | In de interface | Reden | Open toetsing |
+|---|---|---|---|
+| Linkerpaneel voor samenvattingszinnen | Echte uit PDF geëxtraheerde zinnen als aanklikbare gele markeringen | Focus op claims en overzichtelijke navigatie | Begrijpen analisten dat een highlight een te onderzoeken zin is? |
+| Drie scorecirkels | Aandeel bronvoorstellen, aandeel zonder voorstel (maximaal eerste 30 zinnen) en geschatte tekstreductie | Behoud van visuele richting zonder fictieve AI-juistheidsscores | Vatten gebruikers overlappercentages verkeerd op als betrouwbaarheid? |
+| Broncontrole onder indicatoren | Tot drie woordoverlap-passages met paginanummers | Broncontext tegelijk met samenvatting beschikbaar | Is de bronpassage daadwerkelijk relevant? |
+| Knop 'Open bronpagina' | Navigeert naar echte PDF-viewer met woordmarkeringen | Menselijke verificatie mogelijk maken | Kan de analist binnen een acceptabele tijd de claim beoordelen? |
+| Geen 'correctheid'-ring | Geen correctheid afleiden uit tekstoverlap | Voorkomen van schijnzekerheid | Welke kwaliteitschecks en referentieannotaties zijn hiervoor nodig? |
+
+Dit is een **visuele en functionele ontwerpiteratie zonder gemeten gebruikersresultaten**. De bronkoppeling blijft heuristisch en mag niet als gecontroleerde bronverificatie worden gerapporteerd.
+
+## 11. Voorstel voor iteratie 02
+
 
 Prioriteit: een echte vergelijking van twee UI-varianten voor scoreweergave en een duidelijk afzonderlijk 'Geen beoordeling mogelijk'-scherm. Daarnaast een klikbaar feedbackformulier met de categorieën 'Feit klopt niet', 'Informatie ontbreekt' en 'Onvoldoende bronbewijs'. Nieuwe keuzes alleen als definitief vastleggen na evaluatie.
 
