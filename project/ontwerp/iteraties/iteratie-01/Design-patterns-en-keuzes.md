@@ -91,7 +91,27 @@ Geen van beide componenten is in deze HTML-demo geïmplementeerd.
 
 **Interpretatie:** dit zijn vooraf geplande observaties, geen uitgevoerde experimenten. Testdatum, deelnemers, rollen, prototypeversie, bevindingen en eventuele aanpassingen moeten na gebruikerstesten afzonderlijk worden geregistreerd.
 
-## 7. Voorstel voor iteratie 02
+## 7. Visuele stijlherziening binnen iteratie 01 — 27 november 2026
+
+**Aanleiding:** zes door de gebruiker aangeleverde voorbeeldpagina's van het Rabobank Annual Report 2025, waaronder een 'At a Glance'-spread, geografische aanwezigheid, lopende tekst, financiële KPI's, prestatiegrafieken en vastgoedontwikkeling. Het gaat om visuele referenties voor de interface, niet om datasetresultaten.
+
+**Geobserveerde kenmerken:** een overwegend witte achtergrond, uitgesproken helderblauwe (soms cursieve) koppen, oranje kerncijfers en grafiekaccenten, veel witruimte, fijne scheidingslijnen, sobere rechthoekige informatiepanelen en blauw/oranje datavisualisaties.
+
+**Toepassing in prototype:** de vorige donkere navigatie is vervangen door witte navigatie met blauwe typografie; kaarten hebben rechte hoeken; de dashboardpanelen hebben respectievelijk blauwe en oranje bovenranden; indicatorgetallen zijn oranje; het uploadvak heeft een rustige lichtblauwe achtergrond; de voortgangsbalk is oranje; de grafiekaccenten gebruiken blauw en oranje. Deze stijl geldt ook voor de samenvatting, broncontrole en engineerweergave.
+
+| ID | Visuele ontwerpkeuze | Functionele bedoeling | Toetsbare onzekerheid |
+|---|---|---|---|
+| V01 | Witte basis, dunne scheidingslijnen, sobere panelen | Rustig document- en analysekarakter | Is het onderscheid tussen groepen informatie nog duidelijk genoeg? |
+| V02 | Blauw als hoofdkleur voor koppen, navigatie en primaire knoppen | Consistente visuele hiërarchie | Worden primaire acties sneller herkend? |
+| V03 | Oranje voor getallen, voortgang en waarschuwingen | Kerninformatie naar voren halen | Kan oranje als waarschuwing worden verward met een prestatiegetal? |
+| V04 | Cursieve koppen zoals in de referentierapportage | Herkenbare visuele richting | Blijft de leesbaarheid goed op klein formaat? |
+| V05 | Blauwe en oranje grafiekmarkeringen | Relatie met financiële rapportagetaal | Kunnen gebruikers de betekenis zonder alleen kleur begrijpen? |
+
+**Randvoorwaarde:** de toepassing moet evaluatiesignalen ondubbelzinnig uitleggen; esthetische aansluiting op de referentie mag niet ten koste gaan van toegankelijkheid, voldoende kleurcontrast en onderscheid tussen status en score. Er zijn geen foto's of illustraties uit het jaarverslag in de HTML overgenomen.
+
+De hier beschreven aanpassing betreft uitsluitend de **visuele stijl van de bestaande iteratie**, niet een nieuwe gebruikersgeteste ontwerpiteratie.
+
+## 8. Voorstel voor iteratie 02
 
 Prioriteit: een echte vergelijking van twee UI-varianten voor scoreweergave en een duidelijk afzonderlijk 'Geen beoordeling mogelijk'-scherm. Daarnaast een klikbaar feedbackformulier met de categorieën 'Feit klopt niet', 'Informatie ontbreekt' en 'Onvoldoende bronbewijs'. Nieuwe keuzes alleen als definitief vastleggen na evaluatie.
 
