@@ -12,6 +12,8 @@ Dit is de index van het ontwerpdossier voor **SummaryCheck**, een concept voor d
 | [04-UI-concept.md](04-UI-concept.md) | Kleuren, knoppen, statusberichten, bronverwijzingen, schermflows en visuele varianten |
 | [05-Validatieplan.md](05-Validatieplan.md) | Voorlopig onderzoeks- en usabilitytestprotocol, taken, meetcriteria en observaties |
 | [assets/ui-varianten.svg](assets/ui-varianten.svg) | Schematische visuele varianten voor score-, bron- en highlightpresentatie |
+| [iteraties/README.md](iteraties/README.md) | Chronologisch overzicht van afzonderlijke ontwerpiteraties, interactieve prototypes, design patterns en ontwerpkeuzes |
+| [Iteratie 01 — HTML prototype](iteraties/iteratie-01/README.md) | Eerste uitwerking van het whiteboard: dashboard, upload, scorecirkels, samenvatting, broncontrole en menselijke beslissingen |
 
 ## Afbakening en status
 
