@@ -8,7 +8,7 @@
 Het HTML-prototype is op basis van de aangeleverde referentieafbeelding **volledig opnieuw opgebouwd als één pagina**. De eerdere zijbalk en meerdere navigatiepagina's zijn verwijderd.
 
 - **Bovenaan:** compacte keuze voor Rabobank, ING of ABN AMRO, plus uploads voor een eigen origineel rapport en samenvatting.
-- **Linkerkolom:** daadwerkelijke uit PDF geëxtraheerde samenvattingszinnen, met gele aanklikbare markeringen.
+- **Linkerkolom:** de originele samenvattings-PDF wordt met PDF.js op een canvas gerenderd, zodat de oorspronkelijke typografie, tabellen, figuren en paginavormgeving behouden blijven. Daarboven ligt een transparante interactieve laag: tekstregels worden bij hover geel gearceerd en kunnen worden aangeklikt voor broncontrole.
 - **Rechtsboven:** drie circulaire indicatoren, voor (1) aandeel onderzochte zinnen met een mogelijke bron, (2) zonder bronvoorstel, en (3) geschatte tekstreductie. De eerste twee worden berekend op maximaal 35 zinnen, niet op het hele document. Deze waarden zijn **geen juistheids-, correctheids- of vertrouwenspercentages**.
 - **Rechtsonder:** mogelijke relevante passages uit het oorspronkelijke document, woordmarkeringen en een knop naar de bijbehorende pagina.
 - **PDF-weergave:** opent boven dezelfde pagina in een modal, met paginabladeren en zoom. Er is geen tweede dashboardpagina.
@@ -34,9 +34,9 @@ In eerste instantie zijn scorecirkels en fictieve claims als demonstratie uitgew
 ## Functionele onderdelen en revisiegeschiedenis
 
 1. **Datasetkeuze (behouden):** ABN AMRO, ING of Rabobank, elk met een origineel v0-jaarverslag en een bijbehorende v0-samenvatting uit de repository.
-2. **Lokale upload:** origineel en samenvatting afzonderlijk als PDF selecteren.
+2. **Lokale upload:** origineel en samenvatting afzonderlijk als PDF selecteren. De samenvatting verschijnt in haar originele PDF-opmaak.
 3. **PDF-viewer (herzien):** het originele brondocument opent via de broncontrole in een modal met paginanavigatie en zoom. De eerdere zij-aan-zij viewer is verwijderd.
-4. **Één dashboard:** links echte samenvattingszinnen met aanklikbare markeringen; rechts drie cirkelindicatoren en daaronder kandidaat-bronpassages met een knop naar de oorspronkelijke PDF.
+4. **Één dashboard:** links de originele gerenderde samenvattings-PDF met gele markering op hover en klikbare broncontrole; rechts drie cirkelindicatoren en daaronder kandidaat-bronpassages met een knop naar de oorspronkelijke PDF.
 5. **Inhoudelijke documentgegevens:** werkelijk aantal PDF-pagina's, geschatte woordenaantallen op basis van PDF-tekstextractie en indicatieve tekstreductie.
 6. **Bronverwijzingen:** een reeks zinnen wordt uit de echte samenvatting geëxtraheerd. De tool zoekt maximaal drie mogelijk relevante bronpagina's op basis van overeenkomst van betekenisvolle woorden en toont een tekstfragment.
 7. **Navigatie naar bron:** een bronvoorstel opent de bijbehorende pagina van de originele PDF in een modal; overlappende woorden worden indicatief gemarkeerd.
@@ -80,3 +80,11 @@ De visuele ringvorm is behouden, maar de inhoud is opzettelijk herzien: percenta
 **Validatiestatus:** de code is opgeslagen in de repository, maar een volledige browsertest met de echte rapporten en een stakeholdervalidatie zijn nog niet gerapporteerd.
 
 [Prototype openen](prototype.html) · [Design patterns en keuzes](Design-patterns-en-keuzes.md) · [Alle ontwerpiteraties](../README.md) · [Ontwerpdossier](../../README.md)
+
+## Interactieherziening: originele PDF-opmaak en hovermarkeringen
+
+De eerdere tekstlijst in de linkerkolom is vervangen door de **daadwerkelijke samenvattings-PDF** via PDF.js. Er is een paginabalk voor volgende/vorige pagina, paginanummer en zoom. De opmaak van de geüploade samenvatting blijft intact, inclusief tabellen en grafieken.
+
+De browser bouwt met `getTextContent()` een transparante laag boven de gerenderde pagina. Zichtbare tekstregels worden waar mogelijk gekoppeld aan geëxtraheerde samenvattingszinnen op dezelfde PDF-pagina. **Bij hover** verschijnt een gele arceerbalk op de bijpassende tekstregel(s); **bij klikken** wordt in de rechterkolom de mogelijke bronpassage getoond.
+
+**Beperking:** de hitboxen worden via PDF-tekstposities en heuristische matching bepaald. Bij complexe kolommen, tabellen, gesplitste tekstfragmenten en pagina's zonder tekstlaag kan een zin onvoldoende nauwkeurig worden gevonden of gedeeltelijk worden gemarkeerd. De originele PDF-pagina blijft wel zichtbaar. De markering zegt niets over de feitelijke correctheid van de zin.
