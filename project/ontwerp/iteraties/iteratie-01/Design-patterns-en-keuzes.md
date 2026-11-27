@@ -128,7 +128,26 @@ De bron- en samenvattingsweergave zijn uitgebreid met werkende uploads: twee PDF
 
 **Geen automatische claim-naar-bronverificatie:** een zoekresultaat laat zien waar woorden voorkomen en is geen bewijs dat een claim feitelijk klopt. Voor daadwerkelijke teksthighlights, semantische bronkoppelingen, OCR en AI-judging zijn nieuwe onderzoek- en ontwikkelstappen nodig.
 
-## 9. Voorstel voor iteratie 02
+## 9. Revisie: van fictieve scores naar echte brondata (27 november 2026)
+
+Na de eerste interactieve demo is gekozen om de impressie te baseren op de werkelijke PDF-dataset. De mock-scores en voorbeeldclaims zijn verwijderd. De revisie blijft onderdeel van iteratie 01; er is nog geen stakeholdertest geweest.
+
+| ID | Aanpassing | Onderbouwing | Risico/validatie |
+|---|---|---|---|
+| F07 | Echte rapporten selecteerbaar via organisatie en v0-documentpaar | Representatieve demonstratie, sluit aan bij de onderzoeksdataset | Laden van grote, externe PDF's en CORS/CDN afhankelijkheden testen |
+| F08 | Documentaantallen en tekstreductie worden uit ingelezen PDF's berekend | Reproduceerbaar afgeleid uit werkelijke invoer in plaats van fictieve KPI's | PDF-extractie en woordafbakening kunnen afwijken van de werkelijke inhoud |
+| F09 | Samenvattingszinnen worden automatisch verzameld uit de PDF-tekst | De inhoudelijke broncontrole begint bij echte claims/zinnen | Sommige PDF-layouts hebben onregelmatige zinsvolgorde |
+| F10 | Heuristische bronpagina's via token-overlap en tekstfragmenten | Verbetert de vindbaarheid van mogelijk relevant bronmateriaal | Geen semantische validatie, ondersteuning of waarheidsoordeel |
+| F11 | Klikbare bronverwijzing opent PDF op pagina en markeert overlappende tekstitems | Geeft de analist controle over de bewijscontext | Een geel woordhighlight is géén bewijs; enkele matches kunnen fout zijn |
+| F12 | Geen globale AI-betrouwbaarheidsscore tonen zonder gevalideerde evaluatie | Vermijdt schijnprecisie en overmatig vertrouwen | Gebruikers kunnen wel een beoordelingsadvies missen |
+
+**Te onderzoeken design patterns:** *explanation for understanding* (bronfragment), *calibrated trust* (onderscheid tekstmatch en bewijs), *expectation setting* (geen AI-factcheck), *human oversight* (analist neemt besluit) en *failure handling* (geen bronvoorstel tonen als overlap onvoldoende is).
+
+**Onderzoekbare vragen:** (1) Is de voorgestelde bronpagina echt relevant? (2) Hoe vaak wordt de juiste pagina in de top drie gevonden ten opzichte van handmatig gecontroleerde referenties? (3) Wordt de matchscore door gebruikers ten onrechte gezien als betrouwbaarheid? (4) Kunnen kritieke getallen en ontkennende formuleringen verkeerd worden gekoppeld? (5) Hoeveel tijd kost de indexering bij grote rapporten?
+
+Voor een volgende iteratie zijn validatie tegen menselijke annotaties, expliciete 'geen bewijs'/'tegenstrijdig'/'technische fout'-toestanden en een echte claim-verificatiemodule nodig.
+
+## 10. Voorstel voor iteratie 02
 
 Prioriteit: een echte vergelijking van twee UI-varianten voor scoreweergave en een duidelijk afzonderlijk 'Geen beoordeling mogelijk'-scherm. Daarnaast een klikbaar feedbackformulier met de categorieën 'Feit klopt niet', 'Informatie ontbreekt' en 'Onvoldoende bronbewijs'. Nieuwe keuzes alleen als definitief vastleggen na evaluatie.
 
