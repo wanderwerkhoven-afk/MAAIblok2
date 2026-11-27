@@ -1,0 +1,49 @@
+- ING Group is a Dutch-based, Amsterdam-headquartered European universal bank, publicly listed, with ING Groep N.V. as the reporting company and ING Bank N.V. as its primary banking subsidiary. [2025-ing-groep-nv-annual-report.pdf, pp. 3, 9-10, 16, 50]
+- The group operates Retail Banking and Wholesale Banking, serving retail customers, corporate clients and financial institutions. [2025-ing-groep-nv-annual-report.pdf, pp. 50, 96-97, 394]
+- ING reported nearly 41 million customers, more than 60,000 employees, and operations in over 100 countries or markets, while other disclosures refer to presence in 35, 36, or 38 countries and six segments across 16 countries. [2025-ing-groep-nv-annual-report.pdf, pp. 8, 18, 61, 68, 324-325, 394]
+- For 2025, ING reported income of €23,035 million, shareholder-attributable net result of €6,327 million, return on equity (ROE) of 13.2%, and a common equity tier 1 (CET1) ratio of 13.1%. [2025-ing-groep-nv-annual-report.pdf, pp. 4, 27-28, 150, 219]
+- ING’s strategy, “Growing the difference,” emphasised growth, diversification of fee income, digitalisation and artificial intelligence (AI), and sustainability through its Terra approach. [2025-ing-groep-nv-annual-report.pdf, pp. 6, 12, 14, 16, 20, 108-109]
+
+### Business model and operations
+
+ING presents itself as a global financial institution with a strong European base offering retail and wholesale banking services. [2025-ing-groep-nv-annual-report.pdf, pp. 108, 226] The group comprises ING Groep N.V. and its subsidiaries, including ING Bank N.V. [2025-ing-groep-nv-annual-report.pdf, pp. 3, 236]
+
+Retail Banking offers savings, payments, investments, loans and mortgages. [2025-ing-groep-nv-annual-report.pdf, p. 394] Wholesale Banking provides specialised lending, corporate finance, debt and equity markets, payments and cash management, and trade and treasury services. [2025-ing-groep-nv-annual-report.pdf, p. 394]
+
+ING reports its business by line of business, including Retail Banking and Wholesale Banking. [2025-ing-groep-nv-annual-report.pdf, pp. 236, 266, 269] Disclosures on segment reporting are materially inconsistent: one note refers to five reportable segments, while another describes six named lines of business consisting of Retail Netherlands, Retail Belgium, Retail Germany, Retail Other, Wholesale Banking, and Corporate Line. [2025-ing-groep-nv-annual-report.pdf, pp. 266, 269, 324-325, 351]
+
+The group’s revenues include net interest income and fee income. [2025-ing-groep-nv-annual-report.pdf, pp. 219, 261-262] In 2025, ING reported net interest income of €14,681 million and fees of €4,602 million, including payment services fees of €2,478 million. [2025-ing-groep-nv-annual-report.pdf, pp. 219, 261-262] This supports the stated strategy of diversifying earnings beyond interest income. [2025-ing-groep-nv-annual-report.pdf, pp. 12, 14, 261-262]
+
+Operating scale remained large in 2025, with outstandings rising by €41.1 billion to €1,002.9 billion. [2025-ing-groep-nv-annual-report.pdf, p. 165] Customer loans and deposits were disclosed inconsistently as €721,705 million and €721,367 million, while another disclosure states customer lending of €727.6 billion and deposits of €721.4 billion. [2025-ing-groep-nv-annual-report.pdf, pp. 290, 298, 351-352] Europe accounted for 80.1% of exposure. [2025-ing-groep-nv-annual-report.pdf, p. 167]
+
+Asset quality metrics disclosed in the report include a non-performing loan (NPL) ratio of 1.3% and investment grade exposure of 79.3% in 2025. [2025-ing-groep-nv-annual-report.pdf, pp. 166-167] Total expected credit loss (ECL) allowances were €6,101 million on €1,135,409 million of eligible gross carrying amount (GCA). [2025-ing-groep-nv-annual-report.pdf, pp. 181, 185-189]
+
+Capital and solvency remain central to the operating model. [2025-ing-groep-nv-annual-report.pdf, pp. 150, 317] At 31 December 2025, ING reported CET1 capital of €44,567 million, tier 1 capital of €52,138 million, total capital of €62,845 million, and risk-weighted assets (RWA) of €340,739 million, corresponding to CET1, tier 1, and total capital ratios of 13.1%, 15.3%, and 18.4%, respectively. [2025-ing-groep-nv-annual-report.pdf, p. 150] ING also disclosed that its CET1 target was adjusted to about 13% in 2025, and that the 13.1% CET1 ratio compared with an 11.03% Supervisory Review and Evaluation Process (SREP) requirement. [2025-ing-groep-nv-annual-report.pdf, pp. 150, 317]
+
+### Markets and strategy
+
+ING describes itself as globally operating, but with a strong European base. [2025-ing-groep-nv-annual-report.pdf, pp. 214, 226] Revenues are concentrated in the Benelux and Germany, and the Netherlands is identified as its largest market. [2025-ing-groep-nv-annual-report.pdf, pp. 395, 404]
+
+The group’s strategy, “Growing the difference,” focuses on growth, fee diversification, digital capabilities, AI, and sustainability. [2025-ing-groep-nv-annual-report.pdf, pp. 6, 12, 14, 16, 20] Sustainability is described as central to the strategy and implemented primarily through lending. [2025-ing-groep-nv-annual-report.pdf, pp. 96-97, 108-109]
+
+ING reported mobilised sustainable finance of €166 billion in 2025, compared with €130 billion in 2024. [2025-ing-groep-nv-annual-report.pdf, pp. 106, 108] It also reported financing €9.6 billion of renewables in 2025, compared with €7.0 billion in 2024. [2025-ing-groep-nv-annual-report.pdf, pp. 106, 108]
+
+Its Terra approach covers nine sectors and is used to track climate-alignment progress in lending portfolios. [2025-ing-groep-nv-annual-report.pdf, pp. 109-112] Reported progress included upstream oil and gas exposure down 71% since 2019, power generation exposure down 71% since 2019, and power-lending emissions intensity down 85% since 2018. [2025-ing-groep-nv-annual-report.pdf, pp. 109-112] ING also disclosed that shipping was aligned, steel was misaligned, and aviation was unchanged since 2023. [2025-ing-groep-nv-annual-report.pdf, pp. 109-112]
+
+The group also disclosed a climate transition plan that does not use carbon credits, offsetting, or internal carbon pricing. [2025-ing-groep-nv-annual-report.pdf, pp. 336-339]
+
+### Principal disclosed risks and responses
+
+ING identifies a broad set of risks linked to its banking model and operating footprint, including geopolitical risk, interest-rate risk, counterparty default risk, impairment risk, climate and environmental risk, environmental, social and governance (ESG) risk, cyber and information technology (IT) risk, AI risk, funding and liquidity risk, financial crime risk, and legal and regulatory compliance risk. [2025-ing-groep-nv-annual-report.pdf, pp. 103-105, 152-155, 309, 393, 397, 399-405]
+
+Credit risk remains important because of the scale of the lending book and the use of forward-looking provisioning. [2025-ing-groep-nv-annual-report.pdf, pp. 165-189] ING specifically highlighted ECL modelling risk, and disclosed that scenario weights changed materially in 2025 to 60/20/20 from 20/60/20 at December 2024. [2025-ing-groep-nv-annual-report.pdf, pp. 185-189, 309]
+
+Financial crime and compliance risks are relevant to ING’s international operations and product offering. [2025-ing-groep-nv-annual-report.pdf, pp. 394, 397, 399-405] Disclosed exposures include anti-money laundering and anti-terrorist financing (AML/ATF), sanctions, prudential, data-protection, and anti-bribery laws. [2025-ing-groep-nv-annual-report.pdf, pp. 336-339] ING reported a global know-your-customer (KYC) and compliance programme and also referred to legal and regulatory proceedings. [2025-ing-groep-nv-annual-report.pdf, pp. 336-339]
+
+Technology dependence creates operational and conduct risks because ING’s strategy emphasises digital delivery and AI. [2025-ing-groep-nv-annual-report.pdf, pp. 14, 16, 153, 155] The report identifies cyber risk, IT dependence, and AI risk among key exposures. [2025-ing-groep-nv-annual-report.pdf, pp. 153, 155, 309] Disclosed responses include controls, governance, monitoring, and continuity plans. [2025-ing-groep-nv-annual-report.pdf, pp. 399-405]
+
+Climate and broader ESG risks are linked to ING’s financing activities and transition strategy. [2025-ing-groep-nv-annual-report.pdf, pp. 96-97, 103-105, 108-112] Greenwashing was newly identified as a risk in 2025. [2025-ing-groep-nv-annual-report.pdf, pp. 103-105, 152-153] ING’s response includes the Terra sector approach, transition planning, and sustainability implementation primarily through lending. [2025-ing-groep-nv-annual-report.pdf, pp. 96-97, 108-112, 336-339]
+
+As a holding company, ING Groep N.V. disclosed structural liquidity dependency on payments from subsidiaries, which may be constrained by regulation and limits on affiliate transactions. [2025-ing-groep-nv-annual-report.pdf, pp. 394, 399] For broader funding and liquidity risks, ING described responses including limits, monitoring, governance, and collateral. [2025-ing-groep-nv-annual-report.pdf, pp. 399-405]
+
+The report also contains a material inconsistency in 2025 profit reporting: shareholder-attributable net result is disclosed as €6,327 million, while another note states a 2025 result of €6,313 million. [2025-ing-groep-nv-annual-report.pdf, pp. 219, 256, 264] Another inconsistency appears in customer and geographic scale disclosures, with customers stated as nearly 41 million in one section and 40 million in another, and country presence stated as 35, 36, or 38 countries. [2025-ing-groep-nv-annual-report.pdf, pp. 8, 61, 68, 394]
