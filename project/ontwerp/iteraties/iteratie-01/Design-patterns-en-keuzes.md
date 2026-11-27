@@ -168,3 +168,21 @@ Dit is een **visuele en functionele ontwerpiteratie zonder gemeten gebruikersres
 Prioriteit: een echte vergelijking van twee UI-varianten voor scoreweergave en een duidelijk afzonderlijk 'Geen beoordeling mogelijk'-scherm. Daarnaast een klikbaar feedbackformulier met de categorieën 'Feit klopt niet', 'Informatie ontbreekt' en 'Onvoldoende bronbewijs'. Nieuwe keuzes alleen als definitief vastleggen na evaluatie.
 
 [Iteratie-overzicht](README.md) · [Prototype](prototype.html) · [Overzicht](../README.md)
+
+## 12. Herontwerp: single-page dashboard op basis van referentieafbeelding
+
+**Aanleiding:** de gebruiker vroeg om de HTML volledig opnieuw op te bouwen als één dashboard met exact drie functionele vlakken: een grote linkerkolom voor de samenvatting, rechtsboven cirkelindicatoren en rechtsonder broncontrole. De schematische afbeelding fungeert als ruimtelijke ontwerpbron.
+
+| ID | Beslissing | Reden | Trade-off en evaluatie |
+|---|---|---|---|
+| D09 | Eén dashboard, zonder zijmenu of aparte routes | Samenhang tussen samenvatting, indicatoren en bewijs direct zichtbaar | Minder ruimte voor aanvullende functies; testen op schermformaten |
+| D10 | Originele samenvattingstekst als lijst van selecteerbare zinnen | Maakt individuele controle mogelijk | PDF-tekstextractie kan zinsvolgorde of alinea's verliezen |
+| D11 | Drie ringindicatoren boven broncontrole | Sluit aan bij referentie en geeft snelle oriëntatie | Bronvoorstel is geen correctheid; labels en steekproefomvang moeten begrijpelijk zijn |
+| D12 | Bronfragment direct onder cirkels | Onderzochte zin en vermoedelijk bewijs bevinden zich in hetzelfde blikveld | Relevantie van passages is nog niet gevalideerd |
+| D13 | Originele PDF opent als modal over dashboard | Bron kan geïnspecteerd worden zonder weg te navigeren | Context wisselt naar modal; toegankelijkheid en gebruikerstesten nodig |
+| D14 | Geen demo-percentages of fictieve claims | Alleen waarden uit de ingelezen bestanden tonen | Scores ontbreken zolang indexering niet is voltooid |
+
+Het nieuwe prototype behoudt de bestaande PDF.js-techniek en tekstoverlap-heuristiek. Voor de eerste twee cirkels worden maximaal de **eerste 35** zinnen onderzocht; de overige samenvattingszinnen worden wel getoond, maar niet meegenomen in deze indicatoren. De derde cirkel geeft alleen indicatieve tekstreductie op basis van PDF-extractie. Deze indicatoren hebben geen betekenis als menselijke of AI-factcheck.
+
+Er is geen stakeholdertest of betrouwbaarheidsevaluatie uitgevoerd. De volgende iteratie kan de bronkoppeling vervangen door een gevalideerde retrieval- en claimverificatiepipeline.
+
