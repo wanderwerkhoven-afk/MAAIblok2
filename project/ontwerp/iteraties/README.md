@@ -4,7 +4,7 @@ Deze map bevat afzonderlijke, traceerbare versies van het interactieontwerp. Elk
 
 | Iteratie | Datum | Centraal ontwerpidee | Artefacten | Status |
 |---|---|---|---|---|
-| [01 — Dashboard en bronverificatie](iteratie-01/README.md) | 27 november 2026 | Van rapportupload naar samenvatting met deelchecks, scorecirkels, gemarkeerde claims en bronverwijzingen | [Interactief HTML-prototype](iteratie-01/prototype.html), [design patterns en keuzes](iteratie-01/Design-patterns-en-keuzes.md) | Concept; niet getest |
+| [01 — Dashboard en bronverificatie](iteratie-01/README.md) | 27 november 2026 | Echte PDF-bronnen, viewer en heuristische bronverwijzingen; eerste scorecirkels verwijderd | [Interactief HTML-prototype](iteratie-01/prototype.html), [design patterns en keuzes](iteratie-01/Design-patterns-en-keuzes.md) | Werkend prototype; niet gevalideerd |
 
 ## Werkwijze voor vervolgiteraties
 
