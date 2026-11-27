@@ -2,13 +2,33 @@
 
 **Datum:** 27 november 2026  
 **Project:** SummaryCheck  
-**Status:** eerste concept / interactief demonstratieprototype; nog geen gebruikerstest uitgevoerd
+**Status:** interactief prototype met werkende PDF-upload, weergave en heuristische bronkoppeling; nog niet gevalideerd met gebruikers
 
 ## 1. Aanleiding en schets
 
 De eerste handgetekende UI-schets toont links een **Rabobank-dashboard** met een documentupload en een voortgangsbalk (93% in de schets). Het volgende scherm bevat links een **samenvatting**, rechts **cirkelindicatoren** voor verschillende evaluatiedimensies en onderaan of naast de samenvatting **gemarkeerde passages**. Een aanvullende notitie verwijst naar gebruik van een LLM voor beoordeling van claims en naar het vertalen van technische scores naar begrijpelijke signalen voor eindgebruikers.
 
 De getekende voorbeeldwaarden, waaronder de scorecirkels, dienen als visuele inspiratie; zij zijn **geen daadwerkelijk berekende evaluatie-uitkomsten**. Deze iteratie vertaalt het idee naar een eerste klikbaar, single-file HTML-prototype.
+
+## Belangrijke revisie — 27 november 2026: echte documenten in plaats van demodata
+
+De eerdere losse demo-claims, fictieve cirkelpercentages, fictieve bronteksten en voorbeeldgrafieken zijn **verwijderd uit het werkende dashboard**. De interface biedt nu:
+
+1. Selectie van de drie echte documentparen uit `data/raw/` en `data/summaries/` (Rabobank, ING en ABN AMRO, v0) via de publieke repositorybestanden.
+2. Eigen uploads van een origineel rapport en een PDF-samenvatting; beide worden lokaal geopend.
+3. Een echte zij-aan-zij PDF-viewer met paginanavigatie en zoom via PDF.js.
+4. Meting van het aantal bronpagina's, samenvattingspagina's, geëxtraheerde woorden en indicatieve tekstreductie.
+5. Extractie van zinnen uit de ingelezen samenvatting, met maximaal drie mogelijke bronpagina's per geselecteerde zin op basis van woordoverlap tussen samenvatting en PDF-bron.
+6. Een actie **Open bron op pagina** die naar de gevonden pagina springt en overlappende woorden op de gerenderde PDF-pagina markeert.
+7. Tekstzoekfuncties per document en een lokaal (niet-opgeslagen) menselijk beslislabel.
+
+### Validiteit van de koppelingen
+
+De bronverwijzing is een **heuristisch zoekresultaat**, geen aangetoonde claimonderbouwing. De huidige implementatie gebruikt eenvoudige tokenisatie, stopwoordfiltering, pagina-overlap en tekstvensters. Dit kan verkeerde passages aanwijzen, semantisch equivalente formuleringen missen en geen numerieke of feitelijke consistentie garanderen. Ook 'overeenkomst van geselecteerde termen' is geen probabilistische betrouwbaarheidsscore. De interface moet de analist expliciet laten controleren of een voorgestelde passage de claim daadwerkelijk ondersteunt.
+
+**Technisch:** grote PDF's kosten tijd bij tekstextractie; gescande PDF's zonder tekstlaag vereisen OCR. De repository-PDF's en PDF.js vereisen een werkende internetverbinding bij laden; eigen bestanden worden door de applicatie niet geüpload. De inhoud wordt bij het verlaten/verversen van de pagina niet bewaard.
+
+**Status toetsing:** code is in de repository verwerkt, maar er zijn nog geen volledige browsertest, gedocumenteerde gebruikersobservaties of gevalideerde matchprestaties geregistreerd.
 
 ## 2. Ontwerpdoel
 
@@ -59,13 +79,15 @@ Een testopzet en meetvoorstellen staan in het [validatieplan](../../05-Validatie
 
 ## 8. Technische uitvoering van de PDF-viewer
 
-De viewer gebruikt [Mozilla PDF.js](https://mozilla.github.io/pdf.js/) via een vastgepinde CDN-versie (`3.11.174`). Een gebruiker kiest een bron-PDF en een samenvattings-PDF; de browser leest de bestanden met `File.arrayBuffer()` in, en PDF.js rendert pagina's in `canvas`. Met `getTextContent()` worden per pagina tekstzoekresultaten gevonden. Er wordt geen document naar een backend verstuurd. De gekozen bestanden verdwijnen bij herladen van de pagina.
+De viewer en tekstextractie gebruiken [Mozilla PDF.js](https://mozilla.github.io/pdf.js/) via een vastgepinde CDN-versie (`3.11.174`). Een gebruiker kiest een bron-PDF en een samenvattings-PDF; de browser leest de bestanden met `File.arrayBuffer()` in, en PDF.js rendert pagina's in `canvas`. Met `getTextContent()` worden per pagina tekstzoekresultaten gevonden. Er wordt geen document naar een backend verstuurd. De gekozen bestanden verdwijnen bij herladen van de pagina.
 
 **Validatiepunten:** test met de aanwezige jaarverslagen (waaronder PDF's met veel pagina's en grafieken), documentgrootte, mobiele schermen, browsercompatibiliteit, gescande pagina's, beveiligde PDF's en gebruik zonder netwerk. Er is nog geen volledige end-to-end browsertest gerapporteerd.
 
 ## 9. Iteratiestatus
 
-**Gemaakt:** HTML-voorbeeld, documentatie van de ontwerpafwegingen, echte lokale PDF-upload van bron en samenvatting, PDF.js-rendering, paginanavigatie, zoom en tekstzoekfunctie.  
-**Nog niet gedaan:** stakeholdervalidatie, geautomatiseerde inhoudelijke PDF-analyse, echte claim-naar-bronmatches en highlights, kalibratie van scores, usabilitymeting en modelprestatie-evaluatie.
+**Gemaakt:** een HTML-interface met echte PDF-upload van bron en samenvatting, datasetselectie (ABN AMRO, ING, Rabobank), PDF.js-rendering, paginanavigatie, zoom, tekstzoekfunctie, paginagerichte bronvoorstellen op basis van tekstoverlap en indicatieve tekstreductie.  
+**Nog niet gedaan:** stakeholdervalidatie, gevalideerde semantische claim-naar-bronverificatie, precisie van teksthighlights, LLM-judge-integratie, usabilitymeting en modelprestatie-evaluatie. Bronmatches zijn voorstellen, geen factchecks.
 
 [Terug naar overzicht ontwerpiteraties](../README.md) · [Terug naar ontwerp](../../README.md)
+
+**Actuele interface:** [prototype.html](prototype.html) · [ontwerpbeslissingen](Design-patterns-en-keuzes.md)
