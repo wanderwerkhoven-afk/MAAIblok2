@@ -33,13 +33,19 @@ Een analist moet vanuit een rapportoverzicht kunnen navigeren naar een samenvatt
 - **Engineer view:** zeer eenvoudige schets voor modelversievergelijking.
 - **Foutfeedback:** zichtbare meldknop; formulier en backend volgen in latere iteraties.
 
-## 5. Afbakening en beperkingen
+## 5. Visuele stijl (revisie 27 november 2026)
+
+Het HTML-prototype is visueel afgestemd op zes aangeleverde referentiepagina's uit het Rabobank Annual Report 2025: een witte en open lay-out, helderblauwe cursieve koppen, oranje cijfers en accenten, dunne scheidingslijnen en sobere grafieken. Deze stijl is toegepast op het dashboard en de overige prototypeschermen; de bestaande demo-interacties blijven gelijk.
+
+De esthetische keuzes, mogelijke risico's en toetsvragen staan in [Design-patterns-en-keuzes.md](Design-patterns-en-keuzes.md#7-visuele-stijlherziening-binnen-iteratie-01--27-november-2026). Er zijn geen originele rapportafbeeldingen gebruikt als UI-assets.
+
+## 6. Afbakening en beperkingen
 
 Het prototype is een **front-end demonstratie**: de geselecteerde PDF wordt niet uitgelezen, er draait geen LLM of documentevaluerende pipeline, er worden geen echte metrics berekend en er worden geen bestanden naar een server geüpload. Uploadbestandsnaam, progressie, scores en brontekst zijn losstaande illustratieve onderdelen. Het ontbreken van gekoppeld bewijs is niet automatisch bewijs dat een claim onwaar is.
 
 De in de whiteboardschets genoemde LLM-judge en spaCy zijn **technische oplossingsrichtingen**, geen geïmplementeerde of gevalideerde componenten van dit prototype. Het precieze gebruik van spaCy voor taalkundige voorbewerking en van een LLM-judge voor claimverificatie vereist apart technisch onderzoek. F1, accuracy of een ander getal kan niet zonder operationele definitie naar een betrouwbaarheidspercentage worden vertaald.
 
-## 6. Open vragen voor de eerste test
+## 7. Open vragen voor de eerste test
 
 1. Begrijpt een analist het verschil tussen scores voor claimcontrole, dekking en compressie?
 2. Wordt het percentage in een cirkel ten onrechte gezien als kans op een juiste samenvatting?
@@ -50,7 +56,7 @@ De in de whiteboardschets genoemde LLM-judge en spaCy zijn **technische oplossin
 
 Een testopzet en meetvoorstellen staan in het [validatieplan](../../05-Validatieplan.md). Er zijn nog geen empirische resultaten.
 
-## 7. Iteratiestatus
+## 8. Iteratiestatus
 
 **Gemaakt:** HTML-voorbeeld en documentatie van de eerste ontwerpafwegingen.  
 **Nog niet gedaan:** stakeholdervalidatie, daadwerkelijke PDF-analyse, echte bronverwijzingen, kalibratie van scores, usabilitymeting en modelprestatie-evaluatie.
