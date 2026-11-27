@@ -20,15 +20,16 @@ Een analist moet vanuit een rapportoverzicht kunnen navigeren naar een samenvatt
 
 | Bestand | Beschrijving |
 |---|---|
-| [prototype.html](prototype.html) | Zelfstandige, responsieve HTML/CSS/JavaScript-demo met verschillende schermen en klikbare acties |
+| [prototype.html](prototype.html) | Zelfstandige, responsieve HTML/CSS/JavaScript-demo met echte lokale PDF-upload, PDF.js-bronviewer, tekstzoekfunctie, paginabesturing en daarnaast nog fictieve evaluatiescores |
 | [Design-patterns-en-keuzes.md](Design-patterns-en-keuzes.md) | Patroonselectie, concrete implementatie, trade-offs, open vragen en toetsvoorstellen |
 
 ## 4. Inhoud van het prototype
 
-- **Dashboard:** voorbeeld van PDF-upload, voortgangsbalk en een demonstratiekaart met drie cirkelindicatoren.
+- **Dashboard:** werkende lokale PDF-selectie en weergave van ingelezen status, naast een demonstratiekaart met drie **fictieve** cirkelindicatoren.
 - **Samenvatting:** voorbeeldtekst met een gemarkeerde claim en broncontrole.
 - **Scores:** aparte demo-indicatoren voor claimcontrole, dekking en compressie; niet één algemeen betrouwbaarheidspercentage.
-- **Brondocument:** een tweede scherm met fictieve bronpassage, teksthighlight en uitleg over onvoldoende bewijs.
+- **PDF-viewer:** daadwerkelijke bron-PDF en samenvattings-PDF naast elkaar, lokaal ingelezen via PDF.js. Pagina's bladeren, paginanummer invoeren, zoomen, zoeken in extraheerbare PDF-tekst en originele PDF openen.
+- **Broncontrole-demo:** het oorspronkelijke scherm met een fictieve claim, fictieve bronpassage en uitleg over onvoldoende bewijs blijft bewaard als conceptvoorbeeld. Dit is **niet** automatisch gekoppeld aan de geüploade PDFs.
 - **Menselijke beslissing:** knoppen Vertrouwen, Controleren en Afwijzen; lokaal demonstratiebericht na klikken.
 - **Engineer view:** zeer eenvoudige schets voor modelversievergelijking.
 - **Foutfeedback:** zichtbare meldknop; formulier en backend volgen in latere iteraties.
@@ -41,7 +42,7 @@ De esthetische keuzes, mogelijke risico's en toetsvragen staan in [Design-patter
 
 ## 6. Afbakening en beperkingen
 
-Het prototype is een **front-end demonstratie**: de geselecteerde PDF wordt niet uitgelezen, er draait geen LLM of documentevaluerende pipeline, er worden geen echte metrics berekend en er worden geen bestanden naar een server geüpload. Uploadbestandsnaam, progressie, scores en brontekst zijn losstaande illustratieve onderdelen. Het ontbreken van gekoppeld bewijs is niet automatisch bewijs dat een claim onwaar is.
+Het prototype is een **front-end demonstratie met werkende lokale PDF-weergave**: PDF.js leest de geselecteerde bestanden daadwerkelijk in en toont de originele PDF-pagina's. De viewer bevat paginanavigatie, zoom en tekstzoekresultaten per pagina. PDF's worden niet naar de applicatieserver geüpload. Er draait **geen** LLM of documentevaluerende pipeline; claims, scores en de voorbeeldbronpassage in de analyse-demo zijn fictief. Het ontbreken van gekoppeld bewijs is niet automatisch bewijs dat een claim onwaar is. Tekstzoeken werkt alleen wanneer een PDF tekst bevat (gescande pagina's vereisen OCR). De PDF.js-bibliotheek en worker worden via een externe CDN geladen en vereisen een netwerkverbinding.
 
 De in de whiteboardschets genoemde LLM-judge en spaCy zijn **technische oplossingsrichtingen**, geen geïmplementeerde of gevalideerde componenten van dit prototype. Het precieze gebruik van spaCy voor taalkundige voorbewerking en van een LLM-judge voor claimverificatie vereist apart technisch onderzoek. F1, accuracy of een ander getal kan niet zonder operationele definitie naar een betrouwbaarheidspercentage worden vertaald.
 
@@ -56,9 +57,15 @@ De in de whiteboardschets genoemde LLM-judge en spaCy zijn **technische oplossin
 
 Een testopzet en meetvoorstellen staan in het [validatieplan](../../05-Validatieplan.md). Er zijn nog geen empirische resultaten.
 
-## 8. Iteratiestatus
+## 8. Technische uitvoering van de PDF-viewer
 
-**Gemaakt:** HTML-voorbeeld en documentatie van de eerste ontwerpafwegingen.  
-**Nog niet gedaan:** stakeholdervalidatie, daadwerkelijke PDF-analyse, echte bronverwijzingen, kalibratie van scores, usabilitymeting en modelprestatie-evaluatie.
+De viewer gebruikt [Mozilla PDF.js](https://mozilla.github.io/pdf.js/) via een vastgepinde CDN-versie (`3.11.174`). Een gebruiker kiest een bron-PDF en een samenvattings-PDF; de browser leest de bestanden met `File.arrayBuffer()` in, en PDF.js rendert pagina's in `canvas`. Met `getTextContent()` worden per pagina tekstzoekresultaten gevonden. Er wordt geen document naar een backend verstuurd. De gekozen bestanden verdwijnen bij herladen van de pagina.
+
+**Validatiepunten:** test met de aanwezige jaarverslagen (waaronder PDF's met veel pagina's en grafieken), documentgrootte, mobiele schermen, browsercompatibiliteit, gescande pagina's, beveiligde PDF's en gebruik zonder netwerk. Er is nog geen volledige end-to-end browsertest gerapporteerd.
+
+## 9. Iteratiestatus
+
+**Gemaakt:** HTML-voorbeeld, documentatie van de ontwerpafwegingen, echte lokale PDF-upload van bron en samenvatting, PDF.js-rendering, paginanavigatie, zoom en tekstzoekfunctie.  
+**Nog niet gedaan:** stakeholdervalidatie, geautomatiseerde inhoudelijke PDF-analyse, echte claim-naar-bronmatches en highlights, kalibratie van scores, usabilitymeting en modelprestatie-evaluatie.
 
 [Terug naar overzicht ontwerpiteraties](../README.md) · [Terug naar ontwerp](../../README.md)
