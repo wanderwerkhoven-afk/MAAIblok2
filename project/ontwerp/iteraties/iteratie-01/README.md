@@ -3,6 +3,21 @@
 **Datum oorspronkelijke schets:** 27 november 2026  
 **Status:** werkend HTML-concept met echte PDF-weergave en heuristische bronvoorstellen; nog niet gevalideerd via een gebruikerstest.
 
+## Actuele schermopbouw — één dashboard (27 november 2026)
+
+Het HTML-prototype is op basis van de aangeleverde referentieafbeelding **volledig opnieuw opgebouwd als één pagina**. De eerdere zijbalk en meerdere navigatiepagina's zijn verwijderd.
+
+- **Bovenaan:** compacte keuze voor Rabobank, ING of ABN AMRO, plus uploads voor een eigen origineel rapport en samenvatting.
+- **Linkerkolom:** daadwerkelijke uit PDF geëxtraheerde samenvattingszinnen, met gele aanklikbare markeringen.
+- **Rechtsboven:** drie circulaire indicatoren, voor (1) aandeel onderzochte zinnen met een mogelijke bron, (2) zonder bronvoorstel, en (3) geschatte tekstreductie. De eerste twee worden berekend op maximaal 35 zinnen, niet op het hele document. Deze waarden zijn **geen juistheids-, correctheids- of vertrouwenspercentages**.
+- **Rechtsonder:** mogelijke relevante passages uit het oorspronkelijke document, woordmarkeringen en een knop naar de bijbehorende pagina.
+- **PDF-weergave:** opent boven dezelfde pagina in een modal, met paginabladeren en zoom. Er is geen tweede dashboardpagina.
+- **Techniek:** PDF.js voor echte tekstextractie, semantisch niet-gevalideerde woordoverlap voor bronvoorstellen, browserinteractie zonder backend.
+
+De aangeleverde afbeelding is een **layoutreferentie**; de getoonde voorbeeldpercentages worden niet gebruikt. Voordat twee documenten zijn geladen verschijnen placeholders in plaats van verzonnen resultaten.
+
+**Status:** implementatie in de repository voltooid; end-to-end browsertest en stakeholdervalidatie nog uit te voeren.
+
 ## Aanleiding
 
 De eerste handgetekende schets voorzag in een Rabobank-dashboard, uploadmogelijkheid, een samenvattingsvenster, cirkelvormige kwaliteitsindicatoren en markeringen van claims en brontekst. Daarnaast werden een LLM-judge en spaCy als mogelijke technische componenten genoemd.
@@ -16,22 +31,22 @@ In eerste instantie zijn scorecirkels en fictieve claims als demonstratie uitgew
 | [prototype.html](prototype.html) | Interactieve single-file HTML-interface voor echte PDF-upload, documentvergelijking, tekstextractie en bronvoorstellen |
 | [Design-patterns-en-keuzes.md](Design-patterns-en-keuzes.md) | Historie en verantwoording van ontwerpkeuzes, inclusief verwijdering van fictieve scores en vervanging door echte documenten |
 
-## Werkende functionaliteit
+## Functionele onderdelen en revisiegeschiedenis
 
-1. **Datasetkeuze:** ABN AMRO, ING of Rabobank, elk met een origineel v0-jaarverslag en een bijbehorende v0-samenvatting uit de repository.
+1. **Datasetkeuze (behouden):** ABN AMRO, ING of Rabobank, elk met een origineel v0-jaarverslag en een bijbehorende v0-samenvatting uit de repository.
 2. **Lokale upload:** origineel en samenvatting afzonderlijk als PDF selecteren.
-3. **Documentviewer:** werkelijk gerenderde PDF-pagina's in twee kolommen, onafhankelijk bladeren en zoomen.
-4. **Analyseoverzicht conform whiteboardschets:** links echte samenvattingszinnen met aanklikbare markeringen; rechts drie cirkelindicatoren en daaronder kandidaat-bronpassages met een knop naar de oorspronkelijke PDF-pagina.
+3. **PDF-viewer (herzien):** het originele brondocument opent via de broncontrole in een modal met paginanavigatie en zoom. De eerdere zij-aan-zij viewer is verwijderd.
+4. **Één dashboard:** links echte samenvattingszinnen met aanklikbare markeringen; rechts drie cirkelindicatoren en daaronder kandidaat-bronpassages met een knop naar de oorspronkelijke PDF.
 5. **Inhoudelijke documentgegevens:** werkelijk aantal PDF-pagina's, geschatte woordenaantallen op basis van PDF-tekstextractie en indicatieve tekstreductie.
 6. **Bronverwijzingen:** een reeks zinnen wordt uit de echte samenvatting geëxtraheerd. De tool zoekt maximaal drie mogelijk relevante bronpagina's op basis van overeenkomst van betekenisvolle woorden en toont een tekstfragment.
-7. **Navigatie naar bron:** een bronvoorstel opent de geselecteerde PDF-pagina; overlappende woorden worden met een gele markering aangeduid.
-8. **Menselijke beslisopties:** lokaal demonstratielabel voor controle of afwijzing; nog geen opslag, workflow of beoordelingsbackend.
+7. **Navigatie naar bron:** een bronvoorstel opent de bijbehorende pagina van de originele PDF in een modal; overlappende woorden worden indicatief gemarkeerd.
+8. **Menselijke beslissing (volgende fase):** het dashboard is nu bewust toegespitst op documentcontrole; een uitgewerkte vertrouwen/controleren/afwijzen-flow volgt als aparte ontwerpverbetering.
 
 ## Geen bewezen AI-evaluatie
 
 De bronverwijzingen zijn **heuristische tekstmatches**. Ze kunnen een relevante bron aanwijzen, maar bewijzen **niet** dat de samenvattingsclaim feitelijk correct is. Er kan bijvoorbeeld een getal verkeerd zijn weergegeven, een ontkenning zijn weggelaten of een andere passage dezelfde termen bevatten. Ook is een ontbrekende match geen bewijs voor een onjuiste claim.
 
-Er zijn geen fictieve betrouwbaarheidsscores meer in het actuele prototype. De drie ringindicatoren op de analysepagina geven (a) het aandeel met een mogelijke bron, (b) het aandeel zonder bronvoorstel, voor maximaal de eerste 30 geëxtraheerde samenvattingszinnen, en (c) indicatieve tekstreductie weer. De procentuele tekstreductie is alleen een beschrijvende maat op basis van geëxtraheerde PDF-tekst. Een getoond percentage woordoverlap betreft geen gekalibreerde kans op juistheid.
+Er zijn geen fictieve betrouwbaarheidsscores meer in het actuele prototype. De drie ringindicatoren op het dashboard geven (a) het aandeel met een mogelijke bron, (b) het aandeel zonder bronvoorstel, voor maximaal de eerste 35 geëxtraheerde samenvattingszinnen, en (c) indicatieve tekstreductie weer. De procentuele tekstreductie is alleen een beschrijvende maat op basis van geëxtraheerde PDF-tekst. Een getoond percentage woordoverlap betreft geen gekalibreerde kans op juistheid.
 
 Er is nog geen LLM-judge, spaCy-verwerking, semantische verificatie, OCR of formele evaluatiemethode geïntegreerd.
 
