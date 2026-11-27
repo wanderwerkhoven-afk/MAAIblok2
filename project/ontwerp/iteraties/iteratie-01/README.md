@@ -21,16 +21,17 @@ In eerste instantie zijn scorecirkels en fictieve claims als demonstratie uitgew
 1. **Datasetkeuze:** ABN AMRO, ING of Rabobank, elk met een origineel v0-jaarverslag en een bijbehorende v0-samenvatting uit de repository.
 2. **Lokale upload:** origineel en samenvatting afzonderlijk als PDF selecteren.
 3. **Documentviewer:** werkelijk gerenderde PDF-pagina's in twee kolommen, onafhankelijk bladeren en zoomen.
-4. **Inhoudelijke documentgegevens:** werkelijk aantal PDF-pagina's, geschatte woordenaantallen op basis van PDF-tekstextractie en indicatieve tekstreductie.
-5. **Bronverwijzingen:** een reeks zinnen wordt uit de echte samenvatting geëxtraheerd. De tool zoekt maximaal drie mogelijk relevante bronpagina's op basis van overeenkomst van betekenisvolle woorden en toont een tekstfragment.
-6. **Navigatie naar bron:** een bronvoorstel opent de geselecteerde PDF-pagina; overlappende woorden worden met een gele markering aangeduid.
-7. **Menselijke beslisopties:** lokaal demonstratielabel voor controle of afwijzing; nog geen opslag, workflow of beoordelingsbackend.
+4. **Analyseoverzicht conform whiteboardschets:** links echte samenvattingszinnen met aanklikbare markeringen; rechts drie cirkelindicatoren en daaronder kandidaat-bronpassages met een knop naar de oorspronkelijke PDF-pagina.
+5. **Inhoudelijke documentgegevens:** werkelijk aantal PDF-pagina's, geschatte woordenaantallen op basis van PDF-tekstextractie en indicatieve tekstreductie.
+6. **Bronverwijzingen:** een reeks zinnen wordt uit de echte samenvatting geëxtraheerd. De tool zoekt maximaal drie mogelijk relevante bronpagina's op basis van overeenkomst van betekenisvolle woorden en toont een tekstfragment.
+7. **Navigatie naar bron:** een bronvoorstel opent de geselecteerde PDF-pagina; overlappende woorden worden met een gele markering aangeduid.
+8. **Menselijke beslisopties:** lokaal demonstratielabel voor controle of afwijzing; nog geen opslag, workflow of beoordelingsbackend.
 
 ## Geen bewezen AI-evaluatie
 
 De bronverwijzingen zijn **heuristische tekstmatches**. Ze kunnen een relevante bron aanwijzen, maar bewijzen **niet** dat de samenvattingsclaim feitelijk correct is. Er kan bijvoorbeeld een getal verkeerd zijn weergegeven, een ontkenning zijn weggelaten of een andere passage dezelfde termen bevatten. Ook is een ontbrekende match geen bewijs voor een onjuiste claim.
 
-Er zijn geen fictieve betrouwbaarheidsscores meer in het actuele prototype. De procentuele tekstreductie is alleen een beschrijvende maat op basis van geëxtraheerde PDF-tekst. Een getoond percentage woordoverlap betreft geen gekalibreerde kans op juistheid.
+Er zijn geen fictieve betrouwbaarheidsscores meer in het actuele prototype. De drie ringindicatoren op de analysepagina geven (a) het aandeel met een mogelijke bron, (b) het aandeel zonder bronvoorstel, voor maximaal de eerste 30 geëxtraheerde samenvattingszinnen, en (c) indicatieve tekstreductie weer. De procentuele tekstreductie is alleen een beschrijvende maat op basis van geëxtraheerde PDF-tekst. Een getoond percentage woordoverlap betreft geen gekalibreerde kans op juistheid.
 
 Er is nog geen LLM-judge, spaCy-verwerking, semantische verificatie, OCR of formele evaluatiemethode geïntegreerd.
 
@@ -43,6 +44,15 @@ De visuele vormgeving volgt de aangeleverde referentiepagina's uit het Rabobank 
 De toepassing gebruikt Mozilla PDF.js via een vastgepinde externe CDN-versie (`3.11.174`). PDF-pagina's worden op canvas gerenderd; `getTextContent()` levert de te doorzoeken tekst. Lokale PDF's worden met `File.arrayBuffer()` geopend en niet naar een applicatieserver gestuurd. De publieke repository-PDF's worden op verzoek gedownload vanuit de repository. Selecties en beslissingen worden bij opnieuw laden niet bewaard.
 
 De bronindex wordt in de browser opgebouwd; het uitlezen van omvangrijke rapporten kan merkbaar tijd kosten. Gescande documenten zonder tekstlaag zijn niet goed doorzoekbaar zonder OCR. Netwerktoegang is nodig om PDF.js en bestaande repositorydocumenten op te halen.
+
+
+## Visuele revisie: analyseoverzicht volgens de schets (27 november 2026)
+
+De aangeleverde detailfoto van de oorspronkelijke schets toont links een samenvattingspaneel, rechts cirkelindicatoren voor beoordelingsdimensies en daaronder een broncontrole met geel gemarkeerde tekst. Deze schermcompositie is in de bestaande \`prototype.html\` toegevoegd onder het navigatieonderdeel **Analyseoverzicht**.
+
+De visuele ringvorm is behouden, maar de inhoud is opzettelijk herzien: percentages voor *Correct*, *Match* of een algemene juistheid zijn niet beschikbaar zonder onafhankelijke validatie. De ringindicatoren tonen daarom uitsluitend herleidbare technische of beschrijvende grootheden. De gebruiker kan op een samenvattingszin klikken, kandidaatpassages zien en vanuit een bronvoorstel de originele PDF op de relevante pagina openen. Een tekstmarkering geeft woordoverlap aan, niet bewezen feitelijke ondersteuning.
+
+**Onderzoeksvraag:** helpt deze combinatie van samenvatting, broncontrole en gespecificeerde indicatoren de analist bij het terugvinden van relevant bewijs zonder ten onrechte vertrouwen te wekken?
 
 ## Testplan en open vragen
 
