@@ -88,3 +88,13 @@ De eerdere tekstlijst in de linkerkolom is vervangen door de **daadwerkelijke sa
 De browser bouwt met `getTextContent()` een transparante laag boven de gerenderde pagina. Zichtbare tekstregels worden waar mogelijk gekoppeld aan geëxtraheerde samenvattingszinnen op dezelfde PDF-pagina. **Bij hover** verschijnt een gele arceerbalk op de bijpassende tekstregel(s); **bij klikken** wordt in de rechterkolom de mogelijke bronpassage getoond.
 
 **Beperking:** de hitboxen worden via PDF-tekstposities en heuristische matching bepaald. Bij complexe kolommen, tabellen, gesplitste tekstfragmenten en pagina's zonder tekstlaag kan een zin onvoldoende nauwkeurig worden gevonden of gedeeltelijk worden gemarkeerd. De originele PDF-pagina blijft wel zichtbaar. De markering zegt niets over de feitelijke correctheid van de zin.
+
+
+## Aanpassing PDF-getrouwe weergave en hover (27 november 2026)
+
+De linkerkolom rendert de **ongewijzigde oorspronkelijke samenvattings-PDF-pagina** via PDF.js op een canvas. De HTML maakt geen nieuwe lettertypen, koppen, tabellen of tekstalinea's van de PDF-inhoud. Dit is essentieel om de lay-out van de geleverde samenvatting te behouden.
+
+De eerdere hover-implementatie koppelde een visuele tekstregel alleen aan een lange geëxtraheerde samenvattingszin wanneer een woordoverlapdrempel werd gehaald. Hierdoor verschenen op veel PDF-regels **geen gele hovermarkeringen**. Dat is herzien: PDF-tekstfragmenten worden nu met hun echte paginacoördinaten tot interactieve tekstregels gegroepeerd, onafhankelijk van vooraf geïdentificeerde lange claims. De gele markering verschijnt bij hover boven de gerenderde PDF; klikken stuurt de werkelijk geselecteerde tekst door naar de rechter broncontrole.
+
+**Beperking:** meerdere kolommen, tekst in figuren, afwijkende PDF-tekstvolgorde en scans zonder tekstlaag kunnen nog tot ontbrekende of te brede tekstselecties leiden. Het PDF-beeld blijft wel intact. Deze wijziging is technisch geïmplementeerd, maar nog niet met een volledige browser-/stakeholdertest gevalideerd.
+
