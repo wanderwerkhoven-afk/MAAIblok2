@@ -10,6 +10,22 @@ header h1{font-size:clamp(28px,3vw,44px);color:var(--blue);font-style:italic;fon
 .layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:stretch}.right{display:grid;grid-template-rows:auto minmax(400px,1fr);gap:16px;min-width:0}.panel{border:1px solid var(--line);border-radius:8px;background:#fff;padding:22px 24px;min-width:0}.panel h2{font-size:24px;color:var(--blue);font-style:italic;font-weight:400;letter-spacing:-.35px;margin:2px 0 13px}.label{font-size:11px;color:#7e8795;font-weight:bold;letter-spacing:.06em;text-transform:uppercase}.left{min-height:660px;display:flex;flex-direction:column}.left .sub{margin-top:-7px}.sub{color:var(--sub);font-size:12px}.summary{flex:1;overflow:auto;max-height:740px;padding:6px 6px 12px 0}.summary p{font-size:14px;line-height:2;margin:0 0 13px}.claimbutton{border:0;background:#fff2b7;box-shadow:0 0 0 2px #fff2b7;padding:2px 3px;text-align:left;line-height:inherit;color:#162e57}.claimbutton:hover,.claimbutton.selected{background:#ffd878;box-shadow:0 0 0 2px #ffd878}.pageno{font-size:10px;color:#94a1b3;padding-left:4px;white-space:nowrap}.summfoot{border-top:1px solid var(--line);padding-top:13px;display:flex;gap:10px;justify-content:space-between;align-items:center}.empty{color:#8992a2;font-size:13px;padding:40px 10px;text-align:center}.gauges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:14px 0}.gauge{text-align:center;min-width:0}.ring{--val:0;--color:var(--blue);width:clamp(79px,8vw,126px);height:clamp(79px,8vw,126px);margin:auto;border-radius:100%;background:conic-gradient(var(--color) calc(var(--val)*1%),#e9edf3 0);display:grid;place-items:center}.center{width:77%;height:77%;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:clamp(18px,2vw,29px);font-weight:500;letter-spacing:-.9px}.gauge strong{display:block;color:#1754d9;font-size:12px;margin:12px 0 0}.gauge small{font-size:11px;color:#79879c;display:block;line-height:1.35}.gauge button{border:0;background:transparent;padding:0}.metric-note{font-size:12px;color:#667993;margin:10px 0 0}.evidence{display:flex;flex-direction:column}.evidence h2{margin-bottom:5px}.selected{background:#fffaf0;border-left:3px solid #ffc44d;padding:11px 12px;line-height:1.6;font-size:13px}.evidence-list{overflow:auto;max-height:460px;margin:12px 0;flex:1}.hit{border-top:1px solid var(--line);padding:12px 0}.hit h3{margin:0;color:var(--blue);font-size:13px}.hit p{color:#53617c;font-size:12px;margin:6px 0;line-height:1.65}.hit mark{background:var(--yellow)}.hit button{margin-top:5px}.muted{color:#8491a6;font-size:12px}.explain{margin-top:auto;border-top:1px solid var(--line);padding-top:11px;color:#7a8494;font-size:11px}.notice{font-size:12px;color:#60718f;padding:12px 0 0}.modal{position:fixed;inset:0;background:#142039c9;display:grid;place-items:center;padding:15px;z-index:20}.modal[hidden]{display:none}.dialog{width:min(1180px,100%);height:min(900px,96vh);background:#fff;display:flex;flex-direction:column;min-height:0}.dialogtop{display:flex;align-items:center;justify-content:space-between;padding:12px 17px;border-bottom:1px solid var(--line);gap:10px}.dialogtop h2{color:var(--blue);font-style:italic;font-weight:400;font-size:20px;margin:0}.dialogbar{display:flex;align-items:center;gap:8px;padding:9px 15px;border-bottom:1px solid var(--line);flex-wrap:wrap}.dialogbar input{width:65px;border:1px solid #ccd6e5;padding:5px}.dialogbar button{border:1px solid #bccfe7;color:var(--blue);background:white;padding:5px 10px}.pdfbody{background:#e8ebf0;overflow:auto;flex:1;padding:20px;text-align:center}.pdfpage{position:relative;background:white;width:max-content;margin:auto;box-shadow:0 4px 20px #0002}.pdfpage canvas{display:block}.pdfhighlight{position:absolute;background:#ffd24e70;outline:1px solid #ed9e34;pointer-events:none}.modalfoot{color:#7c8799;padding:7px 15px;font-size:11px}.right .panel:first-child{padding-bottom:17px}
 @media(max-width:980px){.layout{grid-template-columns:1fr}.left{min-height:380px}.right{grid-template-rows:auto auto}.summary{max-height:590px}.ring{width:clamp(80px,16vw,120px);height:clamp(80px,16vw,120px)}}
 @media(max-width:540px){.app{padding:15px 11px}.panel{padding:15px 12px}.controls{gap:8px}.controls select{width:100%}.gauges{gap:0}.ring{width:78px;height:78px}.center{font-size:18px}.gauge strong{font-size:11px}.top small{display:none}.dialog{height:96vh}.summary p{font-size:13px}}
+
+/* Original summary PDF appearance, preserved using PDF.js canvas.
+   The interaction layer highlights text line regions on hover without rewriting PDF design. */
+.summary-pdf-toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:2px 0 10px;padding-bottom:11px;border-bottom:1px solid var(--line);font-size:12px;color:#62738c}
+.summary-pdf-toolbar button{min-width:31px;padding:4px 8px}
+.summary-pdf-toolbar input{width:53px;padding:4px;border:1px solid #cbd6e5;color:#26476f}
+.summary-pdf-stage{background:#edf0f5;padding:16px 10px;overflow:auto;min-height:475px;max-height:740px;text-align:center}
+.summary-pdf-wrap{position:relative;margin:0 auto;width:max-content;background:white;box-shadow:0 3px 17px #21314b25}
+.summary-pdf-wrap[hidden]{display:none}
+.summary-pdf-wrap canvas{display:block}
+.summary-interactive-layer{position:absolute;inset:0;pointer-events:none}
+.sentence-hit-area{position:absolute;pointer-events:auto;background:transparent;border:0;border-radius:1px;padding:0;cursor:pointer;mix-blend-mode:multiply;transition:background .1s}
+.sentence-hit-area:hover,.sentence-hit-area.hovered,.sentence-hit-area.selected{background:rgba(255,215,58,.51);box-shadow:0 0 0 1px rgba(238,172,26,.18)}
+.sentence-hit-area:focus-visible{outline:2px solid #ff9600;background:rgba(255,215,58,.57)}
+.sentence-hit-area.selected{background:rgba(255,199,46,.42)}
+@media(max-width:980px){.summary-pdf-stage{max-height:620px}}
 </style></head>
 <body><main class="app">
 <div class="top"><div class="brand"><span>✓</span> SummaryCheck</div><small>Ontwerpiteratie 01 · Documentcontrole</small></div>
@@ -17,7 +33,7 @@ header h1{font-size:clamp(28px,3vw,44px);color:var(--blue);font-style:italic;fon
 <div class="controls"><label for="dataset">Document</label><select id="dataset"><option value="RABO">Rabobank · 2025</option><option value="ING">ING · 2025</option><option value="ABN">ABN AMRO · 2025</option></select><button class="btn" id="load">Laad documentpaar</button><label class="btn alt filebtn">Origineel uploaden<input type="file" id="raw-upload" accept="application/pdf,.pdf"></label><label class="btn alt filebtn">Samenvatting uploaden<input type="file" id="summary-upload" accept="application/pdf,.pdf"></label></div>
 <div class="status" id="status" role="status">Selecteer een bestaand documentpaar of upload de originele PDF en de bijbehorende samenvatting.</div><div class="loadingbar"><span id="progress"></span></div>
 <div class="layout">
-<section class="panel left"><div class="label">Linkerkolom</div><h2>Samenvatting</h2><p class="sub" id="summary-file">Nog geen samenvatting geladen</p><div class="summary" id="sentences"><div class="empty">Na het laden verschijnen hier echte zinnen uit de samenvatting. Klik op een gemarkeerde zin om de mogelijke bronnen te zien.</div></div><div class="summfoot"><span class="sub" id="counter">0 zinnen</span><button class="btn alt" id="more" disabled>Meer tonen</button></div></section>
+<section class="panel left"><div class="label">Linkerkolom</div><h2>Samenvatting</h2><p class="sub" id="summary-file">Nog geen samenvatting geladen</p><div class="summary-pdf-toolbar"><button class="btn alt" id="summary-prev" disabled aria-label="Vorige pagina">‹</button><label>Pagina <input type="number" id="summary-page" min="1" value="1" disabled></label><span id="summary-total">/ 0</span><button class="btn alt" id="summary-next" disabled aria-label="Volgende pagina">›</button><button class="btn alt" id="summary-zoomout" disabled title="Uitzoomen">−</button><span id="summary-zoom">100%</span><button class="btn alt" id="summary-zoomin" disabled title="Inzoomen">+</button></div><div class="summary summary-pdf-stage" id="sentences"><div class="empty" id="summary-placeholder">Na het laden verschijnt hier de originele PDF-samenvatting, inclusief de bestaande opmaak.</div><div id="summary-pdf-wrap" class="summary-pdf-wrap" hidden><canvas id="summary-pdf-canvas" aria-label="Originele samenvatting"></canvas><div id="summary-interactive-layer" class="summary-interactive-layer"></div></div></div><div class="summfoot"><span class="sub" id="counter">Beweeg over een zin om deze geel te markeren.</span><span class="sub">Klik op een gemarkeerde zin voor broncontrole</span></div></section>
 <div class="right"><section class="panel"><div class="label">Rechtsboven</div><h2>Documentindicatoren</h2><div class="gauges">
 <div class="gauge"><button id="filter-matched" disabled title="Filter zinnen met kandidaatbron"><span class="ring" id="ring-matched" style="--color:#20896c"><span class="center" id="num-matched">—</span></span></button><strong>Bronvoorstel</strong><small>Zinnen met een mogelijke bron</small></div>
 <div class="gauge"><button id="filter-unmatched" disabled title="Filter zinnen zonder kandidaatbron"><span class="ring" id="ring-unmatched" style="--color:#9258bc"><span class="center" id="num-unmatched">—</span></span></button><strong>Geen voorstel</strong><small>Zinnen zonder tekstmatch</small></div>
@@ -33,7 +49,7 @@ header h1{font-size:clamp(28px,3vw,44px);color:var(--blue);font-style:italic;fon
 'use strict';
 const $=id=>document.getElementById(id);
 const base='https://raw.githubusercontent.com/wanderwerkhoven-afk/MAAIblok2/main/data/';
-const data={raw:null,summary:null};let batch=0,indexJob=0,allClaims=[],shown=30,filter='all',selected=null,modalPage=1,modalZoom=1,renderTask=null,renderJob=0,lastFocused=null;
+const data={raw:null,summary:null};let batch=0,indexJob=0,allClaims=[],shown=30,filter='all',selected=null,modalPage=1,modalZoom=1,renderTask=null,renderJob=0,lastFocused=null,summaryPage=1,summaryZoom=1,summaryRenderJob=0,summaryRenderTask=null;
 const stop=new Set('a an the and or of to from for with at on is are was were be been has have had this that which their our by as its into no not it in de het een en van voor met op bij te tot die dat dit deze der zijn is was worden wordt er aan als om door ook nog meer over uit onder dan hun zij maar naar wordt'.split(' '));
 function status(msg,bad=false){$('status').textContent=msg;$('status').classList.toggle('error',bad);}
 function tokenize(s){return(s.toLowerCase().match(/[\p{L}\p{N}]+/gu)||[]).filter(w=>w.length>=4&&!stop.has(w));}
@@ -45,7 +61,7 @@ async function pdfLoad(bytes,label){
  const pdf=await pdfjsLib.getDocument({data:bytes}).promise;
  return {pdf,label,pages:[],totalWords:0,inverted:new Map()};
 }
-function reset(){indexJob++;allClaims=[];selected=null;shown=30;filter='all';$('sentences').replaceChildren();$('evidence-list').innerHTML='<div class="empty">Selecteer een gemarkeerde zin.</div>';$('claim-selected').hidden=true;$('filter-matched').disabled=true;$('filter-unmatched').disabled=true;setGauge('matched',null);setGauge('unmatched',null);setGauge('compression',null);$('more').disabled=true;}
+function reset(){indexJob++;allClaims=[];selected=null;shown=30;filter='all';if(summaryRenderTask)summaryRenderTask.cancel();$('summary-interactive-layer').replaceChildren();$('evidence-list').innerHTML='<div class="empty">Selecteer een gemarkeerde zin.</div>';$('claim-selected').hidden=true;$('filter-matched').disabled=true;$('filter-unmatched').disabled=true;setGauge('matched',null);setGauge('unmatched',null);setGauge('compression',null);$('summary-placeholder').hidden=!data.summary;$('summary-pdf-wrap').hidden=!data.summary;}
 function setGauge(k,v){const el=$('ring-'+k);el.style.setProperty('--val',v===null?0:Math.min(100,Math.max(0,v)));$('num-'+k).textContent=v===null?'—':Math.round(v)+'%';}
 async function ingest(which,bytes,name,job){
  const item=await pdfLoad(bytes,name);if(job!==batch){await item.pdf.destroy();return;}
@@ -57,7 +73,7 @@ async function loadRepo(){
  try{const names=[stem+'_v0.pdf',stem+'_Summary_v0.pdf'];
  const urls=['raw/'+names[0],'summaries/'+names[1]];
  const buffers=await Promise.all(urls.map(async path=>{const r=await fetch(base+path);if(!r.ok)throw Error('Bestand niet gevonden: '+path);return new Uint8Array(await r.arrayBuffer());}));
- if(job!==batch)return;await ingest('raw',buffers[0],names[0],job);await ingest('summary',buffers[1],names[1],job);if(job===batch)await indexBoth(job);
+ if(job!==batch)return;await ingest('raw',buffers[0],names[0],job);await ingest('summary',buffers[1],names[1],job);if(job===batch){summaryPage=1;summaryZoom=1;await renderSummaryPage();await indexBoth(job);}
  }catch(e){if(job===batch)status('Kon documenten niet ophalen: '+e.message,true);}
 }
 async function loadLocal(which,file){
@@ -66,6 +82,7 @@ async function loadLocal(which,file){
  status('Lokale PDF wordt geopend: '+file.name);
  await ingest(which,new Uint8Array(await file.arrayBuffer()),file.name,job);
  if(job!==batch)return;
+ if(which==='summary'){summaryPage=1;summaryZoom=1;await renderSummaryPage();}
  if(data.raw&&data.summary)await indexBoth(job);else{status('PDF geopend. Selecteer ook de bijbehorende '+(which==='raw'?'samenvatting.':'originele PDF.'));$('summary-file').textContent=data.summary?.label||'Nog geen samenvatting geladen';}
  }catch(e){if(job===batch)status('Upload niet gelukt: '+e.message,true);}
 }
@@ -127,22 +144,95 @@ async function indexBoth(job){
   $('summary-file').textContent=data.summary.label+' · '+data.summary.pdf.numPages+' pagina’s';
   $('progress').style.width='100%';
   status('Ingeladen: '+data.raw.label+' en '+data.summary.label+'. Klik op een zin om mogelijke bronpassages te zien.');
-  renderClaims();
+  await renderSummaryPage();
  }catch(e){if(job===batch)status('Verwerking mislukt: '+e.message,true);}
 }
-function renderClaims(){
- const pane=$('sentences');pane.replaceChildren();
- let list=allClaims;if(filter!=='all')list=allClaims.slice(0,35).filter(c=>c.found===(filter==='matched'));
- if(!list.length){pane.innerHTML='<div class="empty">Geen samenvattingszinnen voor dit filter. Kies een ander filter of laad een andere PDF.</div>';return;}
- for(const item of list.slice(0,shown)){
-  const para=document.createElement('p'),b=document.createElement('button');b.type='button';b.className='claimbutton'+(item===selected?' selected':'');b.textContent=item.text;b.title='Bekijk mogelijke bronpassages';b.onclick=()=>choose(item);
-  const page=document.createElement('span');page.className='pageno';page.textContent='p. '+item.page;para.append(b,page);pane.append(para);
+
+/* Render actual PDF pages; attach invisible, hover-reactive line strips on top.
+   Text extraction is used only for the interactivity, not the displayed design. */
+function summaryGo(page){if(!data.summary?.pdf)return;summaryPage=Math.min(data.summary.pdf.numPages,Math.max(1,Math.trunc(+page)||1));renderSummaryPage();}
+$('summary-prev').onclick=()=>summaryGo(summaryPage-1);
+$('summary-next').onclick=()=>summaryGo(summaryPage+1);
+$('summary-page').onchange=e=>summaryGo(e.target.value);
+$('summary-zoomin').onclick=()=>{summaryZoom=Math.min(2.4,summaryZoom+.2);renderSummaryPage();};
+$('summary-zoomout').onclick=()=>{summaryZoom=Math.max(.6,summaryZoom-.2);renderSummaryPage();};
+function mostLikelyClaim(text,pageno){
+ const pageClaims=allClaims.filter(c=>c.page===pageno);
+ if(!pageClaims.length)return null;
+ const tokens=new Set(tokenize(text));
+ if(!tokens.size)return null;
+ let best=null,score=0;
+ for(const claim of pageClaims){
+  const words=new Set(tokenize(claim.text));
+  let hits=0;for(const t of tokens)if(words.has(t))hits++;
+  const ratio=hits/Math.max(1,tokens.size);
+  if(hits>=2&&ratio>score){best=claim;score=ratio;}
  }
- $('counter').textContent=Math.min(shown,list.length)+' van '+list.length+' zinnen';
- $('more').disabled=shown>=list.length;
+ return score>=.43?best:null;
 }
-$('more').onclick=()=>{shown+=30;renderClaims();};
-for(const name of ['matched','unmatched'])$('filter-'+name).onclick=()=>{filter=filter===name?'all':name;shown=30;renderClaims();};
+async function renderSummaryPage(){
+ const item=data.summary;if(!item?.pdf)return;
+ const token=++summaryRenderJob;
+ if(summaryRenderTask){try{summaryRenderTask.cancel();await summaryRenderTask.promise;}catch(e){}summaryRenderTask=null;}
+ try{
+ const page=await item.pdf.getPage(summaryPage);if(token!==summaryRenderJob)return;
+ $('summary-placeholder').hidden=true;$('summary-pdf-wrap').hidden=false;
+ const natural=page.getViewport({scale:1}),stage=$('sentences');
+ const scale=Math.max(.45,Math.min(1.7,(stage.clientWidth-34)/natural.width))*summaryZoom;
+ const viewport=page.getViewport({scale}),canvas=$('summary-pdf-canvas');
+ const ratio=Math.min(window.devicePixelRatio||1,2);
+ canvas.width=Math.round(viewport.width*ratio);canvas.height=Math.round(viewport.height*ratio);
+ canvas.style.width=viewport.width+'px';canvas.style.height=viewport.height+'px';
+ const wrap=$('summary-pdf-wrap');wrap.style.width=viewport.width+'px';wrap.style.height=viewport.height+'px';
+ const layer=$('summary-interactive-layer');layer.replaceChildren();
+ const ctx=canvas.getContext('2d',{alpha:false});
+ summaryRenderTask=page.render({canvasContext:ctx,viewport,transform:[ratio,0,0,ratio,0,0]});
+ await summaryRenderTask.promise;if(token!==summaryRenderJob)return;
+ $('summary-page').disabled=false;$('summary-page').value=summaryPage;$('summary-page').max=item.pdf.numPages;
+ $('summary-total').textContent='/ '+item.pdf.numPages;$('summary-zoom').textContent=Math.round(summaryZoom*100)+'%';
+ $('summary-prev').disabled=summaryPage<=1;$('summary-next').disabled=summaryPage>=item.pdf.numPages;
+ $('summary-zoomin').disabled=false;$('summary-zoomout').disabled=false;
+ const content=await page.getTextContent();if(token!==summaryRenderJob)return;
+ const lines=[];
+ for(const text of content.items){
+  if(!text.str||!text.str.trim()||Math.abs(text.width)<1)continue;
+  const transform=pdfjsLib.Util.transform(viewport.transform,text.transform);
+  const height=Math.max(7,Math.hypot(transform[2],transform[3]));
+  const x=transform[4],y=transform[5]-height;
+  const w=Math.abs(text.width*viewport.scale);
+  if(!Number.isFinite(x+y+w+height)||w<2)continue;
+  let row=lines.find(line=>Math.abs(line.y-y)<Math.min(5,height*.35));
+  if(!row){row={y,height,x,xEnd:x+w,parts:[]};lines.push(row);}
+  row.parts.push({x,y,w,height,str:text.str});
+  row.y=Math.min(row.y,y);row.height=Math.max(row.height,height);row.x=Math.min(row.x,x);row.xEnd=Math.max(row.xEnd,x+w);
+ }
+ for(const line of lines){
+  line.parts.sort((a,b)=>a.x-b.x);
+  const text=line.parts.map(p=>p.str).join(' ');
+  const match=mostLikelyClaim(text,summaryPage);
+  if(!match)continue;
+  const button=document.createElement('button');button.type='button';button.className='sentence-hit-area';
+  button.style.left=Math.max(0,line.x-2)+'px';button.style.top=Math.max(0,line.y-1)+'px';
+  button.style.width=Math.max(5,Math.min(viewport.width-line.x,line.xEnd-line.x+4))+'px';
+  button.style.height=(line.height+2)+'px';
+  button.setAttribute('aria-label','Controleer zin: '+match.text.slice(0,125));
+  button.title='Klik voor broncontrole';
+  button.dataset.claim=String(allClaims.indexOf(match));
+  if(match===selected)button.classList.add('selected');
+  button.addEventListener('mouseenter',()=>layer.querySelectorAll('[data-claim="'+button.dataset.claim+'"]').forEach(x=>x.classList.add('hovered')));
+  button.addEventListener('mouseleave',()=>layer.querySelectorAll('[data-claim="'+button.dataset.claim+'"]').forEach(x=>x.classList.remove('hovered')));
+  button.addEventListener('click',()=>choose(match));
+  layer.appendChild(button);
+ }
+ $('counter').textContent='Pagina '+summaryPage+'/'+item.pdf.numPages+' · Beweeg over de samenvatting voor gele markeringen';
+ }catch(e){if(e.name!=='RenderingCancelledException')status('Samenvatting kon niet worden getoond: '+e.message,true);}
+}
+function renderClaims(){
+ // Retain original PDF artwork rather than rebuilding the source text as HTML.
+ $('summary-interactive-layer').querySelectorAll('.sentence-hit-area').forEach(button=>{
+  button.classList.toggle('selected',selected!==null&&Number(button.dataset.claim)===allClaims.indexOf(selected));
+ });
+}
 function markText(s,keys){
  const fragment=document.createDocumentFragment(),regex=/[\p{L}\p{N}]+|[^\p{L}\p{N}]+/gu;
  for(const part of s.match(regex)||[]){if(keys.has(part.toLowerCase())){const mark=document.createElement('mark');mark.textContent=part;fragment.append(mark);}else fragment.append(document.createTextNode(part));}
