@@ -20,11 +20,11 @@ header h1{font-size:clamp(28px,3vw,44px);color:var(--blue);font-style:italic;fon
 .summary-pdf-wrap{position:relative;margin:0 auto;width:max-content;background:white;box-shadow:0 3px 17px #21314b25}
 .summary-pdf-wrap[hidden]{display:none}
 .summary-pdf-wrap canvas{display:block}
-.summary-interactive-layer{position:absolute;inset:0;pointer-events:none}
+.summary-interactive-layer{position:absolute;inset:0;pointer-events:none;z-index:2}
 .sentence-hit-area{position:absolute;pointer-events:auto;background:transparent;border:0;border-radius:1px;padding:0;cursor:pointer;mix-blend-mode:multiply;transition:background .1s}
-.sentence-hit-area:hover,.sentence-hit-area.hovered,.sentence-hit-area.selected{background:rgba(255,215,58,.51);box-shadow:0 0 0 1px rgba(238,172,26,.18)}
+.sentence-hit-area:hover,.sentence-hit-area.hovered,.sentence-hit-area.selected{background:rgba(255,213,43,.62);box-shadow:0 0 0 1px rgba(238,172,26,.24)}
 .sentence-hit-area:focus-visible{outline:2px solid #ff9600;background:rgba(255,215,58,.57)}
-.sentence-hit-area.selected{background:rgba(255,199,46,.42)}
+.sentence-hit-area.selected{background:rgba(255,207,42,.48)}
 @media(max-width:980px){.summary-pdf-stage{max-height:620px}}
 </style></head>
 <body><main class="app">
@@ -156,19 +156,72 @@ $('summary-next').onclick=()=>summaryGo(summaryPage+1);
 $('summary-page').onchange=e=>summaryGo(e.target.value);
 $('summary-zoomin').onclick=()=>{summaryZoom=Math.min(2.4,summaryZoom+.2);renderSummaryPage();};
 $('summary-zoomout').onclick=()=>{summaryZoom=Math.max(.6,summaryZoom-.2);renderSummaryPage();};
-function mostLikelyClaim(text,pageno){
- const pageClaims=allClaims.filter(c=>c.page===pageno);
- if(!pageClaims.length)return null;
- const tokens=new Set(tokenize(text));
- if(!tokens.size)return null;
- let best=null,score=0;
- for(const claim of pageClaims){
-  const words=new Set(tokenize(claim.text));
-  let hits=0;for(const t of tokens)if(words.has(t))hits++;
-  const ratio=hits/Math.max(1,tokens.size);
-  if(hits>=2&&ratio>score){best=claim;score=ratio;}
+
+/* Build accurate, hoverable PDF text geometry on top of the original PDF canvas.
+   The PDF itself is NEVER recreated as HTML: canvas preserves fonts, tables,
+   illustrations, page margins, colors and the exact source layout. */
+function summaryGo(page){if(!data.summary?.pdf)return;summaryPage=Math.min(data.summary.pdf.numPages,Math.max(1,Math.trunc(+page)||1));renderSummaryPage();}
+$('summary-prev').onclick=()=>summaryGo(summaryPage-1);
+$('summary-next').onclick=()=>summaryGo(summaryPage+1);
+$('summary-page').onchange=e=>summaryGo(e.target.value);
+$('summary-zoomin').onclick=()=>{summaryZoom=Math.min(2.4,summaryZoom+.2);renderSummaryPage();};
+$('summary-zoomout').onclick=()=>{summaryZoom=Math.max(.6,summaryZoom-.2);renderSummaryPage();};
+
+function makePdfSentenceGroups(textItems,viewport,pageNumber){
+ const fragments=[];
+ for(const item of textItems){
+  if(!item.str||!item.str.trim()||!(item.width>0))continue;
+  const m=pdfjsLib.Util.transform(viewport.transform,item.transform);
+  const height=Math.max(5,Math.hypot(m[2],m[3]));
+  const x=m[4],y=m[5]-height,w=Math.max(2,item.width*viewport.scale);
+  if(![x,y,w,height].every(Number.isFinite))continue;
+  if(x < -4||y < -4||x>viewport.width+4||y>viewport.height+4)continue;
+  fragments.push({x,y,w:Math.min(w,viewport.width-x),h:height,str:item.str.trim()});
  }
- return score>=.43?best:null;
+ // Preserve reading order where possible, but keep separate columns separate.
+ fragments.sort((a,b)=>a.y-b.y||a.x-b.x);
+ const lines=[];
+ for(const f of fragments){
+  let row=lines.find(r=>Math.abs(r.y-f.y)<Math.max(3,Math.min(7,f.h*.35)) && Math.abs(r.h-f.h)<Math.max(5,r.h*.6));
+  if(!row){row={y:f.y,h:f.h,parts:[]};lines.push(row);}
+  row.parts.push(f);
+ }
+ const segments=[];
+ for(const row of lines){
+  row.parts.sort((a,b)=>a.x-b.x);
+  let group=null;
+  for(const p of row.parts){
+   const gap=group?p.x-group.end:Infinity;
+   // Large gaps are usually separate columns, headings, or table cells.
+   if(!group||gap>Math.max(14,p.h*1.35)){
+    group={y:p.y,h:p.h,start:p.x,end:p.x+p.w,parts:[p]};segments.push(group);
+   }else{
+    group.end=Math.max(group.end,p.x+p.w);group.parts.push(p);
+    group.y=Math.min(group.y,p.y);group.h=Math.max(group.h,p.h);
+   }
+  }
+ }
+ // A readable line or run is directly interactive, even if a PDF extracts
+ // paragraphs differently and no previous sentence extraction succeeded.
+ const interactive=segments.filter(g=>{
+  const text=g.parts.map(p=>p.str).join(' ').trim();
+  return text.length>=15&&tokenize(text).length>=2;
+ });
+ for(const g of interactive)g.text=g.parts.map(p=>p.str).join(' ').replace(/\s+/g,' ').trim();
+ // Link nearby runs on the same line and across wrapped lines only when
+ // their page-coordinate continuity suggests the same paragraph.
+ let current=null;
+ for(const g of interactive){
+  const before=current;
+  const close=before && g.y-before.lastY>0 && g.y-before.lastY<Math.max(22,g.h*1.95);
+  const sameColumn=before&&Math.abs(g.start-before.start)<Math.max(28,g.h*2.7);
+  const previousEnds=before&&/[.!?:;]["')\]]?$/.test(before.text.trim());
+  if(!before||!close||!sameColumn||previousEnds){
+   current={page:pageNumber,parts:[],text:'',lastY:g.y,start:g.start};
+  }
+  g.group=current;current.parts.push(g);current.text=(current.text+' '+g.text).trim();current.lastY=g.y;
+ }
+ return interactive;
 }
 async function renderSummaryPage(){
  const item=data.summary;if(!item?.pdf)return;
@@ -178,7 +231,7 @@ async function renderSummaryPage(){
  const page=await item.pdf.getPage(summaryPage);if(token!==summaryRenderJob)return;
  $('summary-placeholder').hidden=true;$('summary-pdf-wrap').hidden=false;
  const natural=page.getViewport({scale:1}),stage=$('sentences');
- const scale=Math.max(.45,Math.min(1.7,(stage.clientWidth-34)/natural.width))*summaryZoom;
+ const scale=Math.max(.35,Math.min(1.7,(stage.clientWidth-34)/natural.width))*summaryZoom;
  const viewport=page.getViewport({scale}),canvas=$('summary-pdf-canvas');
  const ratio=Math.min(window.devicePixelRatio||1,2);
  canvas.width=Math.round(viewport.width*ratio);canvas.height=Math.round(viewport.height*ratio);
@@ -193,46 +246,34 @@ async function renderSummaryPage(){
  $('summary-prev').disabled=summaryPage<=1;$('summary-next').disabled=summaryPage>=item.pdf.numPages;
  $('summary-zoomin').disabled=false;$('summary-zoomout').disabled=false;
  const content=await page.getTextContent();if(token!==summaryRenderJob)return;
- const lines=[];
- for(const text of content.items){
-  if(!text.str||!text.str.trim()||Math.abs(text.width)<1)continue;
-  const transform=pdfjsLib.Util.transform(viewport.transform,text.transform);
-  const height=Math.max(7,Math.hypot(transform[2],transform[3]));
-  const x=transform[4],y=transform[5]-height;
-  const w=Math.abs(text.width*viewport.scale);
-  if(!Number.isFinite(x+y+w+height)||w<2)continue;
-  let row=lines.find(line=>Math.abs(line.y-y)<Math.min(5,height*.35));
-  if(!row){row={y,height,x,xEnd:x+w,parts:[]};lines.push(row);}
-  row.parts.push({x,y,w,height,str:text.str});
-  row.y=Math.min(row.y,y);row.height=Math.max(row.height,height);row.x=Math.min(row.x,x);row.xEnd=Math.max(row.xEnd,x+w);
- }
- for(const line of lines){
-  line.parts.sort((a,b)=>a.x-b.x);
-  const text=line.parts.map(p=>p.str).join(' ');
-  const match=mostLikelyClaim(text,summaryPage);
-  if(!match)continue;
+ const runs=makePdfSentenceGroups(content.items,viewport,summaryPage);
+ for(let i=0;i<runs.length;i++){
+  const g=runs[i],group=g.group;
   const button=document.createElement('button');button.type='button';button.className='sentence-hit-area';
-  button.style.left=Math.max(0,line.x-2)+'px';button.style.top=Math.max(0,line.y-1)+'px';
-  button.style.width=Math.max(5,Math.min(viewport.width-line.x,line.xEnd-line.x+4))+'px';
-  button.style.height=(line.height+2)+'px';
-  button.setAttribute('aria-label','Controleer zin: '+match.text.slice(0,125));
-  button.title='Klik voor broncontrole';
-  button.dataset.claim=String(allClaims.indexOf(match));
-  if(match===selected)button.classList.add('selected');
-  button.addEventListener('mouseenter',()=>layer.querySelectorAll('[data-claim="'+button.dataset.claim+'"]').forEach(x=>x.classList.add('hovered')));
-  button.addEventListener('mouseleave',()=>layer.querySelectorAll('[data-claim="'+button.dataset.claim+'"]').forEach(x=>x.classList.remove('hovered')));
-  button.addEventListener('click',()=>choose(match));
+  button.style.left=Math.max(0,g.start-1)+'px';
+  button.style.top=Math.max(0,g.y-1)+'px';
+  button.style.width=Math.max(2,Math.min(viewport.width-g.start,g.end-g.start+2))+'px';
+  button.style.height=(g.h+2)+'px';
+  button.dataset.group=String(runs.indexOf(group.parts[0]));
+  const text=group.text.slice(0,600);
+  button.setAttribute('aria-label','Controleer passage: '+text.slice(0,125));
+  button.title='Beweeg voor geel markeren · Klik voor broncontrole';
+  button.addEventListener('mouseenter',()=>layer.querySelectorAll('[data-group="'+button.dataset.group+'"]').forEach(x=>x.classList.add('hovered')));
+  button.addEventListener('mouseleave',()=>layer.querySelectorAll('[data-group="'+button.dataset.group+'"]').forEach(x=>x.classList.remove('hovered')));
+  button.addEventListener('click',()=>{
+   // Use actual PDF text from this group, not a guessed matching paragraph.
+   const claim={text:group.text.slice(0,750),page:summaryPage};
+   choose(claim);
+   layer.querySelectorAll('.sentence-hit-area').forEach(x=>x.classList.remove('selected'));
+   layer.querySelectorAll('[data-group="'+button.dataset.group+'"]').forEach(x=>x.classList.add('selected'));
+  });
   layer.appendChild(button);
  }
- $('counter').textContent='Pagina '+summaryPage+'/'+item.pdf.numPages+' · Beweeg over de samenvatting voor gele markeringen';
+ $('counter').textContent='Pagina '+summaryPage+'/'+item.pdf.numPages+' · '+runs.length+' tekstregels met gele hover-markering';
+ if(runs.length===0)status('PDF ziet er origineel uit, maar deze pagina heeft geen uitleesbare tekstregels. Voor scans is OCR nodig.');
  }catch(e){if(e.name!=='RenderingCancelledException')status('Samenvatting kon niet worden getoond: '+e.message,true);}
 }
-function renderClaims(){
- // Retain original PDF artwork rather than rebuilding the source text as HTML.
- $('summary-interactive-layer').querySelectorAll('.sentence-hit-area').forEach(button=>{
-  button.classList.toggle('selected',selected!==null&&Number(button.dataset.claim)===allClaims.indexOf(selected));
- });
-}
+function renderClaims(){ /* PDF appearance and hover targets remain unchanged. */ }
 function markText(s,keys){
  const fragment=document.createDocumentFragment(),regex=/[\p{L}\p{N}]+|[^\p{L}\p{N}]+/gu;
  for(const part of s.match(regex)||[]){if(keys.has(part.toLowerCase())){const mark=document.createElement('mark');mark.textContent=part;fragment.append(mark);}else fragment.append(document.createTextNode(part));}
