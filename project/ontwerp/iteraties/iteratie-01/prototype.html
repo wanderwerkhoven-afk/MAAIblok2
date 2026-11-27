@@ -6,10 +6,41 @@
 <style>
 :root{--blue:#0656fa;--orange:#ff6700;--ink:#17233c;--muted:#61718b;--line:#e4e8f0;--panel:#f8faff;--error:#ae3e24}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:14px/1.6 Arial,Helvetica,sans-serif;background:#fff;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #6fa5fa;outline-offset:2px}.shell{display:grid;grid-template-columns:215px minmax(0,1fr);min-height:100vh}.sidebar{border-right:1px solid var(--line);padding:30px 16px;display:flex;flex-direction:column;gap:32px}.brand{font-size:23px;font-weight:600;letter-spacing:-.7px;font-style:italic;color:var(--blue)}.brand span{display:inline-block;background:var(--orange);color:white;padding:2px 9px;margin-right:8px;font-style:normal}.sidecap{color:#8e9db5;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin:0 10px 12px}.nav{width:100%;display:block;border:0;border-left:3px solid transparent;background:#fff;color:#2d4d8c;text-align:left;padding:13px 10px;margin-bottom:5px}.nav.active,.nav:hover{border-left-color:var(--orange);background:#eff4ff;color:var(--blue)}.sidebar footer{margin-top:auto;color:#7a8aa5;font-size:12px;border-top:1px solid var(--line);padding-top:16px}.workspace{padding:32px clamp(18px,3vw,54px) 65px;min-width:0;max-width:1800px;width:100%;margin:auto}.topline{padding-bottom:19px;border-bottom:1px solid var(--line);color:#6880a6;font-size:12px;display:flex;justify-content:space-between}.hero{padding:29px 0 15px}.eyebrow{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--orange);font-style:italic;font-weight:bold}.hero h1{font-size:clamp(28px,3vw,44px);color:var(--blue);font-style:italic;font-weight:400;margin:6px 0;letter-spacing:-1.3px}.hero p{margin:0;color:#475c7c}.note{border-left:3px solid var(--orange);padding:12px 17px;background:#f8faff;color:#455c84;margin:17px 0;font-size:12px}.row{display:flex;gap:13px;align-items:center;flex-wrap:wrap}.primary,.secondary,.danger{padding:10px 15px;border:1px solid var(--blue);border-radius:0;font-weight:600;background:var(--blue);color:white}.secondary{background:white;color:var(--blue)}.danger{border-color:#b74738;background:#fff;color:#a43428}.card{border:1px solid var(--line);background:#fff;padding:22px;min-width:0}.card h2{color:var(--blue);font-size:22px;font-style:italic;font-weight:400;margin:0 0 10px}.kicker{color:var(--orange);text-transform:uppercase;letter-spacing:.09em;font-size:11px;font-weight:700;margin-bottom:8px}.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}.small{color:var(--muted);font-size:12px}.field{width:100%;max-width:560px;background:#fff;color:#183973;border:1px solid #cad7e9;padding:12px;margin:9px 0}.filelabel{display:inline-block;padding:10px 14px;border:1px solid var(--blue);color:var(--blue);cursor:pointer;font-weight:600;position:relative}.filelabel input{position:absolute;width:1px;height:1px;opacity:0}.fileline{padding:15px 0;border-bottom:1px solid var(--line)}.fileline strong{display:block;color:#0b4dd1;overflow-wrap:anywhere}.fileline:last-child{border:0}.overview{background:#f8faff;border-top:4px solid var(--orange)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:20px 0}.stat{padding:8px 12px;border-right:1px solid #dfe5f1}.stat:last-child{border-right:0}.stat label{display:block;color:var(--blue);font-style:italic;font-size:12px}.stat b{display:block;color:var(--orange);font-weight:400;font-size:31px;line-height:1.55}.stat small{color:#7283a2}.view{display:none}.view.active{display:block}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:11px 15px}.toolbar button{border:1px solid #c9d6e8;background:white;color:var(--blue);padding:5px 11px}.toolbar input[type=number]{width:56px;padding:5px;border:1px solid #ced8e9}.toolbar label{font-size:12px}.document{border:1px solid var(--line);min-width:0}.dochead{padding:14px 18px;border-top:5px solid var(--blue);border-bottom:1px solid var(--line)}.document:last-child .dochead{border-top-color:var(--orange)}.dochead h2{color:var(--blue);font-size:20px;font-style:italic;font-weight:400;margin:0}.dochead p{font-size:11px;color:#627492;margin:3px 0;overflow-wrap:anywhere}.canvaswrap{height:570px;overflow:auto;background:#edf0f5;padding:20px;text-align:center;position:relative}.pagewrap{position:relative;margin:0 auto;width:max-content;max-width:none;box-shadow:0 4px 17px #21324a33;background:white}.pagewrap canvas{display:block}.highlight{position:absolute;pointer-events:none;background:rgba(255,176,0,.32);box-shadow:inset 0 0 0 1px #e77a00}.searchrow{padding:10px 15px;display:flex;gap:8px}.searchrow input{flex:1;min-width:0;border:1px solid #cbd6e8;padding:8px}.searchresult{padding:0 15px 10px;min-height:28px;font-size:12px;color:#59708c}.matchbutton{border:0;background:#edf3ff;color:var(--blue);padding:4px 7px;margin:2px}.status{background:#f1f5ff;color:#18549a;border-left:3px solid var(--blue);padding:10px 15px;font-size:12px;margin-top:12px;overflow-wrap:anywhere}.status.error{background:#fff3ec;color:var(--error);border-left-color:var(--orange)}.claims{display:grid;gap:11px;max-height:690px;overflow:auto;padding-right:4px}.claim{border:1px solid #dfe5f0;padding:14px;background:white}.claim-head{display:flex;gap:8px;align-items:center;justify-content:space-between}.claim p{margin:7px 0;color:#1b3050}.claim small{color:#627591}.match{border-top:1px solid #edf0f6;margin-top:11px;padding-top:10px;font-size:12px}.match strong{color:var(--blue);font-weight:600}.match blockquote{margin:7px 0;background:#f8faff;padding:9px 11px;color:#455777;border-left:2px solid var(--orange)}.empty{text-align:center;padding:32px;color:#6b7c98}.tag{display:inline-block;font-size:10px;letter-spacing:.05em;padding:3px 7px;background:#eaf1ff;color:#1153ba;text-transform:uppercase}.tag.warning{background:#fff2e6;color:#ae5410}.progress{height:7px;background:#e8ecf3;margin:10px 0}.progress span{display:block;background:var(--orange);height:100%;width:0}.decision{border-top:1px solid var(--line);padding-top:15px;margin-top:17px}.two{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:20px}.muted{color:var(--muted)}.mini{font-size:11px}.foot{margin-top:24px;color:#7d8ca6;font-size:12px}.action-note{margin-top:12px;padding:10px;border-left:3px solid var(--blue);background:#f3f6fb;display:none}.action-note.visible{display:block}@media(max-width:1100px){.grid,.two{grid-template-columns:1fr}}@media(max-width:760px){.shell{grid-template-columns:1fr}.sidebar{gap:10px;padding:13px;border-right:0;border-bottom:1px solid var(--line)}.sidebar footer{display:none}.navbox{display:flex;gap:4px}.nav{width:auto;padding:8px;margin:0}.workspace{padding:15px}.stats{grid-template-columns:1fr 1fr}.canvaswrap{height:480px}}
+
+/* Whiteboard-derived two-column summary, circular indicators, and source evidence */
+.review-layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:22px;align-items:start}
+.review-side{display:grid;gap:21px;min-width:0}
+.review-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 15px}
+.review-heading h2{margin:0}
+.review-summary{min-height:660px;border-top:5px solid var(--blue)}
+.review-metrics{border-top:5px solid var(--orange)}
+.review-evidence{border-top:5px solid var(--blue)}
+.review-text{font-size:14px;line-height:2;color:#25344c;max-height:680px;overflow:auto;padding-right:6px}
+.review-text p{margin:0 0 17px}
+.review-text button{font:inherit;text-align:left;line-height:inherit;border:0;background:#fff2bc;box-shadow:0 0 0 2px #fff2bc;color:#142c56;padding:1px 3px}
+.review-text button:hover,.review-text button.selected{background:#ffcf64;box-shadow:0 0 0 2px #ffcf64}
+.review-bottom{margin-top:20px;padding-top:13px;border-top:1px solid var(--line)}
+.gauge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:23px 0}
+.gauge-card{text-align:center;border-right:1px solid var(--line);padding:3px 4px 8px;display:flex;flex-direction:column;align-items:center;min-width:0}
+.gauge-card:last-child{border-right:0}
+.gauge-card strong{display:block;color:#0b55eb;font-weight:600;font-size:12px;margin:14px 0 1px}
+.gauge-card small{display:block;color:#7587a2;font-size:11px;line-height:1.35}
+.gauge-ring{--percentage:0;--ring-color:#0060fa;width:min(9vw,108px);height:min(9vw,108px);min-width:74px;min-height:74px;border-radius:100%;background:conic-gradient(var(--ring-color) calc(var(--percentage)*1%),#e9edf3 0);display:grid;place-items:center;margin:auto}
+.gauge-core{width:77%;height:77%;border-radius:100%;background:#fff;display:grid;place-items:center;font-size:clamp(16px,1.7vw,25px);color:var(--orange);font-weight:550;letter-spacing:-.7px}
+.gauge-button{border:0;background:none;padding:0;cursor:pointer}
+.gauge-button:disabled{opacity:1;cursor:default}
+.review-source-card{border:1px solid #e4e9f2;margin:13px 0;padding:13px 15px;background:#fbfcff}
+.review-source-card h3{margin:0 0 7px;font-size:14px;color:var(--blue)}
+.review-source-card p{margin:0 0 9px;color:#405373;font-size:13px;line-height:1.7}
+.review-source-card button{margin-top:4px}
+.review-selected-claim{border-left:3px solid #ffbd26;background:#fffaf0;color:#253a5e;padding:12px;margin-bottom:12px;font-size:13px}
+.review-actions{padding-top:15px;border-top:1px solid var(--line);margin-top:17px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:1120px){.review-layout{grid-template-columns:1fr}.gauge-ring{width:100px;height:100px}.review-summary{min-height:0}}
+@media(max-width:520px){.gauge-ring{width:75px;height:75px;min-width:0;min-height:0}.gauge-core{font-size:15px}.gauge-card strong{font-size:11px}.review-text{max-height:540px}}
 </style>
 </head>
 <body><div class="shell">
-<aside class="sidebar"><div class="brand"><span>✓</span>SummaryCheck</div><div><div class="sidecap">Analysewerkruimte</div><nav class="navbox" aria-label="Navigatie"><button class="nav active" data-view="dashboard">▦ &nbsp; Dashboard</button><button class="nav" data-view="compare">▤ &nbsp; Documentviewer</button><button class="nav" data-view="claims">⌕ &nbsp; Bronverwijzingen</button></nav></div><footer>Ontwerpiteratie 01<br>Werkende PDF-vergelijking · lokale extractie<br>Geen AI-claimverificatie</footer></aside>
+<aside class="sidebar"><div class="brand"><span>✓</span>SummaryCheck</div><div><div class="sidecap">Analysewerkruimte</div><nav class="navbox" aria-label="Navigatie"><button class="nav active" data-view="dashboard">▦ &nbsp; Dashboard</button><button class="nav" data-view="compare">▤ &nbsp; Documentviewer</button><button class="nav" data-view="review">◉ &nbsp; Analyseoverzicht</button><button class="nav" data-view="claims">⌕ &nbsp; Bronverwijzingen</button></nav></div><footer>Ontwerpiteratie 01<br>Werkende PDF-vergelijking · lokale extractie<br>Geen AI-claimverificatie</footer></aside>
 <main class="workspace"><header class="topline"><span>SummaryCheck / <span id="breadcrumb">Dashboard</span></span><span>Analist · concept</span></header>
 <div class="note"><strong>Documentcontrole met echte bestanden.</strong> PDF-pagina's, tekstfragmenten en eventuele bronverwijzingen komen uit de gekozen documenten. Bronverwijzingen zijn <strong>automatisch gevonden tekstovereenkomsten</strong>, geen geverifieerde feiten of AI-betrouwbaarheidsscores.</div>
 <section class="view active" id="dashboard"><div class="hero"><span class="eyebrow">01 / Documentselectie</span><h1>Van jaarverslag naar controleerbare samenvatting</h1><p>Open een bestaand documentpaar uit de dataset of gebruik twee eigen PDF-bestanden.</p></div>
@@ -18,11 +49,42 @@
 <div class="fileline"><strong id="raw-file">Brondocument: nog niet geselecteerd</strong><label class="filelabel">Kies origineel rapport <input id="raw-input" type="file" accept=".pdf,application/pdf"></label></div>
 <div class="fileline"><strong id="summary-file">Samenvatting: nog niet geselecteerd</strong><label class="filelabel">Kies samenvatting <input id="summary-input" type="file" accept=".pdf,application/pdf"></label></div>
 <div class="status" id="file-status" aria-live="polite">Beide PDF's zijn nodig voor de bronverwijzingsanalyse. Je kunt een enkel bestand alvast bekijken.</div></article></div>
-<div class="grid" style="margin-top:20px"><article class="card overview"><div class="kicker">Live documentgegevens</div><h2>Gegevens uit de ingelezen PDF's</h2><div class="stats"><div class="stat"><label>Bronpagina's</label><b id="raw-pages-stat">—</b><small>PDF-telling</small></div><div class="stat"><label>Samenvattingspagina's</label><b id="summary-pages-stat">—</b><small>PDF-telling</small></div><div class="stat"><label>Tekstreductie</label><b id="reduction-stat">—</b><small>Indicatie op basis van geëxtraheerde woorden</small></div></div><div class="progress"><span id="index-progress"></span></div><p class="small" id="index-status" role="status">Geen bronindex opgebouwd.</p><div class="row"><button class="primary" data-go="compare">Open documentviewer →</button><button class="secondary" data-go="claims">Bekijk mogelijke bronverwijzingen →</button></div></article>
+<div class="grid" style="margin-top:20px"><article class="card overview"><div class="kicker">Live documentgegevens</div><h2>Gegevens uit de ingelezen PDF's</h2><div class="stats"><div class="stat"><label>Bronpagina's</label><b id="raw-pages-stat">—</b><small>PDF-telling</small></div><div class="stat"><label>Samenvattingspagina's</label><b id="summary-pages-stat">—</b><small>PDF-telling</small></div><div class="stat"><label>Tekstreductie</label><b id="reduction-stat">—</b><small>Indicatie op basis van geëxtraheerde woorden</small></div></div><div class="progress"><span id="index-progress"></span></div><p class="small" id="index-status" role="status">Geen bronindex opgebouwd.</p><div class="row"><button class="primary" data-go="compare">Open documentviewer →</button><button class="secondary" data-go="review">Open analyseoverzicht →</button></div></article>
 <article class="card"><div class="kicker">Zo werkt de controle</div><h2>Transparante bronkoppeling</h2><p>De applicatie extraheert tekst uit de PDF-samenvatting en het brondocument. Zinnen uit de samenvatting worden gekoppeld aan <strong>mogelijk relevante bronpagina's</strong> via exacte woorden en tekstoverlap.</p><p class="small">Een tekstovereenkomst toont alleen waar vergelijkbare informatie staat. Een claim kan desondanks onjuist, misleidend of onvolledig zijn. Zonder voldoende overeenkomst wordt geen bronverwijzing voorgesteld.</p><span class="tag warning">Geen fictieve kwaliteitsscores</span></article></div></section>
 <section class="view" id="compare"><div class="hero"><span class="eyebrow">02 / Documentviewer</span><h1>Origineel en samenvatting naast elkaar</h1><p>Bekijk echte PDF-pagina's, blader zelfstandig en zoek rechtstreeks in de documenttekst.</p></div><div class="grid">
 <article class="document"><header class="dochead"><h2>Origineel jaarverslag</h2><p id="raw-docname">Nog geen PDF geladen</p></header><div class="toolbar"><button id="raw-prev" disabled aria-label="Vorige bronpagina">‹</button><label>Pagina <input type="number" id="raw-page" min="1" value="1" disabled></label><span id="raw-total" class="small">/ 0</span><button id="raw-next" disabled aria-label="Volgende bronpagina">›</button><button id="raw-out" disabled>−</button><span id="raw-zoom" class="small">100%</span><button id="raw-in" disabled>+</button></div><div class="searchrow"><input type="search" id="raw-search" placeholder="Zoek in origineel" disabled><button id="raw-find" class="secondary" disabled>Zoek</button></div><div id="raw-results" class="searchresult" aria-live="polite"></div><div class="canvaswrap" id="raw-stage"><div id="raw-placeholder" class="empty">Selecteer eerst een PDF op het dashboard.</div><div class="pagewrap" id="raw-pagewrap" hidden><canvas id="raw-canvas"></canvas><div id="raw-overlay"></div></div></div></article>
-<article class="document"><header class="dochead"><h2>AI-samenvatting</h2><p id="summary-docname">Nog geen PDF geladen</p></header><div class="toolbar"><button id="summary-prev" disabled aria-label="Vorige samenvattingspagina">‹</button><label>Pagina <input type="number" id="summary-page" min="1" value="1" disabled></label><span id="summary-total" class="small">/ 0</span><button id="summary-next" disabled aria-label="Volgende samenvattingspagina">›</button><button id="summary-out" disabled>−</button><span id="summary-zoom" class="small">100%</span><button id="summary-in" disabled>+</button></div><div class="searchrow"><input type="search" id="summary-search" placeholder="Zoek in samenvatting" disabled><button id="summary-find" class="secondary" disabled>Zoek</button></div><div id="summary-results" class="searchresult" aria-live="polite"></div><div class="canvaswrap" id="summary-stage"><div id="summary-placeholder" class="empty">Laad een samenvattings-PDF om te vergelijken.</div><div class="pagewrap" id="summary-pagewrap" hidden><canvas id="summary-canvas"></canvas><div id="summary-overlay"></div></div></div></article></div><div class="row" style="margin-top:18px"><button class="primary" data-go="claims">Controleer bronverwijzingen →</button><span class="small">De viewer laat de werkelijke PDF-pagina's zien.</span></div></section>
+<article class="document"><header class="dochead"><h2>AI-samenvatting</h2><p id="summary-docname">Nog geen PDF geladen</p></header><div class="toolbar"><button id="summary-prev" disabled aria-label="Vorige samenvattingspagina">‹</button><label>Pagina <input type="number" id="summary-page" min="1" value="1" disabled></label><span id="summary-total" class="small">/ 0</span><button id="summary-next" disabled aria-label="Volgende samenvattingspagina">›</button><button id="summary-out" disabled>−</button><span id="summary-zoom" class="small">100%</span><button id="summary-in" disabled>+</button></div><div class="searchrow"><input type="search" id="summary-search" placeholder="Zoek in samenvatting" disabled><button id="summary-find" class="secondary" disabled>Zoek</button></div><div id="summary-results" class="searchresult" aria-live="polite"></div><div class="canvaswrap" id="summary-stage"><div id="summary-placeholder" class="empty">Laad een samenvattings-PDF om te vergelijken.</div><div class="pagewrap" id="summary-pagewrap" hidden><canvas id="summary-canvas"></canvas><div id="summary-overlay"></div></div></div></article></div><div class="row" style="margin-top:18px"><button class="primary" data-go="review">Open analyseoverzicht →</button><span class="small">De viewer laat de werkelijke PDF-pagina's zien.</span></div></section>
+
+<section class="view" id="review">
+  <header class="hero"><span class="eyebrow">03 / Analist · samenvatting en broncontrole</span><h1>Samenvatting beoordelen</h1><p id="review-document-title">Kies een rapport op het dashboard om echte tekst en bronvoorstellen te tonen.</p></header>
+  <div class="review-layout">
+    <article class="card review-summary">
+      <div class="kicker">AI-samenvatting · originele PDF-tekst</div>
+      <div class="review-heading"><h2>Samenvatting</h2><button class="secondary" data-go="compare">Bekijk PDF ↗</button></div>
+      <p class="small">Selecteer een gemarkeerde zin. De rechterkolom toont daarop mogelijke bronpassages. De tekst is afkomstig uit de geladen samenvatting.</p>
+      <div id="review-sentences" class="review-text"><div class="empty">Nog geen samenvatting geladen.</div></div>
+      <div class="row review-bottom"><button class="secondary" id="review-more" disabled>Meer zinnen tonen</button><span class="small" id="review-count">0 zinnen</span></div>
+    </article>
+    <div class="review-side">
+      <article class="card review-metrics">
+        <div class="kicker">Documentindicatoren · feitelijke invoer</div>
+        <div class="review-heading"><h2>Controleoverzicht</h2><span class="tag warning">Geen AI-factcheck</span></div>
+        <div class="gauge-grid">
+         <div class="gauge-card"><button class="gauge-button" id="gauge-found" type="button" aria-label="Toon zinnen met een mogelijke bron" disabled><span class="gauge-ring" id="gauge-found-ring"><span class="gauge-core" id="gauge-found-num">—</span></span></button><strong>Bronvoorstel</strong><small>Van onderzochte zinnen</small></div>
+         <div class="gauge-card"><button class="gauge-button" id="gauge-unfound" type="button" aria-label="Toon zinnen zonder mogelijke bron" disabled><span class="gauge-ring" id="gauge-unfound-ring"><span class="gauge-core" id="gauge-unfound-num">—</span></span></button><strong>Geen voorstel</strong><small>Van onderzochte zinnen</small></div>
+         <div class="gauge-card"><span class="gauge-ring" id="gauge-reduction-ring"><span class="gauge-core" id="gauge-reduction-num">—</span></span><strong>Tekstreductie</strong><small>Op basis van PDF-tekst</small></div>
+        </div>
+        <p id="review-metrics-info" class="small">Na het inlezen worden indicatoren berekend. Bronvoorstellen zijn tekstovereenkomsten, geen juistheidsoordeel.</p>
+      </article>
+      <article class="card review-evidence">
+       <div class="kicker">Broncontrole · originele bestand</div>
+       <div class="review-heading"><h2>Bijbehorende bronpassage</h2><button class="secondary" id="review-open-source" disabled>Open PDF ↗</button></div>
+       <div id="review-evidence-content"><div class="empty">Selecteer links een gemarkeerde zin om mogelijke bronverwijzingen te zien.</div></div>
+       <div class="review-actions"><span class="small">De bronverwijzing is een zoekvoorstel; menselijke verificatie blijft noodzakelijk.</span><button class="secondary" data-go="claims">Alle bronverwijzingen →</button></div>
+      </article>
+    </div>
+  </div>
+</section>
 <section class="view" id="claims"><div class="hero"><span class="eyebrow">03 / Evidence exploration</span><h1>Van samenvattingszin naar mogelijke bron</h1><p>Automatisch voorgestelde bronpagina's, gebaseerd op tekstoverlap met het originele rapport.</p></div><div class="two"><article class="card"><h2>Zinnen uit de echte samenvatting</h2><div class="status" id="claim-status" aria-live="polite">Laad beide PDF's om de bronkoppeling te berekenen.</div><div class="row" style="margin:15px 0"><label class="small" for="claim-filter">Filter</label><select id="claim-filter" class="field" style="max-width:190px;margin:0"><option value="all">Alle zinnen</option><option value="matches">Met mogelijke bron</option><option value="none">Zonder bronvoorstel</option></select><button class="secondary" id="more-claims" disabled>Meer zinnen tonen</button></div><div id="claim-list" class="claims"><div class="empty">Er zijn nog geen samenvattingszinnen beschikbaar.</div></div></article>
 <article class="card"><div class="kicker">Geselecteerde zin</div><h2>Broncontrole</h2><p class="small" id="selected-claim">Selecteer een zin om mogelijke bronpassages te zien.</p><div id="suggestions" class="claims"><div class="empty">Er is nog geen bronpagina geselecteerd.</div></div><div class="decision"><h2>Menselijke beoordeling</h2><p class="small">Een match is geen factcheck. De analist kan de betreffende pagina openen en zelf beoordelen of de inhoud klopt.</p><div class="row"><button class="primary" data-decision="Gecontroleerd">Gecontroleerd</button><button class="secondary" data-decision="Verder onderzoeken">Verder onderzoeken</button><button class="danger" data-decision="Afwijzen">Afwijzen</button></div><div id="decision-result" class="action-note" role="status"></div></div></article></div></section>
 <footer class="foot">SummaryCheck · Iteratie 01 · Documentbron: eigen upload of gekoppelde GitHub-dataset. Zoek- en bronvoorstellen worden lokaal opgebouwd; geen AI-oordeel. Externe PDF.js-code wordt via een CDN geladen.</footer>
@@ -35,9 +97,9 @@ const $=id=>document.getElementById(id);
 const files={raw:{pdf:null,file:null,pages:[],page:1,zoom:1,renderTask:null,token:0,words:0,highlight:[]},summary:{pdf:null,file:null,pages:[],page:1,zoom:1,renderTask:null,token:0,words:0,highlight:[]}};
 const repoBase='https://raw.githubusercontent.com/wanderwerkhoven-afk/MAAIblok2/main/data/';
 const list={RABO:'RABO',ING:'ING',ABN:'ABN'};
-let datasetToken=0,indexToken=0,linkToken=0,claims=[],activeClaim=null,visibleCount=18;
+let datasetToken=0,indexToken=0,linkToken=0,claims=[],activeClaim=null,visibleCount=18,reviewVisible=24,reviewFilter='all',reviewMetricsToken=0,reviewMetricCount=0;
 const stopwords=new Set(('de het een en van in op met voor door naar uit aan bij als is zijn was waren wordt worden dat die dit deze der te tot om ook nog dan er men meer over onder tussen ten aan hier daar hun zij hij haar heeft hebben had door voor or the and of to from for with as at is are was were be been this that those these into has have had can will on not by its which their more than our we it an a or if all using based'.split(/\s+/)));
-function navigate(view){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===view));document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===view));$('breadcrumb').textContent=({dashboard:'Dashboard',compare:'Documentviewer',claims:'Bronverwijzingen'})[view];window.scrollTo(0,0);}
+function navigate(view){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===view));document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===view));$('breadcrumb').textContent=({dashboard:'Dashboard',compare:'Documentviewer',claims:'Bronverwijzingen',review:'Analyseoverzicht'})[view];window.scrollTo(0,0);}
 document.querySelectorAll('[data-view],[data-go]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.view||b.dataset.go)));
 function say(id,t,isError=false){$(id).textContent=t;$(id).classList.toggle('error',isError);}
 function tokenize(s){return(s.toLocaleLowerCase('nl').match(/[\p{L}\p{N}]+/gu)||[]).filter(w=>w.length>=3&&!stopwords.has(w));}
@@ -171,6 +233,8 @@ async function indexDocuments(){
  $('index-progress').style.width='100%';
  $('index-status').textContent='Tekst verwerkt: '+a.toLocaleString('nl-NL')+' woorden in bron en '+b.toLocaleString('nl-NL')+' in samenvatting. Tekstreductie is indicatief (PDF-extractie).';
  claims=makeClaims();
+ renderReview();
+ updateReviewMetrics();
  say('claim-status',claims.length+' zinnen uit de echte samenvatting gevonden. Bronpagina\'s worden voorgesteld via tekstoverlap; geen automatische factcheck.');
  renderClaims();
  }catch(e){if(token!==indexToken)return;$('index-status').textContent='Tekstextractie niet voltooid: '+e.message;say('claim-status','Kon tekst niet volledig uitlezen. Mogelijk is de PDF gescand.',true);}
@@ -205,6 +269,80 @@ function selectClaim(claim){
  card.append(title,quote,btn);target.appendChild(card);
  }
 }
+
+/* Review page: genuine PDF-derived sentences and candidate source pages */
+function setGauge(name,value){
+ const n=$('gauge-'+name+'-num'),ring=$('gauge-'+name+'-ring');
+ if(value===null){n.textContent='—';ring.style.setProperty('--percentage',0);return;}
+ const v=Math.max(0,Math.min(100,value));
+ n.textContent=v.toFixed(0)+'%';ring.style.setProperty('--percentage',v);
+}
+function renderReview(){
+ const box=$('review-sentences');box.replaceChildren();
+ $('review-document-title').textContent=files.summary.file?files.summary.file+' · '+(files.raw.file||'Geen origineel geladen'):'Kies eerst een origineel rapport en een samenvatting op het dashboard.';
+ if(!claims.length){box.innerHTML='<div class="empty">Geen tekstzinnen uit de samenvatting beschikbaar.</div>';return;}
+ let shown=claims;
+ if(reviewFilter==='found')shown=claims.slice(0,reviewMetricCount).filter(c=>c._reviewHasMatch===true);
+ if(reviewFilter==='unfound')shown=claims.slice(0,reviewMetricCount).filter(c=>c._reviewHasMatch===false);
+ shown=shown.slice(0,reviewVisible);
+ $('review-count').textContent=shown.length+' van '+claims.length+' geëxtraheerde zinnen'+(reviewFilter==='all'?'':' · gefilterd');
+ $('review-more').disabled=shown.length>=claims.length||reviewFilter!=='all';
+ for(const c of shown){
+  const para=document.createElement('p'),txt=document.createElement('button');
+  txt.type='button';txt.textContent=c.text;txt.title='Bekijk mogelijke bronverwijzingen — samenvatting pagina '+c.summaryPage;
+  if(activeClaim===c)txt.classList.add('selected');
+  txt.onclick=()=>reviewSelect(c);
+  const number=document.createElement('span');number.className='small';number.textContent=' p. '+c.summaryPage+' ';
+  para.append(txt,number);box.append(para);
+ }
+}
+function reviewSelect(claim){
+ activeClaim=claim;renderReview();
+ const matches=evidence(claim),box=$('review-evidence-content');box.replaceChildren();
+ const selected=document.createElement('div');selected.className='review-selected-claim';selected.textContent='Samenvattingszin · p. '+claim.summaryPage+': '+claim.text;box.append(selected);
+ const btn=$('review-open-source');btn.disabled=!matches.length;
+ if(!matches.length){
+  const empty=document.createElement('div');empty.className='status error';
+  empty.textContent='Geen voldoende tekstoverlap gevonden. Dit betekent niet dat de claim onjuist is.';box.append(empty);
+  return;
+ }
+ const open=m=>{navigate('compare');pageGo('raw',m.page,[...new Set(tokenize(claim.text))].filter(x=>x.length>=4));pageGo('summary',claim.summaryPage);};
+ btn.onclick=()=>open(matches[0]);
+ for(const match of matches){
+  const card=document.createElement('article');card.className='review-source-card';
+  const heading=document.createElement('h3');heading.textContent='Origineel rapport · p. '+match.page;
+  const desc=document.createElement('p');desc.textContent='Woordoverlap in het gevonden tekstfragment: '+match.overlap+'% (geen feitelijke juistheidsscore)';
+  const excerpt=document.createElement('p');excerpt.textContent='…'+match.excerpt+'…';
+  const go=document.createElement('button');go.className='secondary';go.textContent='Open bronpagina '+match.page+' ↗';go.onclick=()=>open(match);
+  card.append(heading,desc,excerpt,go);box.append(card);
+ }
+}
+async function updateReviewMetrics(){
+ const token=++reviewMetricsToken;
+ setGauge('found',null);setGauge('unfound',null);
+ const reduction=files.raw.words>0?100*(1-files.summary.words/files.raw.words):null;
+ setGauge('reduction',reduction);
+ $('gauge-reduction-ring').style.setProperty('--ring-color','#ff6700');
+ reviewMetricCount=0;
+ const tested=claims.slice(0,Math.min(claims.length,30));if(!tested.length){$('review-metrics-info').textContent='Laad twee doorzoekbare documenten om de indicatoren te berekenen.';return;}
+ let found=0;
+ for(let i=0;i<tested.length;i++){
+  if(token!==reviewMetricsToken)return;
+  const yes=evidence(tested[i]).length>0;tested[i]._reviewHasMatch=yes;if(yes)found++;
+  if(i%5===4)await new Promise(r=>setTimeout(r,0));
+ }
+ if(token!==reviewMetricsToken)return;
+ reviewMetricCount=tested.length;
+ setGauge('found',100*found/tested.length);setGauge('unfound',100*(tested.length-found)/tested.length);
+ $('gauge-found-ring').style.setProperty('--ring-color','#2a8b61');
+ $('gauge-unfound-ring').style.setProperty('--ring-color','#8551c9');
+ $('review-metrics-info').textContent='Bronvoorstellen en ontbrekende voorstellen: '+tested.length+' onderzochte zinnen (eerste 30 maximaal). Tekstreductie: schatting uit PDF-tekst. Dit zijn géén AI-kwaliteits- of correctness-scores.';
+ $('gauge-found').disabled=false;$('gauge-unfound').disabled=false;
+ renderReview();
+}
+$('gauge-found').addEventListener('click',()=>{reviewFilter=reviewFilter==='found'?'all':'found';renderReview();});
+$('gauge-unfound').addEventListener('click',()=>{reviewFilter=reviewFilter==='unfound'?'all':'unfound';renderReview();});
+$('review-more').addEventListener('click',()=>{reviewVisible+=24;renderReview();});
 $('claim-filter').onchange=()=>{visibleCount=18;renderClaims();};
 $('more-claims').onclick=()=>{visibleCount+=18;renderClaims();};
 document.querySelectorAll('[data-decision]').forEach(b=>b.onclick=()=>{const el=$('decision-result');el.textContent='Lokale demonstratiebeslissing: '+b.dataset.decision+'. Dit wordt niet opgeslagen of gedeeld.';el.classList.add('visible');});
