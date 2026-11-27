@@ -1,327 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SummaryCheck | Ontwerpiteratie 01</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SummaryCheck | Documentcontrole</title>
 <style>
-:root{--ink:#172a43;--muted:#6d7f94;--line:#e4e9f1;--bg:#f4f7fb;--blue:#234a78;--blue2:#e8f0fc;--green:#229c84;--orange:#ea9945;--red:#cf5c5c;--purple:#8061c7;--shadow:0 12px 40px rgba(30,55,90,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #68a3fa;outline-offset:3px}a{color:var(--blue)}.layout{min-height:100vh;display:grid;grid-template-columns:235px minmax(0,1fr)}aside{background:#152c4b;color:#e5edfc;padding:27px 19px;display:flex;flex-direction:column;gap:26px}.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;letter-spacing:-.7px}.brandmark{background:#5db9a7;color:#122d45;border-radius:12px;padding:7px 10px}.aside-label{margin:0 12px 9px;color:#8aa2c1;text-transform:uppercase;letter-spacing:.13em;font-weight:800;font-size:10px}.nav-button{display:block;width:100%;text-align:left;border:0;border-radius:11px;background:transparent;color:#becde3;padding:11px 13px;margin:5px 0}.nav-button.active,.nav-button:hover{background:#294468;color:white}.aside-bottom{margin-top:auto;color:#8fa4c1;font-size:12px;padding:12px;border-top:1px solid #355075}main{padding:28px 36px 62px;min-width:0;max-width:1750px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:32px}.crumb{color:var(--muted);font-size:13px}.eyebrow{font-size:11px;letter-spacing:.15em;font-weight:800;color:#6682a3;text-transform:uppercase}.user{background:white;border:1px solid var(--line);border-radius:100px;padding:8px 14px;font-size:13px}.hero h1{font-size:clamp(26px,3vw,37px);letter-spacing:-1.3px;line-height:1.2;margin:7px 0}.hero p{margin:0 0 25px;color:var(--muted)}.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #cfe0eb;border-radius:99px;background:#edf5fa;color:#41647c;padding:5px 10px;font-size:11px;font-weight:800}.chip.warn{background:#fff5e8;border-color:#f6d5aa;color:#976119}.chip.success{background:#e8f7f3;border-color:#bde8df;color:#177969}.grid-2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:22px}.panel{background:white;border:1px solid #e8edf4;border-radius:18px;padding:24px;box-shadow:var(--shadow);min-width:0}.panel h2{margin:0;font-size:18px;letter-spacing:-.4px}.sub{color:var(--muted);font-size:13px}.upload{border:2px dashed #b6cadd;background:#f8fbff;border-radius:14px;text-align:center;padding:35px 20px;margin-top:22px;position:relative}.upload .emoji{font-size:32px}.upload strong{display:block;margin:10px 0 3px}.upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.primary{background:var(--blue);color:white;border:1px solid var(--blue);padding:11px 16px;border-radius:10px;font-weight:700}.secondary{background:white;border:1px solid #bccfe0;color:var(--blue);padding:10px 15px;border-radius:10px;font-weight:700}.outline-red{background:white;border:1px solid #eca4a4;color:#a93333;padding:10px 15px;border-radius:10px;font-weight:700}.buttonrow{display:flex;gap:10px;flex-wrap:wrap}.upload .primary{display:inline-block;margin-top:17px}.meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin:12px 0 0}.progress{height:8px;background:#e6edf5;border-radius:99px;overflow:hidden;margin-top:13px}.progress span{display:block;width:93%;height:100%;background:#447aa7;border-radius:99px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:20px 0}.metric{text-align:center;border:1px solid var(--line);border-radius:14px;padding:14px 5px 10px;position:relative}.metric b{display:block;font-size:12px;margin-bottom:12px}.ring{--pct:75;--c:var(--green);width:92px;height:92px;margin:auto;border-radius:50%;background:conic-gradient(var(--c) calc(var(--pct)*1%),#e9edf4 0);display:grid;place-items:center}.ring-inner{background:white;width:70px;height:70px;border-radius:50%;display:grid;place-items:center;font-size:25px;font-weight:850;letter-spacing:-1px}.metric small{display:block;margin-top:9px;color:var(--muted);font-size:11px}.metric button{border:0;background:transparent;font-size:12px;color:#456891;text-decoration:underline;margin-top:4px}.divider{height:1px;background:var(--line);margin:22px 0}.summary-area{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:16px}.summary-paper{border:1px solid #e3eaf3;background:#fbfcff;border-radius:13px;padding:18px 19px}.summary-paper h3{margin:0 0 12px;font-size:14px}.summary-paper p{font-size:14px;line-height:1.85;margin:0 0 15px}.mark{background:#ffed93;padding:2px 3px;border-radius:4px;box-decoration-break:clone;cursor:pointer;border:0;color:inherit;text-align:left;line-height:inherit}.mark:hover,.mark.selected{background:#ffd264;box-shadow:0 0 0 2px #e6a845}.proof{border:1px solid #d5e5f5;background:#f1f7fe;border-radius:13px;padding:15px;font-size:13px}.proof strong{display:block;margin-bottom:7px}.proof p{margin:0 0 10px}.proof .line{padding:10px;background:white;border-left:3px solid #e7a54a;border-radius:3px;margin:12px 0}.statusrow{border:1px solid #f1d4ae;background:#fff9ef;padding:14px;border-radius:12px;display:flex;align-items:flex-start;gap:10px;margin-bottom:16px}.statusrow b{color:#8e5d19}.state-indicator{width:9px;height:9px;background:var(--orange);border-radius:50%;margin-top:7px;flex:none}.results-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:24px 0 13px}.checks{display:grid;gap:9px}.check{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;border:1px solid var(--line);border-radius:11px;background:white;padding:13px 15px}.check:hover{background:#f8fbff}.check span:first-child{font-weight:650}.check small{font-weight:700;color:#9b661e}.check small.ok{color:#187d67}.check small.err{color:#ae3f3f}.decisions{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}.notice{font-size:13px;color:#325978;background:#ecf6fd;border:1px solid #cde4f3;padding:10px 12px;border-radius:9px;margin-top:14px;display:none}.notice.visible{display:block}.footnote{font-size:12px;color:var(--muted);margin:15px 0 0}.section{display:none}.section.active{display:block}.footnote b{color:#61768f}.demo{border-radius:11px;background:#eef3f8;border:1px solid #d9e3ed;padding:12px 16px;margin:16px 0 23px;font-size:12px;color:#4b617a}.source-box{border:1px solid var(--line);padding:18px;background:#fbfcfe;border-radius:12px}.source-box p{line-height:1.85}.source-highlight{background:#fee8ac;border-radius:3px;padding:2px}.view-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}.tag{border-radius:7px;padding:3px 7px;background:#ecf2f7;font-size:11px;color:#43627c}.section-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px}.mini-chart{height:130px;display:flex;align-items:end;gap:22px;padding:10px;border-bottom:1px solid #bdd0e2}.bar{width:42px;border-radius:7px 7px 0 0;background:#83b9cc;position:relative}.bar.alt{background:#647fb5}.bar span{position:absolute;bottom:-24px;left:-4px;white-space:nowrap;font-size:11px;color:var(--muted)}@media(max-width:1200px){.summary-area{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.metric{padding:12px 4px}}@media(max-width:750px){.layout{grid-template-columns:1fr}aside{padding:15px;gap:11px}.brand{font-size:18px}.aside-bottom{display:none}nav{display:flex;gap:5px;flex-wrap:wrap}.nav-button{width:auto;margin:0;padding:8px}main{padding:22px 16px}.stats{grid-template-columns:1fr 1fr}.view-2{grid-template-columns:1fr}.top{margin-bottom:20px}}@media(prefers-reduced-motion:no-preference){button,.check{transition:background .15s,transform .15s}.primary:hover{background:#17385f}}
-
-/* Rabobank 2025 annual-report-inspired visual direction — iteration 01 style revision.
-   Reference: user-supplied annual-report screenshots, 27 November 2026.
-   Not a copy of the bank's copyrighted illustrations or photography. */
-:root{--ink:#111f3d;--muted:#60708f;--line:#dde1e9;--bg:#fff;--blue:#0656fa;--blue2:#edf3ff;--green:#0068ff;--orange:#ff6700;--red:#c74529;--purple:#0557f5;--shadow:0 12px 30px rgba(28,53,96,.045)}
-body{font-family:Arial,Helvetica,system-ui,sans-serif;background:#fff;color:#17233f}
-.layout{grid-template-columns:217px minmax(0,1fr)}
-aside{background:white;color:#0058ff;border-right:1px solid #e4e6ed;padding:31px 18px;gap:40px}
-.brand{font-family:Arial,Helvetica,sans-serif;font-style:italic;letter-spacing:-.9px;color:#0455ee;font-size:23px}
-.brandmark{border-radius:0;background:#ff6700;color:white;font-style:normal;padding:5px 10px;transform:skew(-9deg)}
-.aside-label{color:#7b8bac;font-size:10px}
-.nav-button{color:#2c4b8c;border-radius:0;background:white;font-size:14px;border-left:3px solid transparent;padding:12px 10px}
-.nav-button.active,.nav-button:hover{background:#edf3ff;color:#0058ff;border-left:3px solid #ff6700}
-.aside-bottom{border-top:1px solid #e3e8f4;color:#7786a4}
-main{padding:37px clamp(22px,3.8vw,64px) 80px;background:white}
-.top{border-bottom:1px solid #e3e8f1;padding-bottom:19px;margin-bottom:31px}
-.crumb{color:#607ba8}.user{background:#fff;border-radius:0;border-color:#dbe4f3;color:#0455ef}
-.eyebrow{color:#ff6700;font-style:italic;font-size:12px;letter-spacing:.08em}
-.hero{margin-bottom:20px}.hero h1{color:#0656fa;font-style:italic;font-weight:450;letter-spacing:-1.6px;font-size:clamp(29px,3.25vw,48px)}
-.hero p{color:#344264;font-size:14px}
-.demo{background:#f8faff;border:0;border-left:3px solid #ff6700;color:#31518d;border-radius:0;padding:13px 20px}
-.grid-2{gap:26px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.panel{border:1px solid #ecedf2;border-radius:0;box-shadow:0 8px 26px rgba(15,35,80,.055);padding:29px}
-.panel h2{color:#0358f4;font-size:23px;font-style:italic;font-weight:450;letter-spacing:-.5px}
-.sub{color:#6b7794}
-.chip{border:0;border-radius:0;background:#eaf1ff;color:#0557ee;padding:7px 12px;font-style:italic}
-.chip.warn{color:white;background:#ff6700;border:0}.chip.success{background:#ecf4ff;color:#0459ff;border:0}
-.upload{border:1px dashed #0459ff;background:#f6f9ff;border-radius:0;padding:49px 20px}
-.upload .emoji{color:#005aff;font-size:36px}
-.upload strong{font-weight:550;color:#0646a7}
-.primary{border-radius:0;background:#005bff;border-color:#005bff}
-.primary:hover{background:#0044cc}
-.secondary{border-radius:0;border:1px solid #0a56ed;color:#0850d9;background:#fff}
-.outline-red{border-radius:0}
-.progress{background:#e8ebf3;height:9px;border-radius:0}.progress span{background:#ff6700;border-radius:0}
-.stats{gap:0;margin:29px 0}
-.metric{border:0;border-right:1px solid #d5d9e3;border-radius:0;padding:5px 8px 10px}
-.metric:last-child{border-right:0}
-.metric b{color:#005aff;font-style:italic;font-size:13px;font-weight:500;min-height:37px}
-.metric small{color:#677b9a}
-.metric button{color:#0058ed}
-.ring{width:98px;height:98px;background:conic-gradient(var(--c) calc(var(--pct)*1%),#e9edf4 0)}
-.ring-inner{width:75px;height:75px;color:#ff6700;font-size:24px;letter-spacing:-1.2px;font-weight:650}
-.ring[style*="--c:var(--green)"]{--green:#0060f5}
-.ring[style*="--c:var(--purple)"]{--purple:#1753db}
-.ring[style*="--c:var(--orange)"]{--orange:#ff6700}
-.statusrow{border:0;border-left:4px solid #ff6700;background:#fff7f0;border-radius:0}
-.statusrow b{color:#c94c00}
-.state-indicator{background:#ff6700}
-.summary-paper{border:0;border-left:2px solid #0a5dff;background:#fafbfe;border-radius:0}
-.summary-paper h3{color:#035aff;font-style:italic;font-weight:450}
-.proof{border:0;border-top:3px solid #ff6700;background:#f8faff;border-radius:0}
-.proof .line{border-left:3px solid #ff6700}
-.mark{background:#ffe5a7;border-radius:0}
-.mark:hover,.mark.selected{background:#ffd082;box-shadow:0 0 0 1px #ff8c35}
-.check{border:0;border-bottom:1px solid #dee4ee;border-radius:0;padding:15px 3px;color:#244b9e}
-.check:hover{background:#f4f8ff}.check span:first-child{font-weight:500}
-.check small{color:#e25b04}.check small.ok{color:#0657e8}
-.decisions{border-top:1px solid #e4e6ed;padding-top:22px}
-.notice{border-radius:0;border-left:3px solid #075bff}
-.source-box{border:1px solid #e4e8f0;border-radius:0}
-.source-highlight{background:#ffe4a0;border-radius:0}
-.tag{color:#0055ea;background:#edf3ff;border-radius:0}
-.mini-chart{border-bottom:1px solid #e1e4eb}.bar{background:#075cff;border-radius:0}.bar.alt{background:#ff6900}
-.section-actions{margin-top:24px}
-@media(min-width:1050px){
-  #dashboard .grid-2 > .panel:first-child{border-top:6px solid #005bff}
-  #dashboard .grid-2 > .panel:nth-child(2){border-top:6px solid #ff6700}
-}
-@media(max-width:750px){aside{padding:15px;border-right:0;border-bottom:1px solid #dde4ee}.layout{grid-template-columns:1fr}main{padding:24px 16px}.metric b{font-size:12px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.ring{width:79px;height:79px}.ring-inner{width:61px;height:61px;font-size:21px}}
-
-
-/* Real uploaded-document comparison workspace */
-.pdf-toolbar-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0 23px}
-.pdf-file-button{cursor:pointer;position:relative;display:inline-flex;align-items:center;gap:8px}
-.pdf-file-button input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.pdf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.pdf-column{min-width:0;background:#fff;border:1px solid #dfe5ef}
-.pdf-head{padding:16px 19px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:4px solid #005bff;border-bottom:1px solid #e4e9f2}
-.pdf-column:last-child .pdf-head{border-top-color:#ff6700}
-.pdf-head strong{display:block;color:#0557f4;font-size:17px;font-style:italic;font-weight:500}
-.pdf-head small{display:block;color:#64738d;overflow-wrap:anywhere;margin-top:3px}
-.pdf-head button{font-size:12px;white-space:nowrap;padding:7px 10px}
-.pdf-head button:disabled,.pdf-controls button:disabled,.pdf-search button:disabled{opacity:.42;cursor:not-allowed}
-.pdf-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:12px 16px;border-bottom:1px solid #e6e9f0}
-.pdf-controls button{border:1px solid #d3deec;background:#fff;color:#0058f6;padding:5px 11px;font-size:18px;min-width:33px}
-.pdf-controls label,.pdf-page-total,.pdf-zoom{font-size:12px;color:#506382}
-.pdf-controls input{border:1px solid #cfdaeb;width:54px;padding:5px;font-size:12px;color:#12366d}
-.pdf-zoom{min-width:39px;text-align:center}
-.pdf-search{display:flex;gap:8px;padding:12px 16px 8px}
-.pdf-search input{flex:1;min-width:0;border:1px solid #d6deea;padding:9px 10px;color:#1c3c6b}
-.pdf-search button{padding:8px 13px;font-size:12px}
-.pdf-matches{padding:0 16px;color:#48648e;font-size:12px;min-height:25px}
-.pdf-match{border:0;background:#f2f6ff;color:#0054e9;padding:5px 8px;margin:2px 5px 2px 0;cursor:pointer;font-size:12px}
-.pdf-stage{height:min(67vh,760px);min-height:360px;overflow:auto;background:#edf0f5;display:flex;justify-content:flex-start;align-items:flex-start;padding:20px;position:relative}
-.pdf-stage canvas{display:block;max-width:none;box-shadow:0 3px 16px #2c41642f;margin:auto;background:#fff}
-.pdf-placeholder{margin:auto;max-width:290px;text-align:center;line-height:1.75;color:#738098}
-.pdf-note{font-size:12px;line-height:1.5;color:#68758e;padding:0 16px 12px}
-.pdf-stage canvas[hidden]{display:none}
-@media(max-width:1020px){.pdf-grid{grid-template-columns:1fr}.pdf-stage{height:570px}}
-
+:root{--blue:#0656fa;--orange:#ff6700;--ink:#17233c;--muted:#61718b;--line:#e4e8f0;--panel:#f8faff;--error:#ae3e24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:14px/1.6 Arial,Helvetica,sans-serif;background:#fff;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #6fa5fa;outline-offset:2px}.shell{display:grid;grid-template-columns:215px minmax(0,1fr);min-height:100vh}.sidebar{border-right:1px solid var(--line);padding:30px 16px;display:flex;flex-direction:column;gap:32px}.brand{font-size:23px;font-weight:600;letter-spacing:-.7px;font-style:italic;color:var(--blue)}.brand span{display:inline-block;background:var(--orange);color:white;padding:2px 9px;margin-right:8px;font-style:normal}.sidecap{color:#8e9db5;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin:0 10px 12px}.nav{width:100%;display:block;border:0;border-left:3px solid transparent;background:#fff;color:#2d4d8c;text-align:left;padding:13px 10px;margin-bottom:5px}.nav.active,.nav:hover{border-left-color:var(--orange);background:#eff4ff;color:var(--blue)}.sidebar footer{margin-top:auto;color:#7a8aa5;font-size:12px;border-top:1px solid var(--line);padding-top:16px}.workspace{padding:32px clamp(18px,3vw,54px) 65px;min-width:0;max-width:1800px;width:100%;margin:auto}.topline{padding-bottom:19px;border-bottom:1px solid var(--line);color:#6880a6;font-size:12px;display:flex;justify-content:space-between}.hero{padding:29px 0 15px}.eyebrow{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--orange);font-style:italic;font-weight:bold}.hero h1{font-size:clamp(28px,3vw,44px);color:var(--blue);font-style:italic;font-weight:400;margin:6px 0;letter-spacing:-1.3px}.hero p{margin:0;color:#475c7c}.note{border-left:3px solid var(--orange);padding:12px 17px;background:#f8faff;color:#455c84;margin:17px 0;font-size:12px}.row{display:flex;gap:13px;align-items:center;flex-wrap:wrap}.primary,.secondary,.danger{padding:10px 15px;border:1px solid var(--blue);border-radius:0;font-weight:600;background:var(--blue);color:white}.secondary{background:white;color:var(--blue)}.danger{border-color:#b74738;background:#fff;color:#a43428}.card{border:1px solid var(--line);background:#fff;padding:22px;min-width:0}.card h2{color:var(--blue);font-size:22px;font-style:italic;font-weight:400;margin:0 0 10px}.kicker{color:var(--orange);text-transform:uppercase;letter-spacing:.09em;font-size:11px;font-weight:700;margin-bottom:8px}.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}.small{color:var(--muted);font-size:12px}.field{width:100%;max-width:560px;background:#fff;color:#183973;border:1px solid #cad7e9;padding:12px;margin:9px 0}.filelabel{display:inline-block;padding:10px 14px;border:1px solid var(--blue);color:var(--blue);cursor:pointer;font-weight:600;position:relative}.filelabel input{position:absolute;width:1px;height:1px;opacity:0}.fileline{padding:15px 0;border-bottom:1px solid var(--line)}.fileline strong{display:block;color:#0b4dd1;overflow-wrap:anywhere}.fileline:last-child{border:0}.overview{background:#f8faff;border-top:4px solid var(--orange)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:20px 0}.stat{padding:8px 12px;border-right:1px solid #dfe5f1}.stat:last-child{border-right:0}.stat label{display:block;color:var(--blue);font-style:italic;font-size:12px}.stat b{display:block;color:var(--orange);font-weight:400;font-size:31px;line-height:1.55}.stat small{color:#7283a2}.view{display:none}.view.active{display:block}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:11px 15px}.toolbar button{border:1px solid #c9d6e8;background:white;color:var(--blue);padding:5px 11px}.toolbar input[type=number]{width:56px;padding:5px;border:1px solid #ced8e9}.toolbar label{font-size:12px}.document{border:1px solid var(--line);min-width:0}.dochead{padding:14px 18px;border-top:5px solid var(--blue);border-bottom:1px solid var(--line)}.document:last-child .dochead{border-top-color:var(--orange)}.dochead h2{color:var(--blue);font-size:20px;font-style:italic;font-weight:400;margin:0}.dochead p{font-size:11px;color:#627492;margin:3px 0;overflow-wrap:anywhere}.canvaswrap{height:570px;overflow:auto;background:#edf0f5;padding:20px;text-align:center;position:relative}.pagewrap{position:relative;margin:0 auto;width:max-content;max-width:none;box-shadow:0 4px 17px #21324a33;background:white}.pagewrap canvas{display:block}.highlight{position:absolute;pointer-events:none;background:rgba(255,176,0,.32);box-shadow:inset 0 0 0 1px #e77a00}.searchrow{padding:10px 15px;display:flex;gap:8px}.searchrow input{flex:1;min-width:0;border:1px solid #cbd6e8;padding:8px}.searchresult{padding:0 15px 10px;min-height:28px;font-size:12px;color:#59708c}.matchbutton{border:0;background:#edf3ff;color:var(--blue);padding:4px 7px;margin:2px}.status{background:#f1f5ff;color:#18549a;border-left:3px solid var(--blue);padding:10px 15px;font-size:12px;margin-top:12px;overflow-wrap:anywhere}.status.error{background:#fff3ec;color:var(--error);border-left-color:var(--orange)}.claims{display:grid;gap:11px;max-height:690px;overflow:auto;padding-right:4px}.claim{border:1px solid #dfe5f0;padding:14px;background:white}.claim-head{display:flex;gap:8px;align-items:center;justify-content:space-between}.claim p{margin:7px 0;color:#1b3050}.claim small{color:#627591}.match{border-top:1px solid #edf0f6;margin-top:11px;padding-top:10px;font-size:12px}.match strong{color:var(--blue);font-weight:600}.match blockquote{margin:7px 0;background:#f8faff;padding:9px 11px;color:#455777;border-left:2px solid var(--orange)}.empty{text-align:center;padding:32px;color:#6b7c98}.tag{display:inline-block;font-size:10px;letter-spacing:.05em;padding:3px 7px;background:#eaf1ff;color:#1153ba;text-transform:uppercase}.tag.warning{background:#fff2e6;color:#ae5410}.progress{height:7px;background:#e8ecf3;margin:10px 0}.progress span{display:block;background:var(--orange);height:100%;width:0}.decision{border-top:1px solid var(--line);padding-top:15px;margin-top:17px}.two{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:20px}.muted{color:var(--muted)}.mini{font-size:11px}.foot{margin-top:24px;color:#7d8ca6;font-size:12px}.action-note{margin-top:12px;padding:10px;border-left:3px solid var(--blue);background:#f3f6fb;display:none}.action-note.visible{display:block}@media(max-width:1100px){.grid,.two{grid-template-columns:1fr}}@media(max-width:760px){.shell{grid-template-columns:1fr}.sidebar{gap:10px;padding:13px;border-right:0;border-bottom:1px solid var(--line)}.sidebar footer{display:none}.navbox{display:flex;gap:4px}.nav{width:auto;padding:8px;margin:0}.workspace{padding:15px}.stats{grid-template-columns:1fr 1fr}.canvaswrap{height:480px}}
 </style>
 </head>
-<body>
-<div class="layout">
-<aside>
- <div class="brand"><span class="brandmark">✓</span> SummaryCheck</div>
- <div><p class="aside-label">Werkruimte</p><nav aria-label="Hoofdnavigatie">
-  <button class="nav-button active" data-view="dashboard">▦ &nbsp; Dashboard</button>
-  <button class="nav-button" data-view="analysis">◈ &nbsp; Samenvatting</button>
-  <button class="nav-button" data-view="source">▤ &nbsp; Brondocument</button>
-  <button class="nav-button" data-view="viewer">▣ &nbsp; PDF-viewer</button>
-  <button class="nav-button" data-view="engineer">☷ &nbsp; Engineer view</button>
- </nav></div>
- <div class="aside-bottom">Ontwerpiteratie 01<br>Interactieve demo · geen live AI<br>Geen gegevens worden verzonden</div>
-</aside>
-<main>
- <div class="top"><div class="crumb">SummaryCheck / <span id="breadcrumb">Dashboard</span></div><div class="user">Analist <span aria-hidden="true">◉</span></div></div>
- <div class="demo"><strong>Interactief ontwerpvoorbeeld</strong> — alle scores en tekstfragmenten zijn fictief. PDF-upload en de PDF-viewer werken echt, lokaal in deze browser. De evaluatiescores en voorbeeldclaims blijven illustratief; 'percentage correcte claims' is niet automatisch een gevalideerde betrouwbaarheidsscore.</div>
- <section class="section active" id="dashboard">
- <header class="hero"><span class="eyebrow">Overzicht</span><h1>Controleer je financiële samenvatting</h1><p>Start met een brondocument en bekijk welke informatie extra aandacht vraagt.</p></header>
- <div class="grid-2">
-  <article class="panel"><div class="chip">STAP 01 · BRONDOCUMENT</div><h2 style="margin-top:15px">Nieuw document</h2><p class="sub">Kies een rapport voor een controle. De prototype-upload voert geen automatische verwerking uit.</p>
-    <div class="upload"><div class="emoji" aria-hidden="true">⇧</div><strong id="upload-title">Sleep een PDF hierheen of selecteer een bestand</strong><span class="sub">PDF · lokale verwerking, geen server-upload</span><br><span class="primary">Bestand selecteren</span><input id="upload" type="file" accept=".pdf,application/pdf" aria-label="Selecteer PDF-brondocument"></div>
-    <div class="meta"><span class="chip success">Upload beschikbaar</span><span id="raw-upload-info">Nog geen brondocument geselecteerd</span></div>
-    <div class="progress" aria-label="PDF-inleesvoortgang"><span id="upload-progress" style="width:0%"></span></div><div class="meta" style="justify-content:space-between"><span id="upload-status">Wacht op PDF</span><b id="upload-percent">0%</b></div>
-    <div class="section-actions"><label class="secondary" style="display:inline-block;cursor:pointer">Samenvatting uploaden <input id="summary-upload" type="file" accept=".pdf,application/pdf" style="position:absolute;left:-10000px"></label><span class="sub" id="summary-upload-info">Geen samenvatting geladen</span></div>
-    <div class="section-actions"><button class="primary" data-go="viewer">Open echte PDF-viewer →</button><button class="secondary" data-go="analysis">Bekijk ontwerp-demo →</button></div>
-  </article>
-  <article class="panel"><div class="chip warn">STAP 02 · EVALUATIE</div><h2 style="margin-top:15px">Resultaat in één oogopslag</h2><p class="sub">Drie indicatoren uit de whiteboardschets, hier uitgewerkt als afzonderlijke demo-maten.</p>
-   <div class="stats">
-    <div class="metric"><b>Claimcontrole</b><div class="ring" style="--pct:75;--c:var(--green)"><div class="ring-inner">75%</div></div><small>Gecontroleerde claims</small><button data-go="analysis">Details</button></div>
-    <div class="metric"><b>Dekking</b><div class="ring" style="--pct:35;--c:var(--purple)"><div class="ring-inner">35%</div></div><small>Relevante onderwerpen</small><button data-go="analysis">Details</button></div>
-    <div class="metric"><b>Compressie</b><div class="ring" style="--pct:92;--c:var(--orange)"><div class="ring-inner">92%</div></div><small>Tekstreductie</small><button data-go="analysis">Details</button></div>
-   </div>
-   <div class="statusrow"><span class="state-indicator"></span><div><b>Controle nodig</b><div class="sub">In deze demo is één voorbeeldclaim niet bevestigd. Beoordeling blijft bij de analist.</div></div></div>
-   <button class="primary" data-go="analysis">Open samenvatting →</button>
-  </article>
- </div>
- </section>
- <section class="section" id="analysis">
-  <header class="hero"><span class="eyebrow">Documentanalyse</span><h1>Rabobank — Jaarverslag 2025</h1><p>Evaluatieoverzicht · fictief voorbeeld · 3 illustratieve indicatoren</p></header>
-  <div class="grid-2">
-  <article class="panel"><div class="chip warn">ROUTEVOORSTEL · CONTROLEREN</div>
-   <div class="results-title"><h2>Samenvatting</h2><span class="tag">Voorbeeldtekst</span></div>
-   <div class="summary-area">
-     <div class="summary-paper"><h3>Financiële prestaties</h3><p>De organisatie rapporteert positieve operationele ontwikkelingen over de verslagperiode. <button class="mark selected" id="claim" title="Bekijk claimcontrole">De omzet steeg met 12%.</button> Deze zin wordt in deze demonstratie gemarkeerd voor verdere verificatie.</p><p>De samenvatting bevat daarnaast informatie over risicomanagement, financiering en kapitaalpositie. De inhoud van dit scherm is niet overgenomen uit een werkelijk jaarverslag.</p><p class="sub">Klik op de gemarkeerde claim om de bijbehorende broncontrole te bekijken.</p></div>
-     <div class="proof" id="proof"><strong>↗ Geselecteerde claim</strong><p>“De omzet steeg met 12%.”</p><div class="line"><strong>Onvoldoende bewijs</strong>In het fictieve voorbeeld is geen bevestigende bronpassage gekoppeld.</div><button class="secondary" data-openpdf="raw">Open geüploade bron ↗</button><p class="footnote">Een ontbrekende match bewijst niet automatisch dat de claim onjuist is.</p></div>
-   </div>
-   <div class="results-title"><h2>Uitgevoerde voorbeeldchecks</h2></div>
-   <div class="checks"><button class="check" data-go="viewer"><span>Brononderbouwing van claims</span><small>⚠ Controle nodig →</small></button><button class="check" data-go="source"><span>Dekking van relevante onderwerpen</span><small>⚠ Beperkt →</small></button><button class="check" data-go="source"><span>Compressieratio</span><small class="ok">✓ Berekend (demo) →</small></button></div>
-  </article>
-  <article class="panel"><h2>Evaluatie-indicatoren</h2><p class="sub">Voorbeeldcijfers, niet afkomstig uit een modelrun.</p>
-   <div class="stats"><div class="metric"><b>Claimcontrole</b><div class="ring" style="--pct:75;--c:var(--green)"><div class="ring-inner">75%</div></div><small>3/4 in demo</small></div>
-   <div class="metric"><b>Dekking</b><div class="ring" style="--pct:35;--c:var(--purple)"><div class="ring-inner">35%</div></div><small>Demomaat</small></div>
-   <div class="metric"><b>Compressie</b><div class="ring" style="--pct:92;--c:var(--orange)"><div class="ring-inner">92%</div></div><small>Demomaat</small></div></div>
-   <div class="divider"></div><h2>Jouw beslissing</h2><p class="sub">De voorgestelde route is niet bindend. Controleer de informatie en leg vervolgens je keuze vast.</p>
-   <div class="buttonrow"><button class="primary" data-decision="Vertrouwen">Vertrouwen</button><button class="secondary" data-decision="Controleren">Controleren</button><button class="outline-red" data-decision="Afwijzen">Afwijzen</button></div>
-   <p role="status" id="decision-result" class="notice"></p>
-   <div class="divider"></div><button class="secondary" id="feedback-button">Meld een probleem</button><p role="status" id="feedback-result" class="notice"></p>
-   <p class="footnote"><b>Human-in-the-loop:</b> dit is een gebruikerskeuze, geen automatisch besluit.</p>
-  </article></div>
- </section>
- <section class="section" id="source">
- <header class="hero"><span class="eyebrow">Traceerbaarheid</span><h1>Claim en brondocument</h1><p>Voorbeeld van gekoppelde documentpassages en een ontbrekend bewijsverband.</p></header>
- <div class="view-2"><article class="panel"><h2>Geselecteerde zin uit samenvatting</h2><div class="summary-paper" style="margin-top:17px"><p><span class="source-highlight">De omzet steeg met 12%.</span></p></div><div class="statusrow" style="margin-top:19px"><span class="state-indicator"></span><div><b>Onvoldoende bewijs</b><div class="sub">Deze fictieve claim is niet bevestigd door de hier getoonde passage.</div></div></div><button class="secondary" data-go="analysis">← Terug naar samenvatting</button><button class="primary" data-openpdf="raw" style="margin-left:8px">Open echte bron-PDF</button></article>
- <article class="panel"><div class="results-title"><h2>Originele bron — demonstratie</h2><span class="tag">Niet uit echte PDF</span></div><div class="source-box"><b>Pagina 42 · voorbeeldpassage</b><p>De organisatie beschrijft ontwikkelingen in de financiële resultaten en de operationele bedrijfsvoering. <span class="source-highlight">De passage bevat geen verifieerbare bevestiging van een omzetstijging met 12%.</span></p><p class="sub">In een latere iteratie kan hier een echte PDF-viewer met paginanummers en bronhighlights worden geplaatst.</p></div></article></div></section>
- <section class="section" id="viewer">
-<header class="hero"><span class="eyebrow">Lokale documentcontrole · PDF.js</span><h1>Bronviewer &amp; samenvatting</h1><p>Bekijk echte PDF-documenten en doorzoek de tekst. De bestanden worden uitsluitend in je browser geopend.</p></header>
-<div class="pdf-toolbar-top">
-  <label class="secondary pdf-file-button">Upload origineel <input id="viewer-raw-input" type="file" accept=".pdf,application/pdf"></label>
-  <label class="secondary pdf-file-button">Upload samenvatting <input id="viewer-summary-input" type="file" accept=".pdf,application/pdf"></label>
-  <span class="sub" id="pdf-loaded-state" role="status">Nog geen PDF geladen.</span>
-</div>
-<div class="pdf-grid">
- <article class="pdf-column">
-  <div class="pdf-head"><div><strong>Origineel brondocument</strong><small id="raw-file-label">Geen bestand gekozen</small></div><button class="secondary" id="raw-download" disabled>Open PDF ↗</button></div>
-  <div class="pdf-controls">
-    <button id="raw-prev" title="Vorige pagina" aria-label="Vorige bronpagina" disabled>‹</button>
-    <label>Pagina <input id="raw-page" type="number" min="1" value="1" aria-label="Bronpaginanummer" disabled></label><span class="pdf-page-total" id="raw-pages">/ 0</span>
-    <button id="raw-next" title="Volgende pagina" aria-label="Volgende bronpagina" disabled>›</button>
-    <button id="raw-zoomout" disabled title="Uitzoomen">−</button><span id="raw-zoom" class="pdf-zoom">100%</span><button id="raw-zoomin" disabled title="Inzoomen">+</button>
-  </div>
-  <div class="pdf-search"><input type="search" id="raw-search" placeholder="Zoek tekst in brondocument..." aria-label="Zoek in brondocument" disabled><button id="raw-find" class="primary" disabled>Zoek</button></div>
-  <div class="pdf-matches" id="raw-matches" aria-live="polite"></div>
-  <div class="pdf-stage" id="raw-stage"><div class="pdf-placeholder" id="raw-placeholder">Upload een originele PDF om deze hier te bekijken.</div><canvas id="raw-canvas" hidden aria-label="Bronpagina"></canvas></div>
-  <p class="pdf-note" id="raw-info">Zoekresultaten springen naar de juiste PDF-pagina. De tekst wordt lokaal uitgelezen als die aanwezig is.</p>
- </article>
- <article class="pdf-column">
-  <div class="pdf-head"><div><strong>AI-samenvatting</strong><small id="summary-file-label">Geen bestand gekozen</small></div><button class="secondary" id="summary-download" disabled>Open PDF ↗</button></div>
-  <div class="pdf-controls">
-    <button id="summary-prev" aria-label="Vorige samenvattingspagina" disabled>‹</button>
-    <label>Pagina <input id="summary-page" type="number" min="1" value="1" aria-label="Samenvattingspaginanummer" disabled></label><span class="pdf-page-total" id="summary-pages">/ 0</span>
-    <button id="summary-next" aria-label="Volgende samenvattingspagina" disabled>›</button>
-    <button id="summary-zoomout" disabled title="Uitzoomen">−</button><span id="summary-zoom" class="pdf-zoom">100%</span><button id="summary-zoomin" disabled title="Inzoomen">+</button>
-  </div>
-  <div class="pdf-search"><input type="search" id="summary-search" placeholder="Zoek tekst in samenvatting..." aria-label="Zoek in samenvatting" disabled><button id="summary-find" class="primary" disabled>Zoek</button></div>
-  <div class="pdf-matches" id="summary-matches" aria-live="polite"></div>
-  <div class="pdf-stage" id="summary-stage"><div class="pdf-placeholder" id="summary-placeholder">Upload de AI-samenvatting om beide documenten naast elkaar te vergelijken.</div><canvas id="summary-canvas" hidden aria-label="Samenvattingspagina"></canvas></div>
-  <p class="pdf-note" id="summary-info">PDF-weergave en tekstzoekfunctie zijn echt; claimvalidatie en automatische highlights volgen later.</p>
- </article>
-</div>
-<p class="demo"><strong>Privacy en beperkingen:</strong> het bestand blijft op het apparaat. PDF.js wordt vanaf een externe CDN geladen; zonder internetverbinding kan de viewer daardoor niet initialiseren. Doorzoekbare tekst vereist dat de PDF een tekstlaag bevat; voor gescande documenten is OCR nodig. Deze versie verifieert nog geen claims automatisch.</p>
-</section>
-<section class="section" id="engineer">
- <header class="hero"><span class="eyebrow">Onderzoeksperspectief</span><h1>AI-engineer · evaluatieoverzicht</h1><p>Concept voor het vergelijken van modelversies; alle getallen zijn uitsluitend demonstratief.</p></header>
- <div class="grid-2"><article class="panel"><h2>Modelvergelijking (fictief)</h2><p class="sub">Zelfde testset en beoordelingscriteria worden verondersteld.</p><div class="mini-chart"><div class="bar" style="height:58%"><span>v0</span></div><div class="bar alt" style="height:76%"><span>v1</span></div></div><p class="footnote" style="margin-top:42px">Een grafisch verschil vormt geen bewijs van een betere versie; dit vergt een vast evaluatieprotocol.</p></article><article class="panel"><h2>Wat moet onderzocht worden?</h2><div class="checks" style="margin-top:18px"><div class="check"><span>Feitelijke claims</span><small class="err">Demo</small></div><div class="check"><span>Dekking</span><small>Demo</small></div><div class="check"><span>Gemiste fouten vs. onterechte waarschuwingen</span><small>Niet gemeten</small></div></div><p class="footnote">Een vervolgitera­tie kan echte precision/recall-curves en analyse van fouttypen toevoegen.</p></article></div>
- </section>
+<body><div class="shell">
+<aside class="sidebar"><div class="brand"><span>✓</span>SummaryCheck</div><div><div class="sidecap">Analysewerkruimte</div><nav class="navbox" aria-label="Navigatie"><button class="nav active" data-view="dashboard">▦ &nbsp; Dashboard</button><button class="nav" data-view="compare">▤ &nbsp; Documentviewer</button><button class="nav" data-view="claims">⌕ &nbsp; Bronverwijzingen</button></nav></div><footer>Ontwerpiteratie 01<br>Werkende PDF-vergelijking · lokale extractie<br>Geen AI-claimverificatie</footer></aside>
+<main class="workspace"><header class="topline"><span>SummaryCheck / <span id="breadcrumb">Dashboard</span></span><span>Analist · concept</span></header>
+<div class="note"><strong>Documentcontrole met echte bestanden.</strong> PDF-pagina's, tekstfragmenten en eventuele bronverwijzingen komen uit de gekozen documenten. Bronverwijzingen zijn <strong>automatisch gevonden tekstovereenkomsten</strong>, geen geverifieerde feiten of AI-betrouwbaarheidsscores.</div>
+<section class="view active" id="dashboard"><div class="hero"><span class="eyebrow">01 / Documentselectie</span><h1>Van jaarverslag naar controleerbare samenvatting</h1><p>Open een bestaand documentpaar uit de dataset of gebruik twee eigen PDF-bestanden.</p></div>
+<div class="grid"><article class="card"><div class="kicker">Documentpaar</div><h2>Selecteer een rapport</h2><p class="small">De volgende documenten staan in de repository. Selecteer een organisatie om de originele v0-PDF en de v0-samenvatting te laden.</p><label for="dataset">Beschikbaar documentpaar</label><select class="field" id="dataset"><option value="RABO">Rabobank · Annual Report 2025</option><option value="ING">ING · Annual Report 2025</option><option value="ABN">ABN AMRO · Annual Report 2025</option></select><div class="row"><button id="load-repo" class="primary">Laad documentpaar</button><span class="small">PDF's worden vanuit de repository opgehaald.</span></div><div class="status" id="repo-status" aria-live="polite">Nog geen document geladen.</div></article>
+<article class="card"><div class="kicker">Eigen bestanden</div><h2>Upload PDF's</h2><p class="small">Je kunt ook lokale bestanden selecteren. Deze worden in je browser verwerkt en niet naar een applicatieserver geüpload.</p>
+<div class="fileline"><strong id="raw-file">Brondocument: nog niet geselecteerd</strong><label class="filelabel">Kies origineel rapport <input id="raw-input" type="file" accept=".pdf,application/pdf"></label></div>
+<div class="fileline"><strong id="summary-file">Samenvatting: nog niet geselecteerd</strong><label class="filelabel">Kies samenvatting <input id="summary-input" type="file" accept=".pdf,application/pdf"></label></div>
+<div class="status" id="file-status" aria-live="polite">Beide PDF's zijn nodig voor de bronverwijzingsanalyse. Je kunt een enkel bestand alvast bekijken.</div></article></div>
+<div class="grid" style="margin-top:20px"><article class="card overview"><div class="kicker">Live documentgegevens</div><h2>Gegevens uit de ingelezen PDF's</h2><div class="stats"><div class="stat"><label>Bronpagina's</label><b id="raw-pages-stat">—</b><small>PDF-telling</small></div><div class="stat"><label>Samenvattingspagina's</label><b id="summary-pages-stat">—</b><small>PDF-telling</small></div><div class="stat"><label>Tekstreductie</label><b id="reduction-stat">—</b><small>Indicatie op basis van geëxtraheerde woorden</small></div></div><div class="progress"><span id="index-progress"></span></div><p class="small" id="index-status" role="status">Geen bronindex opgebouwd.</p><div class="row"><button class="primary" data-go="compare">Open documentviewer →</button><button class="secondary" data-go="claims">Bekijk mogelijke bronverwijzingen →</button></div></article>
+<article class="card"><div class="kicker">Zo werkt de controle</div><h2>Transparante bronkoppeling</h2><p>De applicatie extraheert tekst uit de PDF-samenvatting en het brondocument. Zinnen uit de samenvatting worden gekoppeld aan <strong>mogelijk relevante bronpagina's</strong> via exacte woorden en tekstoverlap.</p><p class="small">Een tekstovereenkomst toont alleen waar vergelijkbare informatie staat. Een claim kan desondanks onjuist, misleidend of onvolledig zijn. Zonder voldoende overeenkomst wordt geen bronverwijzing voorgesteld.</p><span class="tag warning">Geen fictieve kwaliteitsscores</span></article></div></section>
+<section class="view" id="compare"><div class="hero"><span class="eyebrow">02 / Documentviewer</span><h1>Origineel en samenvatting naast elkaar</h1><p>Bekijk echte PDF-pagina's, blader zelfstandig en zoek rechtstreeks in de documenttekst.</p></div><div class="grid">
+<article class="document"><header class="dochead"><h2>Origineel jaarverslag</h2><p id="raw-docname">Nog geen PDF geladen</p></header><div class="toolbar"><button id="raw-prev" disabled aria-label="Vorige bronpagina">‹</button><label>Pagina <input type="number" id="raw-page" min="1" value="1" disabled></label><span id="raw-total" class="small">/ 0</span><button id="raw-next" disabled aria-label="Volgende bronpagina">›</button><button id="raw-out" disabled>−</button><span id="raw-zoom" class="small">100%</span><button id="raw-in" disabled>+</button></div><div class="searchrow"><input type="search" id="raw-search" placeholder="Zoek in origineel" disabled><button id="raw-find" class="secondary" disabled>Zoek</button></div><div id="raw-results" class="searchresult" aria-live="polite"></div><div class="canvaswrap" id="raw-stage"><div id="raw-placeholder" class="empty">Selecteer eerst een PDF op het dashboard.</div><div class="pagewrap" id="raw-pagewrap" hidden><canvas id="raw-canvas"></canvas><div id="raw-overlay"></div></div></div></article>
+<article class="document"><header class="dochead"><h2>AI-samenvatting</h2><p id="summary-docname">Nog geen PDF geladen</p></header><div class="toolbar"><button id="summary-prev" disabled aria-label="Vorige samenvattingspagina">‹</button><label>Pagina <input type="number" id="summary-page" min="1" value="1" disabled></label><span id="summary-total" class="small">/ 0</span><button id="summary-next" disabled aria-label="Volgende samenvattingspagina">›</button><button id="summary-out" disabled>−</button><span id="summary-zoom" class="small">100%</span><button id="summary-in" disabled>+</button></div><div class="searchrow"><input type="search" id="summary-search" placeholder="Zoek in samenvatting" disabled><button id="summary-find" class="secondary" disabled>Zoek</button></div><div id="summary-results" class="searchresult" aria-live="polite"></div><div class="canvaswrap" id="summary-stage"><div id="summary-placeholder" class="empty">Laad een samenvattings-PDF om te vergelijken.</div><div class="pagewrap" id="summary-pagewrap" hidden><canvas id="summary-canvas"></canvas><div id="summary-overlay"></div></div></div></article></div><div class="row" style="margin-top:18px"><button class="primary" data-go="claims">Controleer bronverwijzingen →</button><span class="small">De viewer laat de werkelijke PDF-pagina's zien.</span></div></section>
+<section class="view" id="claims"><div class="hero"><span class="eyebrow">03 / Evidence exploration</span><h1>Van samenvattingszin naar mogelijke bron</h1><p>Automatisch voorgestelde bronpagina's, gebaseerd op tekstoverlap met het originele rapport.</p></div><div class="two"><article class="card"><h2>Zinnen uit de echte samenvatting</h2><div class="status" id="claim-status" aria-live="polite">Laad beide PDF's om de bronkoppeling te berekenen.</div><div class="row" style="margin:15px 0"><label class="small" for="claim-filter">Filter</label><select id="claim-filter" class="field" style="max-width:190px;margin:0"><option value="all">Alle zinnen</option><option value="matches">Met mogelijke bron</option><option value="none">Zonder bronvoorstel</option></select><button class="secondary" id="more-claims" disabled>Meer zinnen tonen</button></div><div id="claim-list" class="claims"><div class="empty">Er zijn nog geen samenvattingszinnen beschikbaar.</div></div></article>
+<article class="card"><div class="kicker">Geselecteerde zin</div><h2>Broncontrole</h2><p class="small" id="selected-claim">Selecteer een zin om mogelijke bronpassages te zien.</p><div id="suggestions" class="claims"><div class="empty">Er is nog geen bronpagina geselecteerd.</div></div><div class="decision"><h2>Menselijke beoordeling</h2><p class="small">Een match is geen factcheck. De analist kan de betreffende pagina openen en zelf beoordelen of de inhoud klopt.</p><div class="row"><button class="primary" data-decision="Gecontroleerd">Gecontroleerd</button><button class="secondary" data-decision="Verder onderzoeken">Verder onderzoeken</button><button class="danger" data-decision="Afwijzen">Afwijzen</button></div><div id="decision-result" class="action-note" role="status"></div></div></article></div></section>
+<footer class="foot">SummaryCheck · Iteratie 01 · Documentbron: eigen upload of gekoppelde GitHub-dataset. Zoek- en bronvoorstellen worden lokaal opgebouwd; geen AI-oordeel. Externe PDF.js-code wordt via een CDN geladen.</footer>
 </main></div>
-<script>
-(function(){
-const nav=[...document.querySelectorAll('[data-view]')],sections=[...document.querySelectorAll('.section')],breadcrumb=document.getElementById('breadcrumb');
-function go(id){if(!document.getElementById(id))return;sections.forEach(s=>s.classList.toggle('active',s.id===id));nav.forEach(n=>{let on=n.dataset.view===id;n.classList.toggle('active',on);n.setAttribute('aria-current',on?'page':'false')});breadcrumb.textContent=({dashboard:'Dashboard',analysis:'Samenvatting',source:'Brondocument',viewer:'PDF-viewer',engineer:'Engineer view'})[id];window.scrollTo({top:0,behavior:'auto'});}
-document.querySelectorAll('[data-view],[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view||b.dataset.go)));
-document.getElementById('upload').addEventListener('change',e=>{const f=e.target.files[0];if(f){document.getElementById('upload-title').textContent=f.name;document.getElementById('upload-title').style.color='#234a78';}});
-document.getElementById('claim').addEventListener('click',()=>document.getElementById('proof').scrollIntoView({behavior:'smooth',block:'center'}));
-document.querySelectorAll('[data-decision]').forEach(b=>b.addEventListener('click',()=>{const p=document.getElementById('decision-result');p.textContent='Demo-beslissing vastgelegd: '+b.dataset.decision+'. Dit wordt niet naar een server verzonden.';p.classList.add('visible');}));
-document.getElementById('feedback-button').addEventListener('click',()=>{const p=document.getElementById('feedback-result');p.textContent='Demo: feedbackfunctie geselecteerd. In een volgende iteratie volgt een formulier voor fouttype en toelichting.';p.classList.add('visible');});
-})();
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
-/* PDF.js: real, local-only PDF loading, rendering, navigation and text search.
-   Demo scoring deliberately remains separate from document capabilities. */
-(function(){
+(()=>{
 'use strict';
 const $=id=>document.getElementById(id);
-const state={raw:{pdf:null,page:1,zoom:1,renderTask:null,token:0,objectUrl:null,file:null,searchToken:0},summary:{pdf:null,page:1,zoom:1,renderTask:null,token:0,objectUrl:null,file:null,searchToken:0}};
-const LIMIT=80*1024*1024;
-function msg(which,text){$(which+'-info').textContent=text;}
-function view(which){document.querySelector('[data-view="viewer"]').click();if(!state[which].pdf)$(which+'-file-label').textContent='Upload eerst een '+(which==='raw'?'origineel rapport':'samenvatting');}
-function setControls(which,ready){for(const id of ['prev','next','page','zoomout','zoomin','search','find','download'])$(which+'-'+id).disabled=!ready;}
-async function load(which,file){
- if(!file)return;
- if(!(/\.pdf$/i.test(file.name)||file.type==='application/pdf')){msg(which,'Dit is geen PDF-bestand. Selecteer een PDF.');return;}
- if(file.size>LIMIT){msg(which,'Bestand te groot voor deze demo (maximaal 80 MB).');return;}
- if(typeof window.pdfjsLib==='undefined'){msg(which,'PDF.js kon niet geladen worden. Controleer internetverbinding en laad de pagina opnieuw.');return;}
- const s=state[which];const token=++s.token;s.searchToken++;setControls(which,false);
- $(which+'-file-label').textContent='PDF wordt geladen: '+file.name;msg(which,'PDF wordt lokaal geopend…');$(which+'-matches').textContent='';
- try{
-   pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-   const data=new Uint8Array(await file.arrayBuffer());if(token!==s.token)return;
-   const doc=await pdfjsLib.getDocument({data}).promise;if(token!==s.token){await doc.destroy();return;}
-   if(s.renderTask){try{await s.renderTask.cancel()}catch(e){}}
-   if(s.pdf)await s.pdf.destroy();
-   if(s.objectUrl)URL.revokeObjectURL(s.objectUrl);
-   s.objectUrl=URL.createObjectURL(file);s.pdf=doc;s.file=file;s.page=1;s.zoom=1;
-   $(which+'-file-label').textContent=file.name;$(which+'-pages').textContent='/ '+doc.numPages;
-   $(which+'-page').max=doc.numPages;$(which+'-page').value=1;
-   $(which+'-zoom').textContent='100%';
-   $(which+'-placeholder').hidden=true;setControls(which,true);
-   await render(which);
-   msg(which,doc.numPages+' PDF-pagina’s geladen. Pagina’s en zoekbare tekst komen rechtstreeks uit dit bestand.');
-   $('pdf-loaded-state').textContent=(state.raw.file?'Bron: '+state.raw.file.name:'Bron niet geladen')+' | '+(state.summary.file?'Samenvatting: '+state.summary.file.name:'Samenvatting niet geladen');
-   if(which==='raw'){$('upload-title').textContent=file.name;$('raw-upload-info').textContent=file.name;$('upload-progress').style.width='100%';$('upload-status').textContent='PDF lokaal geladen';$('upload-percent').textContent='100%';}
-   else $('summary-upload-info').textContent=file.name;
- }catch(e){if(token!==s.token)return;msg(which,'Kon PDF niet openen: '+(e.message||'onbekende fout')+'. Mogelijk versleuteld of beschadigd.');$(which+'-file-label').textContent='Kon PDF niet openen';}
+const files={raw:{pdf:null,file:null,pages:[],page:1,zoom:1,renderTask:null,token:0,words:0,highlight:[]},summary:{pdf:null,file:null,pages:[],page:1,zoom:1,renderTask:null,token:0,words:0,highlight:[]}};
+const repoBase='https://raw.githubusercontent.com/wanderwerkhoven-afk/MAAIblok2/main/data/';
+const list={RABO:'RABO',ING:'ING',ABN:'ABN'};
+let datasetToken=0,indexToken=0,linkToken=0,claims=[],activeClaim=null,visibleCount=18;
+const stopwords=new Set(('de het een en van in op met voor door naar uit aan bij als is zijn was waren wordt worden dat die dit deze der te tot om ook nog dan er men meer over onder tussen ten aan hier daar hun zij hij haar heeft hebben had door voor or the and of to from for with as at is are was were be been this that those these into has have had can will on not by its which their more than our we it an a or if all using based'.split(/\s+/)));
+function navigate(view){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===view));document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===view));$('breadcrumb').textContent=({dashboard:'Dashboard',compare:'Documentviewer',claims:'Bronverwijzingen'})[view];window.scrollTo(0,0);}
+document.querySelectorAll('[data-view],[data-go]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.view||b.dataset.go)));
+function say(id,t,isError=false){$(id).textContent=t;$(id).classList.toggle('error',isError);}
+function tokenize(s){return(s.toLocaleLowerCase('nl').match(/[\p{L}\p{N}]+/gu)||[]).filter(w=>w.length>=3&&!stopwords.has(w));}
+function words(s){return(s.match(/[\p{L}\p{N}]+/gu)||[]).length;}
+function pdfText(items){return items.map(x=>x.str||'').join(' ').replace(/\s+/g,' ').trim();}
+function validate(file){if(!file)return false;if(!/\.pdf$/i.test(file.name)&&file.type!=='application/pdf')throw Error('Selecteer een PDF-bestand.');if(file.size>80*1024*1024)throw Error('Bestand groter dan 80 MB.');return true;}
+async function loadDoc(which,data,name){
+ if(!window.pdfjsLib)throw Error('PDF.js kon niet laden. Controleer de internetverbinding.');
+ const s=files[which],token=++s.token;s.pages=[];s.highlight=[];s.words=0;const pdf=await pdfjsLib.getDocument({data}).promise;
+ if(token!==s.token){await pdf.destroy();return;}
+ if(s.renderTask)try{s.renderTask.cancel();await s.renderTask.promise;}catch(e){}
+ if(s.pdf)await s.pdf.destroy();
+ s.pdf=pdf;s.file=name;s.page=1;s.zoom=1;
+ $(which+'-docname').textContent=name;$(which+'-file').textContent=(which==='raw'?'Brondocument: ':'Samenvatting: ')+name;$(which+'-placeholder').hidden=true;
+ $(which+'-pagewrap').hidden=false;$(which+'-total').textContent='/ '+pdf.numPages;$(which+'-page').max=pdf.numPages;
+ for(const control of ['prev','next','page','in','out','search','find'])$(which+'-'+control).disabled=false;
+ $(which+'-pages-stat').textContent=pdf.numPages;
+ await render(which);
+ return token;
 }
+async function loadInput(which,file){try{if(!validate(file))return;say('file-status','PDF wordt lokaal geladen: '+file.name);const buffer=new Uint8Array(await file.arrayBuffer());await loadDoc(which,buffer,file.name);say('file-status','PDF geladen: '+file.name+'. Je kunt deze nu in de viewer openen.');indexDocuments();}catch(e){say('file-status',e.message,true);}}
+$('raw-input').addEventListener('change',e=>loadInput('raw',e.target.files[0]));
+$('summary-input').addEventListener('change',e=>loadInput('summary',e.target.files[0]));
+$('load-repo').addEventListener('click',async()=>{
+ const token=++datasetToken,prefix=list[$('dataset').value],root=prefix+'_Annual_Report_2025';
+ const all=[['raw',root+'_v0.pdf'],['summary',root+'_Summary_v0.pdf']];
+ say('repo-status','Documenten laden vanuit de repository…');
+ try{
+  const retrieved=await Promise.all(all.map(async([which,name])=>{const url=repoBase+(which==='raw'?'raw/':'summaries/')+name;const res=await fetch(url);if(!res.ok)throw Error('Download mislukt ('+res.status+'): '+name);return {which,name,data:new Uint8Array(await res.arrayBuffer())};}));
+  if(token!==datasetToken)return;
+  await Promise.all(retrieved.map(x=>loadDoc(x.which,x.data,x.name)));
+  say('repo-status','Bron en samenvatting geladen: '+root+'. Je kunt nu de originele documenten vergelijken.');
+  navigate('compare');indexDocuments();
+ }catch(e){say('repo-status','Kon de dataset niet laden: '+e.message+'. Gebruik de lokale uploadvelden als alternatief.',true);}
+});
 async function render(which){
- const s=state[which];if(!s.pdf)return;
- const token=++s.token;const pageNo=Math.max(1,Math.min(s.pdf.numPages,s.page));s.page=pageNo;
- if(s.renderTask){s.renderTask.cancel();try{await s.renderTask.promise}catch(e){}s.renderTask=null;}
+ const s=files[which];if(!s.pdf)return;const token=++s.token;
+ if(s.renderTask){s.renderTask.cancel();try{await s.renderTask.promise;}catch(e){}s.renderTask=null;}
  try{
- const page=await s.pdf.getPage(pageNo);if(token!==s.token)return;
- const stage=$(which+'-stage');
- const base=page.getViewport({scale:1});
- const fit=Math.max(.35,Math.min(1.5,(stage.clientWidth-48)/base.width));
- const viewport=page.getViewport({scale:fit*s.zoom});
- const canvas=$(which+'-canvas'),ctx=canvas.getContext('2d',{alpha:false});
- const pixelRatio=Math.min(window.devicePixelRatio||1,2);
- canvas.width=Math.round(viewport.width*pixelRatio);canvas.height=Math.round(viewport.height*pixelRatio);
- canvas.style.width=viewport.width+'px';canvas.style.height=viewport.height+'px';canvas.hidden=false;
- s.renderTask=page.render({canvasContext:ctx,viewport,transform:pixelRatio!==1?[pixelRatio,0,0,pixelRatio,0,0]:null});
+ const p=await s.pdf.getPage(s.page);if(token!==s.token)return;
+ const viewport0=p.getViewport({scale:1}),stage=$(which+'-stage');
+ const scale=Math.max(.35,Math.min(1.7,(stage.clientWidth-48)/viewport0.width))*s.zoom;
+ const v=p.getViewport({scale}),canvas=$(which+'-canvas'),ctx=canvas.getContext('2d',{alpha:false}),ratio=Math.min(window.devicePixelRatio||1,2);
+ canvas.width=Math.round(v.width*ratio);canvas.height=Math.round(v.height*ratio);canvas.style.width=v.width+'px';canvas.style.height=v.height+'px';
+ const wrap=$(which+'-pagewrap');wrap.style.width=v.width+'px';wrap.style.height=v.height+'px';
+ s.renderTask=p.render({canvasContext:ctx,viewport:v,transform:ratio!==1?[ratio,0,0,ratio,0,0]:null});
  await s.renderTask.promise;if(token!==s.token)return;
- $(which+'-page').value=pageNo;
- $(which+'-prev').disabled=pageNo<=1;
- $(which+'-next').disabled=pageNo>=s.pdf.numPages;
- $(which+'-zoom').textContent=Math.round(s.zoom*100)+'%';
- }catch(e){if(e.name!=='RenderingCancelledException')msg(which,'Pagina kon niet worden getoond: '+e.message);}
+ $(which+'-page').value=s.page;$(which+'-zoom').textContent=Math.round(s.zoom*100)+'%';
+ $(which+'-prev').disabled=s.page<=1;$(which+'-next').disabled=s.page>=s.pdf.numPages;
+ await paint(which,p,v);
+ }catch(e){if(e.name!=='RenderingCancelledException')say('repo-status','PDF-rendering mislukt: '+e.message,true);}
 }
-function go(which,page){const s=state[which];if(!s.pdf)return;const n=Number(page);if(!Number.isFinite(n))return;s.page=Math.max(1,Math.min(s.pdf.numPages,Math.trunc(n)));render(which);}
-async function search(which){
- const s=state[which];if(!s.pdf)return;
- const query=$(which+'-search').value.trim().toLocaleLowerCase('nl');const out=$(which+'-matches');out.textContent='';
- if(query.length<2){out.textContent='Voer ten minste 2 tekens in.';return;}
- const token=++s.searchToken;out.textContent='Zoeken in '+s.pdf.numPages+' pagina’s…';const hits=[];
- try{
- for(let p=1;p<=s.pdf.numPages;p++){
-  if(token!==s.searchToken)return;
-  const page=await s.pdf.getPage(p);const tc=await page.getTextContent();
-  const text=tc.items.map(i=>i.str||'').join(' ').toLocaleLowerCase('nl');
-  if(text.includes(query))hits.push(p);
-  if(p%12===0){out.textContent='Zoeken: '+p+'/'+s.pdf.numPages+' pagina’s';await new Promise(r=>setTimeout(r,0));}
+async function paint(which,page,viewport){
+ const s=files[which],overlay=$(which+'-overlay');overlay.replaceChildren();
+ if(!s.highlight.length)return;
+ const items=(await page.getTextContent()).items,terms=new Set(s.highlight);
+ let count=0;
+ for(const item of items){
+  if(count>=75)break;
+  const ww=tokenize(item.str||'');if(!ww.some(w=>terms.has(w)))continue;
+  const tr=pdfjsLib.Util.transform(viewport.transform,item.transform);
+  const height=Math.max(7,Math.hypot(tr[2],tr[3]));
+  const e=document.createElement('span');e.className='highlight';
+  e.style.left=tr[4]+'px';e.style.top=(tr[5]-height)+'px';
+  e.style.width=Math.max(9,Math.abs(item.width*viewport.scale))+'px';e.style.height=height+'px';overlay.appendChild(e);count++;
  }
- if(token!==s.searchToken)return;
- out.textContent=hits.length?hits.length+' pagina’s met overeenkomst: ':'Geen overeenkomsten in de uitleesbare PDF-tekst.';
- hits.slice(0,30).forEach(p=>{const b=document.createElement('button');b.type='button';b.className='pdf-match';b.textContent='p. '+p;b.addEventListener('click',()=>go(which,p));out.appendChild(b);});
- if(hits.length>30)out.append(' … en '+(hits.length-30)+' meer');
- if(hits.length)go(which,hits[0]);
- }catch(e){out.textContent='Zoeken mislukt: '+(e.message||'onbekende fout');}
 }
+function pageGo(which,n,highlight){const s=files[which];if(!s.pdf)return;s.page=Math.min(s.pdf.numPages,Math.max(1,Math.trunc(Number(n))||1));s.highlight=highlight||[];render(which);}
 for(const which of ['raw','summary']){
- $(which+'-prev').addEventListener('click',()=>go(which,state[which].page-1));
- $(which+'-next').addEventListener('click',()=>go(which,state[which].page+1));
- $(which+'-page').addEventListener('change',e=>go(which,e.target.value));
- $(which+'-zoomout').addEventListener('click',()=>{state[which].zoom=Math.max(.5,state[which].zoom-.2);render(which);});
- $(which+'-zoomin').addEventListener('click',()=>{state[which].zoom=Math.min(2.4,state[which].zoom+.2);render(which);});
- $(which+'-find').addEventListener('click',()=>search(which));
+ $(which+'-prev').onclick=()=>pageGo(which,files[which].page-1);
+ $(which+'-next').onclick=()=>pageGo(which,files[which].page+1);
+ $(which+'-page').onchange=e=>pageGo(which,e.target.value);
+ $(which+'-in').onclick=()=>{files[which].zoom=Math.min(2.4,files[which].zoom+.2);render(which);};
+ $(which+'-out').onclick=()=>{files[which].zoom=Math.max(.5,files[which].zoom-.2);render(which);};
+ $(which+'-find').onclick=()=>search(which);
  $(which+'-search').addEventListener('keydown',e=>{if(e.key==='Enter')search(which);});
- $(which+'-download').addEventListener('click',()=>{const s=state[which];if(s.objectUrl)window.open(s.objectUrl,'_blank','noopener');});
- $(which==='raw'?'viewer-raw-input':'viewer-summary-input').addEventListener('change',e=>load(which,e.target.files[0]));
 }
-$('upload').addEventListener('change',e=>{if(e.target.files[0]){load('raw',e.target.files[0]);view('raw');}});
-$('summary-upload').addEventListener('change',e=>{if(e.target.files[0]){load('summary',e.target.files[0]);view('summary');}});
-document.querySelectorAll('[data-openpdf]').forEach(b=>b.addEventListener('click',()=>view(b.dataset.openpdf)));
-window.addEventListener('pagehide',()=>{for(const which of ['raw','summary'])if(state[which].objectUrl)URL.revokeObjectURL(state[which].objectUrl);});
+async function extractAll(which,token){
+ const s=files[which],pdf=s.pdf;if(!pdf)return;
+ const pages=[];let total=0;
+ for(let p=1;p<=pdf.numPages;p++){
+  if(token!==indexToken)return;
+  const page=await pdf.getPage(p),text=pdfText((await page.getTextContent()).items);
+  const tokens=tokenize(text);pages.push({page:p,text,tokens,unique:new Set(tokens)});total+=words(text);
+  if(p%8===0||p===pdf.numPages){const processed=(which==='raw'?p/pdf.numPages*.85:.85+p/pdf.numPages*.15)*100;$('index-progress').style.width=processed+'%';$('index-status').textContent='Tekst uitlezen ('+(which==='raw'?'bron':'samenvatting')+'): pagina '+p+'/'+pdf.numPages;await new Promise(r=>setTimeout(r,0));}
+ }
+ if(token!==indexToken)return;s.pages=pages;s.words=total;
+}
+function splitSentences(text){
+ let norm=text.replace(/\s+/g,' ').replace(/([a-z])([A-Z])/g,'$1 $2');
+ const seg=norm.split(/(?<=[.!?])\s+(?=[A-ZÀ-Ü0-9“"„])/u);
+ return seg.map(s=>s.trim()).filter(s=>s.length>=65&&s.length<=680&&tokenize(s).length>=7);
+}
+function makeClaims(){
+ const all=files.summary.pages.flatMap(p=>splitSentences(p.text).map(text=>({text,summaryPage:p.page})));
+ const seen=new Set();return all.filter(c=>{const k=c.text.toLowerCase();if(seen.has(k))return false;seen.add(k);return true;}).slice(0,250);
+}
+function evidence(claim){
+ const source=files.raw.pages;
+ if(!source.length)return[];
+ const key=[...new Set(tokenize(claim.text))].filter(w=>w.length>=4);
+ if(key.length===0)return[];
+ const ranked=[];
+ for(const p of source){
+  let overlap=0;for(const term of key)if(p.unique.has(term))overlap++;
+  const fraction=overlap/key.length;
+  if(fraction<.30||overlap<3)continue;
+  const text=p.text.toLowerCase();
+  let best=-1,bestScore=-1;
+  for(let i=0;i<text.length;i+=320){
+   const fragment=text.slice(i,i+540);
+   let count=0;for(const term of key)if(fragment.includes(term))count++;
+   if(count>bestScore){bestScore=count;best=i;}
+  }
+  const score=Math.round(bestScore/key.length*100);
+  if(score<28)continue;
+  ranked.push({page:p.page,overlap:score,excerpt:p.text.slice(Math.max(0,best-90),best+510)});
+ }
+ return ranked.sort((a,b)=>b.overlap-a.overlap).slice(0,3);
+}
+async function indexDocuments(){
+ const token=++indexToken;linkToken++;claims=[];activeClaim=null;visibleCount=18;
+ $('claim-list').innerHTML='<div class="empty">Documenttekst wordt verwerkt…</div>';
+ if(!files.raw.pdf||!files.summary.pdf){$('index-status').textContent='Laad zowel het origineel als de samenvatting.';return;}
+ $('index-progress').style.width='0%';
+ try{
+ await extractAll('raw',token);if(token!==indexToken)return;
+ await extractAll('summary',token);if(token!==indexToken)return;
+ const a=files.raw.words,b=files.summary.words;
+ $('reduction-stat').textContent=a>0?(100*(1-b/a)).toFixed(1)+'%':'n.v.t.';
+ $('index-progress').style.width='100%';
+ $('index-status').textContent='Tekst verwerkt: '+a.toLocaleString('nl-NL')+' woorden in bron en '+b.toLocaleString('nl-NL')+' in samenvatting. Tekstreductie is indicatief (PDF-extractie).';
+ claims=makeClaims();
+ say('claim-status',claims.length+' zinnen uit de echte samenvatting gevonden. Bronpagina\'s worden voorgesteld via tekstoverlap; geen automatische factcheck.');
+ renderClaims();
+ }catch(e){if(token!==indexToken)return;$('index-status').textContent='Tekstextractie niet voltooid: '+e.message;say('claim-status','Kon tekst niet volledig uitlezen. Mogelijk is de PDF gescand.',true);}
+}
+function renderClaims(){
+ const filter=$('claim-filter').value,list=$('claim-list');list.replaceChildren();let filtered=claims;
+ if(filter==='matches')filtered=claims.filter(c=>evidence(c).length);
+ if(filter==='none')filtered=claims.filter(c=>!evidence(c).length);
+ const shown=filtered.slice(0,visibleCount);
+ if(!shown.length){const div=document.createElement('div');div.className='empty';div.textContent='Geen zinnen gevonden voor dit filter.';list.appendChild(div);}
+ shown.forEach((claim,i)=>{
+ const box=document.createElement('div');box.className='claim';
+ const top=document.createElement('div');top.className='claim-head';
+ const label=document.createElement('span');label.className='tag';label.textContent='Samenvatting · p. '+claim.summaryPage;
+ const show=document.createElement('button');show.className='secondary mini';show.textContent='Controleer bron →';show.onclick=()=>selectClaim(claim);
+ top.append(label,show);const p=document.createElement('p');p.textContent=claim.text;box.append(top,p);list.appendChild(box);
+ });
+ $('more-claims').disabled=filtered.length<=visibleCount;
+}
+function selectClaim(claim){
+ activeClaim=claim;const matches=evidence(claim);
+ $('selected-claim').textContent='Samenvatting, pagina '+claim.summaryPage+': '+claim.text;
+ const target=$('suggestions');target.replaceChildren();
+ if(!matches.length){const d=document.createElement('div');d.className='status error';d.textContent='Geen voldoende tekstoverlap gevonden. Dit betekent niet automatisch dat de zin fout is of dat er geen bewijs in het document staat.';target.appendChild(d);return;}
+ const note=document.createElement('div');note.className='note';note.textContent='Mogelijke pagina\'s op basis van woordoverlap. Controleer zelf de volledige broncontext; geen gevalideerde verwijzingen.';target.appendChild(note);
+ for(const m of matches){
+ const card=document.createElement('div');card.className='match';
+ const title=document.createElement('strong');title.textContent='Bronpagina '+m.page+' · '+m.overlap+'% overeenkomst van geselecteerde termen (indicatief)';
+ const quote=document.createElement('blockquote');quote.textContent='…'+m.excerpt+'…';
+ const btn=document.createElement('button');btn.className='primary';btn.textContent='Open bron op pagina '+m.page+' →';
+ btn.onclick=()=>{navigate('compare');pageGo('raw',m.page,[...new Set(tokenize(claim.text))].filter(x=>x.length>=4));pageGo('summary',claim.summaryPage);};
+ card.append(title,quote,btn);target.appendChild(card);
+ }
+}
+$('claim-filter').onchange=()=>{visibleCount=18;renderClaims();};
+$('more-claims').onclick=()=>{visibleCount+=18;renderClaims();};
+document.querySelectorAll('[data-decision]').forEach(b=>b.onclick=()=>{const el=$('decision-result');el.textContent='Lokale demonstratiebeslissing: '+b.dataset.decision+'. Dit wordt niet opgeslagen of gedeeld.';el.classList.add('visible');});
+async function search(which){
+ const query=$(which+'-search').value.trim().toLowerCase(),out=$(which+'-results');out.replaceChildren();
+ if(query.length<2){out.textContent='Vul ten minste 2 tekens in.';return;}
+ if(!files[which].pages.length){out.textContent='Tekst wordt nog ingelezen. Probeer opnieuw wanneer de index gereed is.';return;}
+ const matches=files[which].pages.filter(p=>p.text.toLowerCase().includes(query));
+ out.append(matches.length+' pagina\'s gevonden. ');
+ for(const item of matches.slice(0,20)){const btn=document.createElement('button');btn.className='matchbutton';btn.textContent='p. '+item.page;btn.onclick=()=>pageGo(which,item.page,tokenize(query));out.appendChild(btn);}
+ if(matches.length>20)out.append(' …');
+ if(matches.length)pageGo(which,matches[0].page,tokenize(query));
+}
 })();
-</script>
-</body></html>
+</script></body></html>
