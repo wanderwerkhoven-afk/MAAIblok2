@@ -77,6 +77,36 @@ main{padding:37px clamp(22px,3.8vw,64px) 80px;background:white}
 }
 @media(max-width:750px){aside{padding:15px;border-right:0;border-bottom:1px solid #dde4ee}.layout{grid-template-columns:1fr}main{padding:24px 16px}.metric b{font-size:12px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.ring{width:79px;height:79px}.ring-inner{width:61px;height:61px;font-size:21px}}
 
+
+/* Real uploaded-document comparison workspace */
+.pdf-toolbar-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0 23px}
+.pdf-file-button{cursor:pointer;position:relative;display:inline-flex;align-items:center;gap:8px}
+.pdf-file-button input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.pdf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.pdf-column{min-width:0;background:#fff;border:1px solid #dfe5ef}
+.pdf-head{padding:16px 19px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:4px solid #005bff;border-bottom:1px solid #e4e9f2}
+.pdf-column:last-child .pdf-head{border-top-color:#ff6700}
+.pdf-head strong{display:block;color:#0557f4;font-size:17px;font-style:italic;font-weight:500}
+.pdf-head small{display:block;color:#64738d;overflow-wrap:anywhere;margin-top:3px}
+.pdf-head button{font-size:12px;white-space:nowrap;padding:7px 10px}
+.pdf-head button:disabled,.pdf-controls button:disabled,.pdf-search button:disabled{opacity:.42;cursor:not-allowed}
+.pdf-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:12px 16px;border-bottom:1px solid #e6e9f0}
+.pdf-controls button{border:1px solid #d3deec;background:#fff;color:#0058f6;padding:5px 11px;font-size:18px;min-width:33px}
+.pdf-controls label,.pdf-page-total,.pdf-zoom{font-size:12px;color:#506382}
+.pdf-controls input{border:1px solid #cfdaeb;width:54px;padding:5px;font-size:12px;color:#12366d}
+.pdf-zoom{min-width:39px;text-align:center}
+.pdf-search{display:flex;gap:8px;padding:12px 16px 8px}
+.pdf-search input{flex:1;min-width:0;border:1px solid #d6deea;padding:9px 10px;color:#1c3c6b}
+.pdf-search button{padding:8px 13px;font-size:12px}
+.pdf-matches{padding:0 16px;color:#48648e;font-size:12px;min-height:25px}
+.pdf-match{border:0;background:#f2f6ff;color:#0054e9;padding:5px 8px;margin:2px 5px 2px 0;cursor:pointer;font-size:12px}
+.pdf-stage{height:min(67vh,760px);min-height:360px;overflow:auto;background:#edf0f5;display:flex;justify-content:flex-start;align-items:flex-start;padding:20px;position:relative}
+.pdf-stage canvas{display:block;max-width:none;box-shadow:0 3px 16px #2c41642f;margin:auto;background:#fff}
+.pdf-placeholder{margin:auto;max-width:290px;text-align:center;line-height:1.75;color:#738098}
+.pdf-note{font-size:12px;line-height:1.5;color:#68758e;padding:0 16px 12px}
+.pdf-stage canvas[hidden]{display:none}
+@media(max-width:1020px){.pdf-grid{grid-template-columns:1fr}.pdf-stage{height:570px}}
+
 </style>
 </head>
 <body>
@@ -87,21 +117,23 @@ main{padding:37px clamp(22px,3.8vw,64px) 80px;background:white}
   <button class="nav-button active" data-view="dashboard">▦ &nbsp; Dashboard</button>
   <button class="nav-button" data-view="analysis">◈ &nbsp; Samenvatting</button>
   <button class="nav-button" data-view="source">▤ &nbsp; Brondocument</button>
+  <button class="nav-button" data-view="viewer">▣ &nbsp; PDF-viewer</button>
   <button class="nav-button" data-view="engineer">☷ &nbsp; Engineer view</button>
  </nav></div>
  <div class="aside-bottom">Ontwerpiteratie 01<br>Interactieve demo · geen live AI<br>Geen gegevens worden verzonden</div>
 </aside>
 <main>
  <div class="top"><div class="crumb">SummaryCheck / <span id="breadcrumb">Dashboard</span></div><div class="user">Analist <span aria-hidden="true">◉</span></div></div>
- <div class="demo"><strong>Interactief ontwerpvoorbeeld</strong> — alle scores en tekstfragmenten zijn fictief. De upload selecteert lokaal een bestandsnaam maar analyseert de PDF niet. De getoonde analyse is een illustratief scenario; 'percentage correcte claims' is niet automatisch een gevalideerde betrouwbaarheidsscore.</div>
+ <div class="demo"><strong>Interactief ontwerpvoorbeeld</strong> — alle scores en tekstfragmenten zijn fictief. PDF-upload en de PDF-viewer werken echt, lokaal in deze browser. De evaluatiescores en voorbeeldclaims blijven illustratief; 'percentage correcte claims' is niet automatisch een gevalideerde betrouwbaarheidsscore.</div>
  <section class="section active" id="dashboard">
  <header class="hero"><span class="eyebrow">Overzicht</span><h1>Controleer je financiële samenvatting</h1><p>Start met een brondocument en bekijk welke informatie extra aandacht vraagt.</p></header>
  <div class="grid-2">
   <article class="panel"><div class="chip">STAP 01 · BRONDOCUMENT</div><h2 style="margin-top:15px">Nieuw document</h2><p class="sub">Kies een rapport voor een controle. De prototype-upload voert geen automatische verwerking uit.</p>
-    <div class="upload"><div class="emoji" aria-hidden="true">⇧</div><strong id="upload-title">Sleep een PDF hierheen of selecteer een bestand</strong><span class="sub">PDF · demonstratie, geen echte analyse</span><br><span class="primary">Bestand selecteren</span><input id="upload" type="file" accept=".pdf,application/pdf" aria-label="Selecteer PDF-brondocument"></div>
-    <div class="meta"><span class="chip success">Demo-voorbeeld</span> Rabobank Annual Report 2025</div>
-    <div class="progress"><span></span></div><div class="meta" style="justify-content:space-between"><span>Voorbeeld van verwerkingsvoortgang</span><b>93% (fictief)</b></div>
-    <div class="section-actions"><button class="primary" data-go="analysis">Bekijk voorbeeldanalyse →</button></div>
+    <div class="upload"><div class="emoji" aria-hidden="true">⇧</div><strong id="upload-title">Sleep een PDF hierheen of selecteer een bestand</strong><span class="sub">PDF · lokale verwerking, geen server-upload</span><br><span class="primary">Bestand selecteren</span><input id="upload" type="file" accept=".pdf,application/pdf" aria-label="Selecteer PDF-brondocument"></div>
+    <div class="meta"><span class="chip success">Upload beschikbaar</span><span id="raw-upload-info">Nog geen brondocument geselecteerd</span></div>
+    <div class="progress" aria-label="PDF-inleesvoortgang"><span id="upload-progress" style="width:0%"></span></div><div class="meta" style="justify-content:space-between"><span id="upload-status">Wacht op PDF</span><b id="upload-percent">0%</b></div>
+    <div class="section-actions"><label class="secondary" style="display:inline-block;cursor:pointer">Samenvatting uploaden <input id="summary-upload" type="file" accept=".pdf,application/pdf" style="position:absolute;left:-10000px"></label><span class="sub" id="summary-upload-info">Geen samenvatting geladen</span></div>
+    <div class="section-actions"><button class="primary" data-go="viewer">Open echte PDF-viewer →</button><button class="secondary" data-go="analysis">Bekijk ontwerp-demo →</button></div>
   </article>
   <article class="panel"><div class="chip warn">STAP 02 · EVALUATIE</div><h2 style="margin-top:15px">Resultaat in één oogopslag</h2><p class="sub">Drie indicatoren uit de whiteboardschets, hier uitgewerkt als afzonderlijke demo-maten.</p>
    <div class="stats">
@@ -121,10 +153,10 @@ main{padding:37px clamp(22px,3.8vw,64px) 80px;background:white}
    <div class="results-title"><h2>Samenvatting</h2><span class="tag">Voorbeeldtekst</span></div>
    <div class="summary-area">
      <div class="summary-paper"><h3>Financiële prestaties</h3><p>De organisatie rapporteert positieve operationele ontwikkelingen over de verslagperiode. <button class="mark selected" id="claim" title="Bekijk claimcontrole">De omzet steeg met 12%.</button> Deze zin wordt in deze demonstratie gemarkeerd voor verdere verificatie.</p><p>De samenvatting bevat daarnaast informatie over risicomanagement, financiering en kapitaalpositie. De inhoud van dit scherm is niet overgenomen uit een werkelijk jaarverslag.</p><p class="sub">Klik op de gemarkeerde claim om de bijbehorende broncontrole te bekijken.</p></div>
-     <div class="proof" id="proof"><strong>↗ Geselecteerde claim</strong><p>“De omzet steeg met 12%.”</p><div class="line"><strong>Onvoldoende bewijs</strong>In het fictieve voorbeeld is geen bevestigende bronpassage gekoppeld.</div><button class="secondary" data-go="source">Open brondocument ↗</button><p class="footnote">Een ontbrekende match bewijst niet automatisch dat de claim onjuist is.</p></div>
+     <div class="proof" id="proof"><strong>↗ Geselecteerde claim</strong><p>“De omzet steeg met 12%.”</p><div class="line"><strong>Onvoldoende bewijs</strong>In het fictieve voorbeeld is geen bevestigende bronpassage gekoppeld.</div><button class="secondary" data-openpdf="raw">Open geüploade bron ↗</button><p class="footnote">Een ontbrekende match bewijst niet automatisch dat de claim onjuist is.</p></div>
    </div>
    <div class="results-title"><h2>Uitgevoerde voorbeeldchecks</h2></div>
-   <div class="checks"><button class="check" data-go="source"><span>Brononderbouwing van claims</span><small>⚠ Controle nodig →</small></button><button class="check" data-go="source"><span>Dekking van relevante onderwerpen</span><small>⚠ Beperkt →</small></button><button class="check" data-go="source"><span>Compressieratio</span><small class="ok">✓ Berekend (demo) →</small></button></div>
+   <div class="checks"><button class="check" data-go="viewer"><span>Brononderbouwing van claims</span><small>⚠ Controle nodig →</small></button><button class="check" data-go="source"><span>Dekking van relevante onderwerpen</span><small>⚠ Beperkt →</small></button><button class="check" data-go="source"><span>Compressieratio</span><small class="ok">✓ Berekend (demo) →</small></button></div>
   </article>
   <article class="panel"><h2>Evaluatie-indicatoren</h2><p class="sub">Voorbeeldcijfers, niet afkomstig uit een modelrun.</p>
    <div class="stats"><div class="metric"><b>Claimcontrole</b><div class="ring" style="--pct:75;--c:var(--green)"><div class="ring-inner">75%</div></div><small>3/4 in demo</small></div>
@@ -139,9 +171,46 @@ main{padding:37px clamp(22px,3.8vw,64px) 80px;background:white}
  </section>
  <section class="section" id="source">
  <header class="hero"><span class="eyebrow">Traceerbaarheid</span><h1>Claim en brondocument</h1><p>Voorbeeld van gekoppelde documentpassages en een ontbrekend bewijsverband.</p></header>
- <div class="view-2"><article class="panel"><h2>Geselecteerde zin uit samenvatting</h2><div class="summary-paper" style="margin-top:17px"><p><span class="source-highlight">De omzet steeg met 12%.</span></p></div><div class="statusrow" style="margin-top:19px"><span class="state-indicator"></span><div><b>Onvoldoende bewijs</b><div class="sub">Deze fictieve claim is niet bevestigd door de hier getoonde passage.</div></div></div><button class="secondary" data-go="analysis">← Terug naar samenvatting</button></article>
+ <div class="view-2"><article class="panel"><h2>Geselecteerde zin uit samenvatting</h2><div class="summary-paper" style="margin-top:17px"><p><span class="source-highlight">De omzet steeg met 12%.</span></p></div><div class="statusrow" style="margin-top:19px"><span class="state-indicator"></span><div><b>Onvoldoende bewijs</b><div class="sub">Deze fictieve claim is niet bevestigd door de hier getoonde passage.</div></div></div><button class="secondary" data-go="analysis">← Terug naar samenvatting</button><button class="primary" data-openpdf="raw" style="margin-left:8px">Open echte bron-PDF</button></article>
  <article class="panel"><div class="results-title"><h2>Originele bron — demonstratie</h2><span class="tag">Niet uit echte PDF</span></div><div class="source-box"><b>Pagina 42 · voorbeeldpassage</b><p>De organisatie beschrijft ontwikkelingen in de financiële resultaten en de operationele bedrijfsvoering. <span class="source-highlight">De passage bevat geen verifieerbare bevestiging van een omzetstijging met 12%.</span></p><p class="sub">In een latere iteratie kan hier een echte PDF-viewer met paginanummers en bronhighlights worden geplaatst.</p></div></article></div></section>
- <section class="section" id="engineer">
+ <section class="section" id="viewer">
+<header class="hero"><span class="eyebrow">Lokale documentcontrole · PDF.js</span><h1>Bronviewer &amp; samenvatting</h1><p>Bekijk echte PDF-documenten en doorzoek de tekst. De bestanden worden uitsluitend in je browser geopend.</p></header>
+<div class="pdf-toolbar-top">
+  <label class="secondary pdf-file-button">Upload origineel <input id="viewer-raw-input" type="file" accept=".pdf,application/pdf"></label>
+  <label class="secondary pdf-file-button">Upload samenvatting <input id="viewer-summary-input" type="file" accept=".pdf,application/pdf"></label>
+  <span class="sub" id="pdf-loaded-state" role="status">Nog geen PDF geladen.</span>
+</div>
+<div class="pdf-grid">
+ <article class="pdf-column">
+  <div class="pdf-head"><div><strong>Origineel brondocument</strong><small id="raw-file-label">Geen bestand gekozen</small></div><button class="secondary" id="raw-download" disabled>Open PDF ↗</button></div>
+  <div class="pdf-controls">
+    <button id="raw-prev" title="Vorige pagina" aria-label="Vorige bronpagina" disabled>‹</button>
+    <label>Pagina <input id="raw-page" type="number" min="1" value="1" aria-label="Bronpaginanummer" disabled></label><span class="pdf-page-total" id="raw-pages">/ 0</span>
+    <button id="raw-next" title="Volgende pagina" aria-label="Volgende bronpagina" disabled>›</button>
+    <button id="raw-zoomout" disabled title="Uitzoomen">−</button><span id="raw-zoom" class="pdf-zoom">100%</span><button id="raw-zoomin" disabled title="Inzoomen">+</button>
+  </div>
+  <div class="pdf-search"><input type="search" id="raw-search" placeholder="Zoek tekst in brondocument..." aria-label="Zoek in brondocument" disabled><button id="raw-find" class="primary" disabled>Zoek</button></div>
+  <div class="pdf-matches" id="raw-matches" aria-live="polite"></div>
+  <div class="pdf-stage" id="raw-stage"><div class="pdf-placeholder" id="raw-placeholder">Upload een originele PDF om deze hier te bekijken.</div><canvas id="raw-canvas" hidden aria-label="Bronpagina"></canvas></div>
+  <p class="pdf-note" id="raw-info">Zoekresultaten springen naar de juiste PDF-pagina. De tekst wordt lokaal uitgelezen als die aanwezig is.</p>
+ </article>
+ <article class="pdf-column">
+  <div class="pdf-head"><div><strong>AI-samenvatting</strong><small id="summary-file-label">Geen bestand gekozen</small></div><button class="secondary" id="summary-download" disabled>Open PDF ↗</button></div>
+  <div class="pdf-controls">
+    <button id="summary-prev" aria-label="Vorige samenvattingspagina" disabled>‹</button>
+    <label>Pagina <input id="summary-page" type="number" min="1" value="1" aria-label="Samenvattingspaginanummer" disabled></label><span class="pdf-page-total" id="summary-pages">/ 0</span>
+    <button id="summary-next" aria-label="Volgende samenvattingspagina" disabled>›</button>
+    <button id="summary-zoomout" disabled title="Uitzoomen">−</button><span id="summary-zoom" class="pdf-zoom">100%</span><button id="summary-zoomin" disabled title="Inzoomen">+</button>
+  </div>
+  <div class="pdf-search"><input type="search" id="summary-search" placeholder="Zoek tekst in samenvatting..." aria-label="Zoek in samenvatting" disabled><button id="summary-find" class="primary" disabled>Zoek</button></div>
+  <div class="pdf-matches" id="summary-matches" aria-live="polite"></div>
+  <div class="pdf-stage" id="summary-stage"><div class="pdf-placeholder" id="summary-placeholder">Upload de AI-samenvatting om beide documenten naast elkaar te vergelijken.</div><canvas id="summary-canvas" hidden aria-label="Samenvattingspagina"></canvas></div>
+  <p class="pdf-note" id="summary-info">PDF-weergave en tekstzoekfunctie zijn echt; claimvalidatie en automatische highlights volgen later.</p>
+ </article>
+</div>
+<p class="demo"><strong>Privacy en beperkingen:</strong> het bestand blijft op het apparaat. PDF.js wordt vanaf een externe CDN geladen; zonder internetverbinding kan de viewer daardoor niet initialiseren. Doorzoekbare tekst vereist dat de PDF een tekstlaag bevat; voor gescande documenten is OCR nodig. Deze versie verifieert nog geen claims automatisch.</p>
+</section>
+<section class="section" id="engineer">
  <header class="hero"><span class="eyebrow">Onderzoeksperspectief</span><h1>AI-engineer · evaluatieoverzicht</h1><p>Concept voor het vergelijken van modelversies; alle getallen zijn uitsluitend demonstratief.</p></header>
  <div class="grid-2"><article class="panel"><h2>Modelvergelijking (fictief)</h2><p class="sub">Zelfde testset en beoordelingscriteria worden verondersteld.</p><div class="mini-chart"><div class="bar" style="height:58%"><span>v0</span></div><div class="bar alt" style="height:76%"><span>v1</span></div></div><p class="footnote" style="margin-top:42px">Een grafisch verschil vormt geen bewijs van een betere versie; dit vergt een vast evaluatieprotocol.</p></article><article class="panel"><h2>Wat moet onderzocht worden?</h2><div class="checks" style="margin-top:18px"><div class="check"><span>Feitelijke claims</span><small class="err">Demo</small></div><div class="check"><span>Dekking</span><small>Demo</small></div><div class="check"><span>Gemiste fouten vs. onterechte waarschuwingen</span><small>Niet gemeten</small></div></div><p class="footnote">Een vervolgitera­tie kan echte precision/recall-curves en analyse van fouttypen toevoegen.</p></article></div>
  </section>
@@ -149,12 +218,110 @@ main{padding:37px clamp(22px,3.8vw,64px) 80px;background:white}
 <script>
 (function(){
 const nav=[...document.querySelectorAll('[data-view]')],sections=[...document.querySelectorAll('.section')],breadcrumb=document.getElementById('breadcrumb');
-function go(id){if(!document.getElementById(id))return;sections.forEach(s=>s.classList.toggle('active',s.id===id));nav.forEach(n=>{let on=n.dataset.view===id;n.classList.toggle('active',on);n.setAttribute('aria-current',on?'page':'false')});breadcrumb.textContent=({dashboard:'Dashboard',analysis:'Samenvatting',source:'Brondocument',engineer:'Engineer view'})[id];window.scrollTo({top:0,behavior:'auto'});}
+function go(id){if(!document.getElementById(id))return;sections.forEach(s=>s.classList.toggle('active',s.id===id));nav.forEach(n=>{let on=n.dataset.view===id;n.classList.toggle('active',on);n.setAttribute('aria-current',on?'page':'false')});breadcrumb.textContent=({dashboard:'Dashboard',analysis:'Samenvatting',source:'Brondocument',viewer:'PDF-viewer',engineer:'Engineer view'})[id];window.scrollTo({top:0,behavior:'auto'});}
 document.querySelectorAll('[data-view],[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view||b.dataset.go)));
 document.getElementById('upload').addEventListener('change',e=>{const f=e.target.files[0];if(f){document.getElementById('upload-title').textContent=f.name;document.getElementById('upload-title').style.color='#234a78';}});
 document.getElementById('claim').addEventListener('click',()=>document.getElementById('proof').scrollIntoView({behavior:'smooth',block:'center'}));
 document.querySelectorAll('[data-decision]').forEach(b=>b.addEventListener('click',()=>{const p=document.getElementById('decision-result');p.textContent='Demo-beslissing vastgelegd: '+b.dataset.decision+'. Dit wordt niet naar een server verzonden.';p.classList.add('visible');}));
 document.getElementById('feedback-button').addEventListener('click',()=>{const p=document.getElementById('feedback-result');p.textContent='Demo: feedbackfunctie geselecteerd. In een volgende iteratie volgt een formulier voor fouttype en toelichting.';p.classList.add('visible');});
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+/* PDF.js: real, local-only PDF loading, rendering, navigation and text search.
+   Demo scoring deliberately remains separate from document capabilities. */
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const state={raw:{pdf:null,page:1,zoom:1,renderTask:null,token:0,objectUrl:null,file:null,searchToken:0},summary:{pdf:null,page:1,zoom:1,renderTask:null,token:0,objectUrl:null,file:null,searchToken:0}};
+const LIMIT=80*1024*1024;
+function msg(which,text){$(which+'-info').textContent=text;}
+function view(which){document.querySelector('[data-view="viewer"]').click();if(!state[which].pdf)$(which+'-file-label').textContent='Upload eerst een '+(which==='raw'?'origineel rapport':'samenvatting');}
+function setControls(which,ready){for(const id of ['prev','next','page','zoomout','zoomin','search','find','download'])$(which+'-'+id).disabled=!ready;}
+async function load(which,file){
+ if(!file)return;
+ if(!(/\.pdf$/i.test(file.name)||file.type==='application/pdf')){msg(which,'Dit is geen PDF-bestand. Selecteer een PDF.');return;}
+ if(file.size>LIMIT){msg(which,'Bestand te groot voor deze demo (maximaal 80 MB).');return;}
+ if(typeof window.pdfjsLib==='undefined'){msg(which,'PDF.js kon niet geladen worden. Controleer internetverbinding en laad de pagina opnieuw.');return;}
+ const s=state[which];const token=++s.token;s.searchToken++;setControls(which,false);
+ $(which+'-file-label').textContent='PDF wordt geladen: '+file.name;msg(which,'PDF wordt lokaal geopend…');$(which+'-matches').textContent='';
+ try{
+   pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+   const data=new Uint8Array(await file.arrayBuffer());if(token!==s.token)return;
+   const doc=await pdfjsLib.getDocument({data}).promise;if(token!==s.token){await doc.destroy();return;}
+   if(s.renderTask){try{await s.renderTask.cancel()}catch(e){}}
+   if(s.pdf)await s.pdf.destroy();
+   if(s.objectUrl)URL.revokeObjectURL(s.objectUrl);
+   s.objectUrl=URL.createObjectURL(file);s.pdf=doc;s.file=file;s.page=1;s.zoom=1;
+   $(which+'-file-label').textContent=file.name;$(which+'-pages').textContent='/ '+doc.numPages;
+   $(which+'-page').max=doc.numPages;$(which+'-page').value=1;
+   $(which+'-zoom').textContent='100%';
+   $(which+'-placeholder').hidden=true;setControls(which,true);
+   await render(which);
+   msg(which,doc.numPages+' PDF-pagina’s geladen. Pagina’s en zoekbare tekst komen rechtstreeks uit dit bestand.');
+   $('pdf-loaded-state').textContent=(state.raw.file?'Bron: '+state.raw.file.name:'Bron niet geladen')+' | '+(state.summary.file?'Samenvatting: '+state.summary.file.name:'Samenvatting niet geladen');
+   if(which==='raw'){$('upload-title').textContent=file.name;$('raw-upload-info').textContent=file.name;$('upload-progress').style.width='100%';$('upload-status').textContent='PDF lokaal geladen';$('upload-percent').textContent='100%';}
+   else $('summary-upload-info').textContent=file.name;
+ }catch(e){if(token!==s.token)return;msg(which,'Kon PDF niet openen: '+(e.message||'onbekende fout')+'. Mogelijk versleuteld of beschadigd.');$(which+'-file-label').textContent='Kon PDF niet openen';}
+}
+async function render(which){
+ const s=state[which];if(!s.pdf)return;
+ const token=++s.token;const pageNo=Math.max(1,Math.min(s.pdf.numPages,s.page));s.page=pageNo;
+ if(s.renderTask){s.renderTask.cancel();try{await s.renderTask.promise}catch(e){}s.renderTask=null;}
+ try{
+ const page=await s.pdf.getPage(pageNo);if(token!==s.token)return;
+ const stage=$(which+'-stage');
+ const base=page.getViewport({scale:1});
+ const fit=Math.max(.35,Math.min(1.5,(stage.clientWidth-48)/base.width));
+ const viewport=page.getViewport({scale:fit*s.zoom});
+ const canvas=$(which+'-canvas'),ctx=canvas.getContext('2d',{alpha:false});
+ const pixelRatio=Math.min(window.devicePixelRatio||1,2);
+ canvas.width=Math.round(viewport.width*pixelRatio);canvas.height=Math.round(viewport.height*pixelRatio);
+ canvas.style.width=viewport.width+'px';canvas.style.height=viewport.height+'px';canvas.hidden=false;
+ s.renderTask=page.render({canvasContext:ctx,viewport,transform:pixelRatio!==1?[pixelRatio,0,0,pixelRatio,0,0]:null});
+ await s.renderTask.promise;if(token!==s.token)return;
+ $(which+'-page').value=pageNo;
+ $(which+'-prev').disabled=pageNo<=1;
+ $(which+'-next').disabled=pageNo>=s.pdf.numPages;
+ $(which+'-zoom').textContent=Math.round(s.zoom*100)+'%';
+ }catch(e){if(e.name!=='RenderingCancelledException')msg(which,'Pagina kon niet worden getoond: '+e.message);}
+}
+function go(which,page){const s=state[which];if(!s.pdf)return;const n=Number(page);if(!Number.isFinite(n))return;s.page=Math.max(1,Math.min(s.pdf.numPages,Math.trunc(n)));render(which);}
+async function search(which){
+ const s=state[which];if(!s.pdf)return;
+ const query=$(which+'-search').value.trim().toLocaleLowerCase('nl');const out=$(which+'-matches');out.textContent='';
+ if(query.length<2){out.textContent='Voer ten minste 2 tekens in.';return;}
+ const token=++s.searchToken;out.textContent='Zoeken in '+s.pdf.numPages+' pagina’s…';const hits=[];
+ try{
+ for(let p=1;p<=s.pdf.numPages;p++){
+  if(token!==s.searchToken)return;
+  const page=await s.pdf.getPage(p);const tc=await page.getTextContent();
+  const text=tc.items.map(i=>i.str||'').join(' ').toLocaleLowerCase('nl');
+  if(text.includes(query))hits.push(p);
+  if(p%12===0){out.textContent='Zoeken: '+p+'/'+s.pdf.numPages+' pagina’s';await new Promise(r=>setTimeout(r,0));}
+ }
+ if(token!==s.searchToken)return;
+ out.textContent=hits.length?hits.length+' pagina’s met overeenkomst: ':'Geen overeenkomsten in de uitleesbare PDF-tekst.';
+ hits.slice(0,30).forEach(p=>{const b=document.createElement('button');b.type='button';b.className='pdf-match';b.textContent='p. '+p;b.addEventListener('click',()=>go(which,p));out.appendChild(b);});
+ if(hits.length>30)out.append(' … en '+(hits.length-30)+' meer');
+ if(hits.length)go(which,hits[0]);
+ }catch(e){out.textContent='Zoeken mislukt: '+(e.message||'onbekende fout');}
+}
+for(const which of ['raw','summary']){
+ $(which+'-prev').addEventListener('click',()=>go(which,state[which].page-1));
+ $(which+'-next').addEventListener('click',()=>go(which,state[which].page+1));
+ $(which+'-page').addEventListener('change',e=>go(which,e.target.value));
+ $(which+'-zoomout').addEventListener('click',()=>{state[which].zoom=Math.max(.5,state[which].zoom-.2);render(which);});
+ $(which+'-zoomin').addEventListener('click',()=>{state[which].zoom=Math.min(2.4,state[which].zoom+.2);render(which);});
+ $(which+'-find').addEventListener('click',()=>search(which));
+ $(which+'-search').addEventListener('keydown',e=>{if(e.key==='Enter')search(which);});
+ $(which+'-download').addEventListener('click',()=>{const s=state[which];if(s.objectUrl)window.open(s.objectUrl,'_blank','noopener');});
+ $(which==='raw'?'viewer-raw-input':'viewer-summary-input').addEventListener('change',e=>load(which,e.target.files[0]));
+}
+$('upload').addEventListener('change',e=>{if(e.target.files[0]){load('raw',e.target.files[0]);view('raw');}});
+$('summary-upload').addEventListener('change',e=>{if(e.target.files[0]){load('summary',e.target.files[0]);view('summary');}});
+document.querySelectorAll('[data-openpdf]').forEach(b=>b.addEventListener('click',()=>view(b.dataset.openpdf)));
+window.addEventListener('pagehide',()=>{for(const which of ['raw','summary'])if(state[which].objectUrl)URL.revokeObjectURL(state[which].objectUrl);});
 })();
 </script>
 </body></html>
