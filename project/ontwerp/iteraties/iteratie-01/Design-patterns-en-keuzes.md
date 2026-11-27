@@ -111,7 +111,24 @@ Geen van beide componenten is in deze HTML-demo geïmplementeerd.
 
 De hier beschreven aanpassing betreft uitsluitend de **visuele stijl van de bestaande iteratie**, niet een nieuwe gebruikersgeteste ontwerpiteratie.
 
-## 8. Voorstel voor iteratie 02
+## 8. Functionele uitbreiding: echte lokale PDF-upload en bronviewer (27 november 2026)
+
+De bron- en samenvattingsweergave zijn uitgebreid met werkende uploads: twee PDF's kunnen lokaal worden ingelezen en in afzonderlijke PDF.js-canvasvensters worden weergegeven. De navigatie bevat 'PDF-viewer'. Elke viewer heeft paginabesturing, zoom en zoekfunctie over de tekstinhoud van het document. Een klik op een gevonden paginanummer springt naar die pagina.
+
+| ID | Beslissing | Reden | Beperking / te testen |
+|---|---|---|---|
+| F01 | Twee aparte PDF-selectievelden (bron en samenvatting) | Maakt directe visuele vergelijking mogelijk | Documenten worden niet automatisch gekoppeld aan een manifest |
+| F02 | PDF's lokaal via File API + PDF.js lezen | Geen serveropslag nodig voor prototyping; echte paginaweergave | Bibliotheek geladen via CDN, dus netwerk nodig bij initialisatie |
+| F03 | Zij-aan-zij viewer met afzonderlijke paginanavigatie | Bron en samenvatting onafhankelijk bekijken | Op kleine schermen wordt gestapeld |
+| F04 | Pagina-gebaseerde tekstzoekfunctie | Verhoogt vindbaarheid van claims in lange documenten | Alleen doorzoekbare tekst; OCR en precieze zinhighlights ontbreken |
+| F05 | Fictieve scores gescheiden van werkende viewer | Voorkomt dat demo-uitkomsten worden verward met werkende AI | Taal en zichtbaarheid van waarschuwing moeten worden getest |
+| F06 | Uploadlimiet van 80 MB | Beperkt geheugengebruik van de browser | Grote PDF's en oudere apparaten vereisen prestatietesten |
+
+**Relevante design patterns:** *gebruikerscontrole* (zelf het originele document kunnen bekijken), *uitleg voor begrip* (documentcontext toegankelijk maken) en *verwachtingen duidelijk maken* (echte viewer vs. fictieve AI-resultaten). Dit is technisch geïmplementeerd; effectiviteit en bruikbaarheid zijn nog niet empirisch bevestigd.
+
+**Geen automatische claim-naar-bronverificatie:** een zoekresultaat laat zien waar woorden voorkomen en is geen bewijs dat een claim feitelijk klopt. Voor daadwerkelijke teksthighlights, semantische bronkoppelingen, OCR en AI-judging zijn nieuwe onderzoek- en ontwikkelstappen nodig.
+
+## 9. Voorstel voor iteratie 02
 
 Prioriteit: een echte vergelijking van twee UI-varianten voor scoreweergave en een duidelijk afzonderlijk 'Geen beoordeling mogelijk'-scherm. Daarnaast een klikbaar feedbackformulier met de categorieën 'Feit klopt niet', 'Informatie ontbreekt' en 'Onvoldoende bronbewijs'. Nieuwe keuzes alleen als definitief vastleggen na evaluatie.
 
