@@ -1,0 +1,46 @@
+site_name: MAAI Blok 2 — Projectwiki
+site_description: Ontwerp, ethiek, techniek en eindproduct van Team 4
+site_url: ""
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+theme:
+  name: material
+  language: nl
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: teal
+nav:
+  - Start: index.md
+  - Ontwerp:
+      - ontwerp/index.md
+      - Value proposition: ontwerp/value-proposition.md
+      - Stakeholderanalyse: ontwerp/stakeholderanalyse.md
+      - Design patterns: ontwerp/design-patterns.md
+      - Happy flow en fail flow: ontwerp/happy-fail-flow.md
+      - Iteraties:
+          - Iteratie 1: ontwerp/iteraties/iteratie-1.md
+          - Iteratie 2: ontwerp/iteraties/iteratie-2.md
+  - Ethiek:
+      - ethiek/index.md
+      - Ethische dilemma's: ethiek/ethische-dilemmas.md
+      - Responsible AI: ethiek/responsible-ai.md
+      - Privacy en fairness: ethiek/privacy-fairness.md
+  - Techniek:
+      - techniek/index.md
+      - AI-flow: techniek/ai-flow.md
+      - Modellen: techniek/modellen.md
+      - Training: techniek/training.md
+      - Resultaten: techniek/resultaten.md
+  - Eindproduct:
+      - eindproduct/index.md
+      - Prototype: eindproduct/prototype.md
+      - Gebruik en evaluatie: eindproduct/gebruik-en-evaluatie.md
