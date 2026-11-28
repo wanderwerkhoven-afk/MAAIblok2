@@ -24,7 +24,7 @@ Gebruik de vier hoofdonderdelen bovenaan de pagina:
 Plaats figuren in `docs/assets/` en voeg ze in de relevante pagina in met Markdown, bijvoorbeeld:
 
 ```markdown
-![Schematische weergave van de AI-flow](../assets/ai-flow.png)
+![Schematische weergave van de AI-flow](assets/ai-flow.png)
 
 _Figuur 1. Schematische weergave van de AI-flow._
 ```
