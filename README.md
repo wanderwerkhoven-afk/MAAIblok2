@@ -23,4 +23,5 @@
 * [Source-code](project/src)
     - Inclusief: data processing, model(len), evaluatie, documentatie
 * [Projectwiki — planning, onderzoek, ontwerp, ontwikkeling, evaluatie en GenAI-gebruik](wiki/README.md)
+* [Projectwiki website source](project/wiki-site/README.md)
 * [Algemene projectinformatie](Algemene%20informatie%20project%202/)
