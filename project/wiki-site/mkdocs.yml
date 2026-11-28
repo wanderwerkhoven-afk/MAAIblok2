@@ -1,6 +1,5 @@
 site_name: MAAI Blok 2 — Projectwiki
 site_description: Ontwerp, ethiek, techniek en eindproduct van Team 4
-site_url: ""
 docs_dir: docs
 site_dir: site
 use_directory_urls: true
