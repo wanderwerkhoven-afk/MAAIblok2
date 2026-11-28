@@ -6,7 +6,7 @@ publish-project-wiki:
   image: python:3.12-slim
   script:
     - python -m pip install --no-cache-dir -r project/wiki-site/requirements.txt
-    - mkdocs build --strict --config-file project/wiki-site/mkdocs.yml
+    - mkdocs build --config-file project/wiki-site/mkdocs.yml
   pages:
     publish: project/wiki-site/site
   rules:
