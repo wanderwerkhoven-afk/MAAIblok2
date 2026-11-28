@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+publish-project-wiki:
+  stage: deploy
+  image: python:3.12-slim
+  script:
+    - python -m pip install --no-cache-dir -r project/wiki-site/requirements.txt
+    - mkdocs build --strict --config-file project/wiki-site/mkdocs.yml
+  pages:
+    publish: project/wiki-site/site
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
